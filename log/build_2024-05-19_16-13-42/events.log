@@ -1,0 +1,96 @@
+[0.000000] (-) TimerEvent: {}
+[0.001294] (-) JobUnselected: {'identifier': 'custom_interfaces'}
+[0.002474] (corosols) JobQueued: {'identifier': 'corosols', 'dependencies': OrderedDict([('custom_interfaces', '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces')])}
+[0.003319] (corosols) JobStarted: {'identifier': 'corosols'}
+[0.100285] (-) TimerEvent: {}
+[0.202613] (-) TimerEvent: {}
+[0.303623] (-) TimerEvent: {}
+[0.404637] (-) TimerEvent: {}
+[0.505664] (-) TimerEvent: {}
+[0.606699] (-) TimerEvent: {}
+[0.707723] (-) TimerEvent: {}
+[0.808758] (-) TimerEvent: {}
+[0.909770] (-) TimerEvent: {}
+[1.010839] (-) TimerEvent: {}
+[1.111972] (-) TimerEvent: {}
+[1.212916] (-) TimerEvent: {}
+[1.313956] (-) TimerEvent: {}
+[1.415070] (-) TimerEvent: {}
+[1.516154] (-) TimerEvent: {}
+[1.620490] (-) TimerEvent: {}
+[1.726928] (-) TimerEvent: {}
+[1.827927] (-) TimerEvent: {}
+[1.928913] (-) TimerEvent: {}
+[2.029864] (-) TimerEvent: {}
+[2.131006] (-) TimerEvent: {}
+[2.232065] (-) TimerEvent: {}
+[2.333025] (-) TimerEvent: {}
+[2.433992] (-) TimerEvent: {}
+[2.535039] (-) TimerEvent: {}
+[2.636003] (-) TimerEvent: {}
+[2.736963] (-) TimerEvent: {}
+[2.837915] (-) TimerEvent: {}
+[2.939040] (-) TimerEvent: {}
+[3.039894] (-) TimerEvent: {}
+[3.141108] (-) TimerEvent: {}
+[3.242102] (-) TimerEvent: {}
+[3.343142] (-) TimerEvent: {}
+[3.444159] (-) TimerEvent: {}
+[3.545177] (-) TimerEvent: {}
+[3.646198] (-) TimerEvent: {}
+[3.747319] (-) TimerEvent: {}
+[3.848274] (-) TimerEvent: {}
+[3.949378] (-) TimerEvent: {}
+[3.965779] (corosols) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/corosols', 'build', '--build-base', '/home/hamzaboulandoum/corosols_ws/build/corosols/build', 'install', '--record', '/home/hamzaboulandoum/corosols_ws/build/corosols/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/hamzaboulandoum/corosols_ws/src/corosols', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'hamzaboulandoum', 'SSH_AGENT_PID': '3771', 'XDG_SESSION_TYPE': 'x11', 'GIT_ASKPASS': '/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib:/usr/local/cuda-11.4/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-11.4/lib64', 'HOME': '/home/hamzaboulandoum', 'CHROME_DESKTOP': 'code-url-handler.desktop', 'TERM_PROGRAM_VERSION': '1.89.1', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'VSCODE_GIT_ASKPASS_MAIN': '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/usr/share/code/code', 'MANAGERPID': '3675', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', '_colcon_cd_root': '/opt/ros/humble/', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/hamzaboulandoum/corosols_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'hamzaboulandoum', 'JOURNAL_STREAM': '8:65039', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'hamzaboulandoum', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/usr/local/cuda-11.4/bin:/opt/ros/humble/bin:/usr/local/cuda-11.4/bin:/home/hamzaboulandoum/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/ubuntu:@/tmp/.ICE-unix/3808,unix/ubuntu:/tmp/.ICE-unix/3808', 'INVOCATION_ID': 'e2e753c272be4480ab6b783267cc6150', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/a3d99981_09ef_446b_bdc9_a2c12ecdd9ae', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'Unity', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-c90a1b1275.sock', 'GNOME_TERMINAL_SERVICE': ':1.82', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/hamzaboulandoum/corosols_ws/install/corosols:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/opt/ros/humble', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/hamzaboulandoum/corosols_ws/build/corosols', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/hamzaboulandoum/corosols_ws/build/corosols/prefix_override:/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages:/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages:/opt/ros/humble/lib/python3.8/site-packages', 'COLCON': '1', 'VTE_VERSION': '6003', 'CMAKE_PREFIX_PATH': '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces'}, 'shell': False}
+[4.049925] (-) TimerEvent: {}
+[4.151650] (-) TimerEvent: {}
+[4.252685] (-) TimerEvent: {}
+[4.353700] (-) TimerEvent: {}
+[4.454625] (-) TimerEvent: {}
+[4.555520] (-) TimerEvent: {}
+[4.656504] (-) TimerEvent: {}
+[4.757477] (-) TimerEvent: {}
+[4.858456] (-) TimerEvent: {}
+[4.959460] (-) TimerEvent: {}
+[5.060373] (-) TimerEvent: {}
+[5.161338] (-) TimerEvent: {}
+[5.262419] (-) TimerEvent: {}
+[5.363512] (-) TimerEvent: {}
+[5.400778] (corosols) StdoutLine: {'line': b'running egg_info\n'}
+[5.404941] (corosols) StdoutLine: {'line': b'writing ../../build/corosols/corosols.egg-info/PKG-INFO\n'}
+[5.406747] (corosols) StdoutLine: {'line': b'writing dependency_links to ../../build/corosols/corosols.egg-info/dependency_links.txt\n'}
+[5.408002] (corosols) StdoutLine: {'line': b'writing entry points to ../../build/corosols/corosols.egg-info/entry_points.txt\n'}
+[5.408950] (corosols) StdoutLine: {'line': b'writing requirements to ../../build/corosols/corosols.egg-info/requires.txt\n'}
+[5.409684] (corosols) StdoutLine: {'line': b'writing top-level names to ../../build/corosols/corosols.egg-info/top_level.txt\n'}
+[5.463721] (-) TimerEvent: {}
+[5.564792] (-) TimerEvent: {}
+[5.597324] (corosols) StdoutLine: {'line': b"reading manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'\n"}
+[5.602308] (corosols) StdoutLine: {'line': b"writing manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'\n"}
+[5.604499] (corosols) StdoutLine: {'line': b'running build\n'}
+[5.605084] (corosols) StdoutLine: {'line': b'running build_py\n'}
+[5.605793] (corosols) StdoutLine: {'line': b'copying corosols/controller.py -> /home/hamzaboulandoum/corosols_ws/build/corosols/build/lib/corosols\n'}
+[5.606696] (corosols) StdoutLine: {'line': b'copying corosols/serial_read.py -> /home/hamzaboulandoum/corosols_ws/build/corosols/build/lib/corosols\n'}
+[5.607485] (corosols) StdoutLine: {'line': b'copying corosols/pose_broadcaster.py -> /home/hamzaboulandoum/corosols_ws/build/corosols/build/lib/corosols\n'}
+[5.609519] (corosols) StdoutLine: {'line': b'running install\n'}
+[5.613822] (corosols) StdoutLine: {'line': b'running install_lib\n'}
+[5.619845] (corosols) StdoutLine: {'line': b'copying /home/hamzaboulandoum/corosols_ws/build/corosols/build/lib/corosols/controller.py -> /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols\n'}
+[5.621143] (corosols) StdoutLine: {'line': b'copying /home/hamzaboulandoum/corosols_ws/build/corosols/build/lib/corosols/serial_read.py -> /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols\n'}
+[5.622261] (corosols) StdoutLine: {'line': b'copying /home/hamzaboulandoum/corosols_ws/build/corosols/build/lib/corosols/pose_broadcaster.py -> /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols\n'}
+[5.625739] (corosols) StdoutLine: {'line': b'byte-compiling /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols/controller.py to controller.cpython-38.pyc\n'}
+[5.636337] (corosols) StdoutLine: {'line': b'byte-compiling /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols/serial_read.py to serial_read.cpython-38.pyc\n'}
+[5.640419] (corosols) StdoutLine: {'line': b'byte-compiling /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols/pose_broadcaster.py to pose_broadcaster.cpython-38.pyc\n'}
+[5.645297] (corosols) StdoutLine: {'line': b'running install_data\n'}
+[5.646442] (corosols) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.655322] (corosols) StdoutLine: {'line': b"removing '/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[5.657464] (corosols) StdoutLine: {'line': b'Copying ../../build/corosols/corosols.egg-info to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols-0.0.0-py3.8.egg-info\n'}
+[5.664299] (corosols) StdoutLine: {'line': b'running install_scripts\n'}
+[5.665122] (-) TimerEvent: {}
+[5.749129] (corosols) StdoutLine: {'line': b'Installing controller script to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/corosols\n'}
+[5.750083] (corosols) StdoutLine: {'line': b'Installing pose_broadcaster script to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/corosols\n'}
+[5.751034] (corosols) StdoutLine: {'line': b'Installing serial script to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/corosols\n'}
+[5.752797] (corosols) StdoutLine: {'line': b"writing list of installed files to '/home/hamzaboulandoum/corosols_ws/build/corosols/install.log'\n"}
+[5.765411] (-) TimerEvent: {}
+[5.864543] (corosols) CommandEnded: {'returncode': 0}
+[5.868442] (-) TimerEvent: {}
+[5.954277] (corosols) JobEnded: {'identifier': 'corosols', 'rc': 0}
+[5.963957] (-) EventReactorShutdown: {}

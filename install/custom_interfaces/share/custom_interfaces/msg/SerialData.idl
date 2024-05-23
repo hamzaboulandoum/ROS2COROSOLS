@@ -1,0 +1,30 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from custom_interfaces/msg/SerialData.msg
+// generated code does not contain a copyright notice
+
+
+module custom_interfaces {
+  module msg {
+    struct SerialData {
+      double x_speed;
+
+      double y_speed;
+
+      double z_speed;
+
+      double x_accel;
+
+      double y_accel;
+
+      double z_accel;
+
+      double x_gyro;
+
+      double y_gyro;
+
+      double z_gyro;
+
+      double power_voltage;
+    };
+  };
+};

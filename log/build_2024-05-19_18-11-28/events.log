@@ -1,0 +1,332 @@
+[0.000000] (-) TimerEvent: {}
+[0.001352] (custom_interfaces) JobQueued: {'identifier': 'custom_interfaces', 'dependencies': OrderedDict()}
+[0.002677] (corosols) JobQueued: {'identifier': 'corosols', 'dependencies': OrderedDict([('custom_interfaces', '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces')])}
+[0.002978] (custom_interfaces) JobStarted: {'identifier': 'custom_interfaces'}
+[0.067663] (custom_interfaces) JobProgress: {'identifier': 'custom_interfaces', 'progress': 'cmake'}
+[0.071663] (custom_interfaces) JobProgress: {'identifier': 'custom_interfaces', 'progress': 'build'}
+[0.075786] (custom_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces', '--', '-j6', '-l6'], 'cwd': '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'hamzaboulandoum'), ('SSH_AGENT_PID', '3771'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib:/usr/local/cuda-11.4/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/hamzaboulandoum'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('TERM_PROGRAM_VERSION', '1.89.1'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '3675'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/hamzaboulandoum/corosols_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'hamzaboulandoum'), ('JOURNAL_STREAM', '8:65039'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'hamzaboulandoum'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/cuda-11.4/bin:/opt/ros/humble/bin:/usr/local/cuda-11.4/bin:/home/hamzaboulandoum/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/3808,unix/ubuntu:/tmp/.ICE-unix/3808'), ('INVOCATION_ID', 'e2e753c272be4480ab6b783267cc6150'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/a3d99981_09ef_446b_bdc9_a2c12ecdd9ae'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-c90a1b1275.sock'), ('GNOME_TERMINAL_SERVICE', ':1.82'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/hamzaboulandoum/corosols_ws/install/corosols:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/opt/ros/humble'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages:/opt/ros/humble/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/home/hamzaboulandoum/corosols_ws/install/corosols:/opt/ros/humble')]), 'shell': False}
+[0.104320] (-) TimerEvent: {}
+[0.209411] (-) TimerEvent: {}
+[0.310600] (-) TimerEvent: {}
+[0.411710] (-) TimerEvent: {}
+[0.460502] (custom_interfaces) StdoutLine: {'line': b'[  2%] Built target custom_interfaces__cpp\n'}
+[0.487611] (custom_interfaces) StdoutLine: {'line': b'[ 12%] Built target custom_interfaces__rosidl_generator_c\n'}
+[0.511992] (-) TimerEvent: {}
+[0.533908] (custom_interfaces) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_custom_interfaces\n'}
+[0.612236] (-) TimerEvent: {}
+[0.679669] (custom_interfaces) StdoutLine: {'line': b'[ 23%] Built target custom_interfaces__rosidl_typesupport_introspection_cpp\n'}
+[0.705798] (custom_interfaces) StdoutLine: {'line': b'[ 34%] Built target custom_interfaces__rosidl_typesupport_introspection_c\n'}
+[0.712485] (-) TimerEvent: {}
+[0.719401] (custom_interfaces) StdoutLine: {'line': b'[ 44%] Built target custom_interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[0.722532] (custom_interfaces) StdoutLine: {'line': b'[ 55%] Built target custom_interfaces__rosidl_typesupport_fastrtps_c\n'}
+[0.742957] (custom_interfaces) StdoutLine: {'line': b'[ 65%] Built target custom_interfaces__rosidl_typesupport_cpp\n'}
+[0.746233] (custom_interfaces) StdoutLine: {'line': b'[ 76%] Built target custom_interfaces__rosidl_typesupport_c\n'}
+[0.812817] (-) TimerEvent: {}
+[0.890520] (custom_interfaces) StdoutLine: {'line': b'[ 76%] Built target custom_interfaces\n'}
+[0.913042] (-) TimerEvent: {}
+[1.014065] (-) TimerEvent: {}
+[1.046482] (custom_interfaces) StdoutLine: {'line': b'[ 78%] Built target custom_interfaces__py\n'}
+[1.114300] (-) TimerEvent: {}
+[1.215418] (-) TimerEvent: {}
+[1.236965] (custom_interfaces) StdoutLine: {'line': b'[ 87%] Built target custom_interfaces__rosidl_generator_py\n'}
+[1.315705] (-) TimerEvent: {}
+[1.416707] (-) TimerEvent: {}
+[1.434526] (custom_interfaces) StdoutLine: {'line': b'[ 91%] Built target custom_interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[1.438460] (custom_interfaces) StdoutLine: {'line': b'[ 95%] Built target custom_interfaces__rosidl_typesupport_c__pyext\n'}
+[1.441728] (custom_interfaces) StdoutLine: {'line': b'[100%] Built target custom_interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[1.517004] (-) TimerEvent: {}
+[1.618114] (-) TimerEvent: {}
+[1.719243] (-) TimerEvent: {}
+[1.820259] (-) TimerEvent: {}
+[1.921430] (-) TimerEvent: {}
+[2.022569] (-) TimerEvent: {}
+[2.124583] (-) TimerEvent: {}
+[2.225658] (-) TimerEvent: {}
+[2.327074] (-) TimerEvent: {}
+[2.428661] (-) TimerEvent: {}
+[2.530928] (-) TimerEvent: {}
+[2.631998] (-) TimerEvent: {}
+[2.733076] (-) TimerEvent: {}
+[2.834399] (-) TimerEvent: {}
+[2.935415] (-) TimerEvent: {}
+[2.965411] (custom_interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[2.968481] (custom_interfaces) StdoutLine: {'line': b'writing custom_interfaces.egg-info/PKG-INFO\n'}
+[2.969481] (custom_interfaces) StdoutLine: {'line': b'writing dependency_links to custom_interfaces.egg-info/dependency_links.txt\n'}
+[2.970593] (custom_interfaces) StdoutLine: {'line': b'writing top-level names to custom_interfaces.egg-info/top_level.txt\n'}
+[3.035812] (-) TimerEvent: {}
+[3.136878] (-) TimerEvent: {}
+[3.238107] (-) TimerEvent: {}
+[3.274283] (custom_interfaces) StdoutLine: {'line': b"reading manifest file 'custom_interfaces.egg-info/SOURCES.txt'\n"}
+[3.277405] (custom_interfaces) StdoutLine: {'line': b"writing manifest file 'custom_interfaces.egg-info/SOURCES.txt'\n"}
+[3.338405] (-) TimerEvent: {}
+[3.429827] (custom_interfaces) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_custom_interfaces_egg\n'}
+[3.438636] (-) TimerEvent: {}
+[3.505821] (custom_interfaces) CommandEnded: {'returncode': 0}
+[3.539524] (-) TimerEvent: {}
+[3.641602] (-) TimerEvent: {}
+[3.742814] (-) TimerEvent: {}
+[3.843856] (-) TimerEvent: {}
+[3.944879] (-) TimerEvent: {}
+[4.045802] (-) TimerEvent: {}
+[4.148035] (-) TimerEvent: {}
+[4.249104] (-) TimerEvent: {}
+[4.294437] (custom_interfaces) JobProgress: {'identifier': 'custom_interfaces', 'progress': 'install'}
+[4.350423] (-) TimerEvent: {}
+[4.379141] (custom_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces'], 'cwd': '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'hamzaboulandoum'), ('SSH_AGENT_PID', '3771'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib:/usr/local/cuda-11.4/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/hamzaboulandoum'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('TERM_PROGRAM_VERSION', '1.89.1'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '3675'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/hamzaboulandoum/corosols_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'hamzaboulandoum'), ('JOURNAL_STREAM', '8:65039'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'hamzaboulandoum'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/cuda-11.4/bin:/opt/ros/humble/bin:/usr/local/cuda-11.4/bin:/home/hamzaboulandoum/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/3808,unix/ubuntu:/tmp/.ICE-unix/3808'), ('INVOCATION_ID', 'e2e753c272be4480ab6b783267cc6150'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/a3d99981_09ef_446b_bdc9_a2c12ecdd9ae'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-c90a1b1275.sock'), ('GNOME_TERMINAL_SERVICE', ':1.82'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/hamzaboulandoum/corosols_ws/install/corosols:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/opt/ros/humble'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages:/opt/ros/humble/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/home/hamzaboulandoum/corosols_ws/install/corosols:/opt/ros/humble')]), 'shell': False}
+[4.438979] (custom_interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[4.440653] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/ament_index/resource_index/rosidl_interfaces/custom_interfaces\n'}
+[4.441862] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces\n'}
+[4.443049] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg\n'}
+[4.444158] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/command.h\n'}
+[4.446142] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/target.h\n'}
+[4.448006] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[4.448814] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/serial_data.h\n'}
+[4.450500] (-) TimerEvent: {}
+[4.451551] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail\n'}
+[4.453324] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__struct.h\n'}
+[4.453903] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__functions.h\n'}
+[4.454574] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__type_support.h\n'}
+[4.455360] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__functions.c\n'}
+[4.456177] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__functions.h\n'}
+[4.457936] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__struct.h\n'}
+[4.458590] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__struct.h\n'}
+[4.459863] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__functions.c\n'}
+[4.460451] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__type_support.h\n'}
+[4.460954] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__type_support.h\n'}
+[4.461424] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__functions.c\n'}
+[4.462205] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__functions.h\n'}
+[4.462721] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/environment/library_path.sh\n'}
+[4.463196] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/environment/library_path.dsv\n'}
+[4.463608] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_c.so\n'}
+[4.464495] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces\n'}
+[4.465049] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg\n'}
+[4.465487] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[4.466570] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail\n'}
+[4.467321] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__rosidl_typesupport_fastrtps_c.h\n'}
+[4.468124] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__rosidl_typesupport_fastrtps_c.h\n'}
+[4.468857] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__rosidl_typesupport_fastrtps_c.h\n'}
+[4.469568] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[4.470169] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces\n'}
+[4.470632] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg\n'}
+[4.471488] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[4.471983] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail\n'}
+[4.472432] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__type_support.c\n'}
+[4.472846] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__rosidl_typesupport_introspection_c.h\n'}
+[4.473716] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__type_support.c\n'}
+[4.474798] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__type_support.c\n'}
+[4.475255] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__rosidl_typesupport_introspection_c.h\n'}
+[4.475943] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__rosidl_typesupport_introspection_c.h\n'}
+[4.476658] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_c.so\n'}
+[4.477393] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_c.so\n'}
+[4.477950] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces\n'}
+[4.478673] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg\n'}
+[4.479213] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/serial_data.hpp\n'}
+[4.479670] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail\n'}
+[4.480382] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__builder.hpp\n'}
+[4.481341] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__traits.hpp\n'}
+[4.481841] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__builder.hpp\n'}
+[4.482786] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__traits.hpp\n'}
+[4.483555] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__struct.hpp\n'}
+[4.484196] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__builder.hpp\n'}
+[4.484671] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__struct.hpp\n'}
+[4.485342] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__struct.hpp\n'}
+[4.485887] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__traits.hpp\n'}
+[4.487738] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/target.hpp\n'}
+[4.488563] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/command.hpp\n'}
+[4.489447] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces\n'}
+[4.490713] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg\n'}
+[4.491436] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail\n'}
+[4.493401] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[4.494096] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[4.494686] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/dds_fastrtps\n'}
+[4.497800] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[4.499310] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[4.499937] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[4.500965] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces\n'}
+[4.501711] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg\n'}
+[4.502335] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail\n'}
+[4.502921] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[4.503587] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[4.504065] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/command__type_support.cpp\n'}
+[4.504555] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__rosidl_typesupport_introspection_cpp.hpp\n'}
+[4.505009] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__type_support.cpp\n'}
+[4.505614] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/target__type_support.cpp\n'}
+[4.506155] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[4.506683] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_cpp.so\n'}
+[4.507186] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/environment/pythonpath.sh\n'}
+[4.507664] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/environment/pythonpath.dsv\n'}
+[4.508098] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces-0.0.0-py3.9.egg-info\n'}
+[4.508560] (custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces-0.0.0-py3.9.egg-info/PKG-INFO\n'}
+[4.509210] (custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces-0.0.0-py3.9.egg-info/SOURCES.txt\n'}
+[4.510023] (custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces-0.0.0-py3.9.egg-info/dependency_links.txt\n'}
+[4.512900] (custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces-0.0.0-py3.9.egg-info/top_level.txt\n'}
+[4.514872] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces\n'}
+[4.515455] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so\n'}
+[4.515947] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_c.c\n'}
+[4.516387] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[4.516863] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so\n'}
+[4.517727] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg\n'}
+[4.518892] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg/_command.py\n'}
+[4.520822] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg/_target_s.c\n'}
+[4.521363] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg/_target.py\n'}
+[4.521836] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg/_serial_data.py\n'}
+[4.522781] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg/__init__.py\n'}
+[4.523301] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg/_command_s.c\n'}
+[4.523791] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg/_serial_data_s.c\n'}
+[4.524227] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[4.524672] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/libcustom_interfaces__rosidl_generator_py.so\n'}
+[4.525141] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/__init__.py\n'}
+[4.525614] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so\n'}
+[4.550828] (-) TimerEvent: {}
+[4.652666] (-) TimerEvent: {}
+[4.724643] (custom_interfaces) StdoutLine: {'line': b"Listing '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces'...\n"}
+[4.725497] (custom_interfaces) StdoutLine: {'line': b"Listing '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/msg'...\n"}
+[4.752910] (-) TimerEvent: {}
+[4.754167] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so\n'}
+[4.758225] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so\n'}
+[4.762207] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so\n'}
+[4.765524] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_py.so\n'}
+[4.767891] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/msg/SerialData.idl\n'}
+[4.771896] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/msg/Target.idl\n'}
+[4.772997] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/msg/Command.idl\n'}
+[4.773695] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/msg/SerialData.msg\n'}
+[4.774757] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/msg/Target.msg\n'}
+[4.775318] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/msg/Command.msg\n'}
+[4.775791] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/ament_index/resource_index/package_run_dependencies/custom_interfaces\n'}
+[4.776607] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/ament_index/resource_index/parent_prefix_path/custom_interfaces\n'}
+[4.777307] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/environment/ament_prefix_path.sh\n'}
+[4.777822] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/environment/ament_prefix_path.dsv\n'}
+[4.778729] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/environment/path.sh\n'}
+[4.779407] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/environment/path.dsv\n'}
+[4.781417] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/local_setup.bash\n'}
+[4.787375] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/local_setup.sh\n'}
+[4.788758] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/local_setup.zsh\n'}
+[4.789280] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/local_setup.dsv\n'}
+[4.790877] (custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.dsv\n'}
+[4.792544] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/ament_index/resource_index/packages/custom_interfaces\n'}
+[4.797646] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cExport.cmake\n'}
+[4.799548] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[4.801359] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[4.803125] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[4.804929] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[4.806850] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[4.808710] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cExport.cmake\n'}
+[4.815677] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[4.823901] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cppExport.cmake\n'}
+[4.830518] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[4.831801] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[4.833180] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[4.833928] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[4.837239] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[4.839523] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[4.840476] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_pyExport.cmake\n'}
+[4.841461] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_pyExport-noconfig.cmake\n'}
+[4.842118] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[4.842768] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[4.844532] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[4.846231] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[4.849280] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[4.850138] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[4.851762] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[4.853727] (-) TimerEvent: {}
+[4.854378] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfacesConfig.cmake\n'}
+[4.855533] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfacesConfig-version.cmake\n'}
+[4.856808] (custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.xml\n'}
+[4.857828] (custom_interfaces) CommandEnded: {'returncode': 0}
+[4.954745] (-) TimerEvent: {}
+[5.056781] (-) TimerEvent: {}
+[5.158381] (-) TimerEvent: {}
+[5.259710] (-) TimerEvent: {}
+[5.360659] (-) TimerEvent: {}
+[5.461537] (-) TimerEvent: {}
+[5.563103] (-) TimerEvent: {}
+[5.566636] (custom_interfaces) JobEnded: {'identifier': 'custom_interfaces', 'rc': 0}
+[5.574202] (corosols) JobStarted: {'identifier': 'corosols'}
+[5.664376] (-) TimerEvent: {}
+[5.767155] (-) TimerEvent: {}
+[5.868170] (-) TimerEvent: {}
+[5.969200] (-) TimerEvent: {}
+[6.070150] (-) TimerEvent: {}
+[6.171080] (-) TimerEvent: {}
+[6.272012] (-) TimerEvent: {}
+[6.373011] (-) TimerEvent: {}
+[6.474047] (-) TimerEvent: {}
+[6.574977] (-) TimerEvent: {}
+[6.675930] (-) TimerEvent: {}
+[6.776936] (-) TimerEvent: {}
+[6.878142] (-) TimerEvent: {}
+[6.979187] (-) TimerEvent: {}
+[7.080250] (-) TimerEvent: {}
+[7.182173] (-) TimerEvent: {}
+[7.284811] (-) TimerEvent: {}
+[7.392447] (-) TimerEvent: {}
+[7.495455] (-) TimerEvent: {}
+[7.596397] (-) TimerEvent: {}
+[7.697391] (-) TimerEvent: {}
+[7.798401] (-) TimerEvent: {}
+[7.899392] (-) TimerEvent: {}
+[8.000390] (-) TimerEvent: {}
+[8.101433] (-) TimerEvent: {}
+[8.202494] (-) TimerEvent: {}
+[8.304852] (-) TimerEvent: {}
+[8.405922] (-) TimerEvent: {}
+[8.507107] (-) TimerEvent: {}
+[8.609249] (-) TimerEvent: {}
+[8.710204] (-) TimerEvent: {}
+[8.811604] (-) TimerEvent: {}
+[8.913501] (-) TimerEvent: {}
+[9.014569] (-) TimerEvent: {}
+[9.115507] (-) TimerEvent: {}
+[9.216555] (-) TimerEvent: {}
+[9.317461] (-) TimerEvent: {}
+[9.418478] (-) TimerEvent: {}
+[9.519566] (-) TimerEvent: {}
+[9.615846] (corosols) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/corosols', 'build', '--build-base', '/home/hamzaboulandoum/corosols_ws/build/corosols/build', 'install', '--record', '/home/hamzaboulandoum/corosols_ws/build/corosols/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/hamzaboulandoum/corosols_ws/src/corosols', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'hamzaboulandoum', 'SSH_AGENT_PID': '3771', 'XDG_SESSION_TYPE': 'x11', 'GIT_ASKPASS': '/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib:/usr/local/cuda-11.4/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-11.4/lib64', 'HOME': '/home/hamzaboulandoum', 'CHROME_DESKTOP': 'code-url-handler.desktop', 'TERM_PROGRAM_VERSION': '1.89.1', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'VSCODE_GIT_ASKPASS_MAIN': '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/usr/share/code/code', 'MANAGERPID': '3675', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', '_colcon_cd_root': '/opt/ros/humble/', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/hamzaboulandoum/corosols_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'hamzaboulandoum', 'JOURNAL_STREAM': '8:65039', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'hamzaboulandoum', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/usr/local/cuda-11.4/bin:/opt/ros/humble/bin:/usr/local/cuda-11.4/bin:/home/hamzaboulandoum/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/ubuntu:@/tmp/.ICE-unix/3808,unix/ubuntu:/tmp/.ICE-unix/3808', 'INVOCATION_ID': 'e2e753c272be4480ab6b783267cc6150', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/a3d99981_09ef_446b_bdc9_a2c12ecdd9ae', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'Unity', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-c90a1b1275.sock', 'GNOME_TERMINAL_SERVICE': ':1.82', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/hamzaboulandoum/corosols_ws/install/corosols:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/opt/ros/humble', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/hamzaboulandoum/corosols_ws/build/corosols', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/hamzaboulandoum/corosols_ws/build/corosols/prefix_override:/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages:/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages:/opt/ros/humble/lib/python3.8/site-packages', 'COLCON': '1', 'VTE_VERSION': '6003', 'CMAKE_PREFIX_PATH': '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces'}, 'shell': False}
+[9.645003] (-) TimerEvent: {}
+[9.747030] (-) TimerEvent: {}
+[9.848509] (-) TimerEvent: {}
+[9.950056] (-) TimerEvent: {}
+[10.051025] (-) TimerEvent: {}
+[10.152181] (-) TimerEvent: {}
+[10.253242] (-) TimerEvent: {}
+[10.354570] (-) TimerEvent: {}
+[10.456054] (-) TimerEvent: {}
+[10.557012] (-) TimerEvent: {}
+[10.658076] (-) TimerEvent: {}
+[10.759029] (-) TimerEvent: {}
+[10.860928] (-) TimerEvent: {}
+[10.962166] (-) TimerEvent: {}
+[11.063274] (-) TimerEvent: {}
+[11.146946] (corosols) StdoutLine: {'line': b'running egg_info\n'}
+[11.150515] (corosols) StdoutLine: {'line': b'writing ../../build/corosols/corosols.egg-info/PKG-INFO\n'}
+[11.152402] (corosols) StdoutLine: {'line': b'writing dependency_links to ../../build/corosols/corosols.egg-info/dependency_links.txt\n'}
+[11.153578] (corosols) StdoutLine: {'line': b'writing entry points to ../../build/corosols/corosols.egg-info/entry_points.txt\n'}
+[11.154368] (corosols) StdoutLine: {'line': b'writing requirements to ../../build/corosols/corosols.egg-info/requires.txt\n'}
+[11.155045] (corosols) StdoutLine: {'line': b'writing top-level names to ../../build/corosols/corosols.egg-info/top_level.txt\n'}
+[11.163512] (-) TimerEvent: {}
+[11.264503] (-) TimerEvent: {}
+[11.341209] (corosols) StdoutLine: {'line': b"reading manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'\n"}
+[11.346280] (corosols) StdoutLine: {'line': b"writing manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'\n"}
+[11.347366] (corosols) StdoutLine: {'line': b'running build\n'}
+[11.348255] (corosols) StdoutLine: {'line': b'running build_py\n'}
+[11.349183] (corosols) StdoutLine: {'line': b'copying corosols/serial_read.py -> /home/hamzaboulandoum/corosols_ws/build/corosols/build/lib/corosols\n'}
+[11.351983] (corosols) StdoutLine: {'line': b'running install\n'}
+[11.357660] (corosols) StdoutLine: {'line': b'running install_lib\n'}
+[11.364066] (corosols) StdoutLine: {'line': b'copying /home/hamzaboulandoum/corosols_ws/build/corosols/build/lib/corosols/serial_read.py -> /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols\n'}
+[11.365067] (-) TimerEvent: {}
+[11.368557] (corosols) StdoutLine: {'line': b'byte-compiling /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols/serial_read.py to serial_read.cpython-38.pyc\n'}
+[11.378824] (corosols) StdoutLine: {'line': b'running install_data\n'}
+[11.379828] (corosols) StdoutLine: {'line': b'running install_egg_info\n'}
+[11.389592] (corosols) StdoutLine: {'line': b"removing '/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[11.392483] (corosols) StdoutLine: {'line': b'Copying ../../build/corosols/corosols.egg-info to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols-0.0.0-py3.8.egg-info\n'}
+[11.398667] (corosols) StdoutLine: {'line': b'running install_scripts\n'}
+[11.465329] (-) TimerEvent: {}
+[11.480972] (corosols) StdoutLine: {'line': b'Installing pose_broadcaster script to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/corosols\n'}
+[11.482092] (corosols) StdoutLine: {'line': b'Installing serial script to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/corosols\n'}
+[11.483411] (corosols) StdoutLine: {'line': b'Installing task script to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/corosols\n'}
+[11.484511] (corosols) StdoutLine: {'line': b'Installing user_input script to /home/hamzaboulandoum/corosols_ws/install/corosols/lib/corosols\n'}
+[11.485555] (corosols) StdoutLine: {'line': b"writing list of installed files to '/home/hamzaboulandoum/corosols_ws/build/corosols/install.log'\n"}
+[11.565553] (-) TimerEvent: {}
+[11.599757] (corosols) CommandEnded: {'returncode': 0}
+[11.648513] (corosols) JobEnded: {'identifier': 'corosols', 'rc': 0}
+[11.653707] (-) EventReactorShutdown: {}
