@@ -1,6 +1,6 @@
-msg/Command.idl
-msg/Command.msg
 msg/SerialData.idl
 msg/SerialData.msg
-msg/Target.idl
-msg/Target.msg
+srv/Commands.idl
+srv/Commands.srv
+srv/Commands_Request.msg
+srv/Commands_Response.msg

@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from custom_interfaces/srv/Commands.srv
+// generated code does not contain a copyright notice
+
+
+module custom_interfaces {
+  module srv {
+    struct Commands_Request {
+      double vx;
+
+      double vy;
+
+      double vr;
+
+      int32 airbrush;
+    };
+    struct Commands_Response {
+      string outcome;
+    };
+  };
+};

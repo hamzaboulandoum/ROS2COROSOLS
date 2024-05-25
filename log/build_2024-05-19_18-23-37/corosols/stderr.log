@@ -1,5 +1,0 @@
-  File "/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages/corosols/robot_task.py", line 39
-    msg.vr = int((self.target.r-self.odom.pose.pose.position.z)50)
-                                                               ^
-SyntaxError: invalid syntax
-

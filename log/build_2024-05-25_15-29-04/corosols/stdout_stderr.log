@@ -1,0 +1,24 @@
+running egg_info
+writing ../../build/corosols/corosols.egg-info/PKG-INFO
+writing dependency_links to ../../build/corosols/corosols.egg-info/dependency_links.txt
+writing entry points to ../../build/corosols/corosols.egg-info/entry_points.txt
+writing requirements to ../../build/corosols/corosols.egg-info/requires.txt
+writing top-level names to ../../build/corosols/corosols.egg-info/top_level.txt
+reading manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'
+writing manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/hamzalegion/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/corosols/corosols.egg-info to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols-0.0.0-py3.10.egg-info
+running install_scripts
+Installing input_client script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+Installing pose_broadcaster script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+Installing serial script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+Installing task script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+Installing user_input script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+Installing velocity_calculator script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+writing list of installed files to '/home/hamzalegion/COROSOLS_WS/build/corosols/install.log'

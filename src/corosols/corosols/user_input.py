@@ -1,6 +1,7 @@
 import sys
 import rclpy
 from rclpy.node import Node
+from custom_interfaces.srv import Input , Commands # type: ignore
 
 from custom_interfaces.msg import Target
 class MinimalPublisher(Node):

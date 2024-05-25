@@ -11,14 +11,15 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/SerialData.msg"
-  "msg/Target.msg"
-  "msg/Command.msg"
+  "srv/Commands.srv"
   # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
 )
+
 
 
 if(BUILD_TESTING)

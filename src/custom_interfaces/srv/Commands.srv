@@ -1,0 +1,6 @@
+float64 vx
+float64 vy
+float64 vr
+int32 airbrush
+---
+string outcome 

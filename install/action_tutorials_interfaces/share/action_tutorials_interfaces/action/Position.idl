@@ -1,0 +1,24 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from action_tutorials_interfaces/action/Position.action
+// generated code does not contain a copyright notice
+
+
+module action_tutorials_interfaces {
+  module action {
+    struct Position_Goal {
+      int32 x;
+
+      int32 y;
+
+      int32 r;
+
+      int32 a;
+    };
+    struct Position_Result {
+      sequence<double> precision;
+    };
+    struct Position_Feedback {
+      sequence<double> precision_log;
+    };
+  };
+};

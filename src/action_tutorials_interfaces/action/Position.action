@@ -1,0 +1,8 @@
+int32 x
+int32 y
+int32 r
+int32 a
+---
+float64[] precision
+---
+float64[] precision_log

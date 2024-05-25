@@ -25,10 +25,10 @@ class MinimalSubscriber(Node):
             10)
         
         self.target_subscription  # prevent unused variable warning
-        self.odom=Odometry()
-        self.target=Target()
+        self.odom= Odometry()
+        self.target= Target()
 
-        self.publisher_ = self.create_publisher(Command, 'commands', 1)
+        self.publisher_ = self.create_publisher(Command, 'commands', 10)
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.command_callback)
         
