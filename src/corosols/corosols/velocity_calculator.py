@@ -29,13 +29,34 @@ class SendVelocity(Node):
     def odom_listener(self,msg):
         self.odoData = msg
         
-    def calculate_velocities(self, x, y, r, a):
+    def calculate_velocities(self, x, y, r, a,prec,kp):
         
         #Calculate velocities
-        self.command_req.vx = (x-self.odoData.pose.pose.position.x )
-        self.command_req.vy = (y-self.odoData.pose.pose.position.x )
-        self.command_req.vr = (r-self.odoData.pose.pose.position.z )
+        if abs(x-self.odoData.pose.pose.position.x )>prec:
+            self.command_req.vx = (x-self.odoData.pose.pose.position.x )*kp
+        else : 
+            self.command_req.vx=0.0
+            
+        if abs(y-self.odoData.pose.pose.position.y )>prec:
+            self.command_req.vy = (y-self.odoData.pose.pose.position.y )*kp
+        else : 
+            self.command_req.vy=0.0
+            
+        if abs(r-self.odoData.pose.pose.position.z )>prec:
+            self.command_req.vr = (r-self.odoData.pose.pose.position.z )*kp
+        else : 
+            self.command_req.vr=0.0
+            
         self.command_req.airbrush = a 
+        
+        self.future = self.command_cli.call_async(self.command_req)
+        rclpy.spin_until_future_complete(self, self.future,timeout_sec=1)
+        return self.future.result()
+    def stop(self):
+        self.command_req.vx =0.0
+        self.command_req.vy =0.0
+        self.command_req.vr = 0.0
+        self.command_req.airbrush = 0
         
         self.future = self.command_cli.call_async(self.command_req)
         rclpy.spin_until_future_complete(self, self.future,timeout_sec=1)
@@ -53,8 +74,8 @@ class VelocityCalculator(Node):
             self.calculate_targets,
             )
         self.test = test 
-        
-                 
+        self.prec =0.075
+        self.kp = 0.8
     
     def calculate_targets(self, goal_handle): 
         
@@ -63,22 +84,22 @@ class VelocityCalculator(Node):
         feedback_msg = Position.Feedback()
         feedback_msg.precision_log = []
         
-        for i in range(1, 5):
+        while abs(goal_handle.request.x-self.test.odoData.pose.pose.position.x )>self.prec or abs(goal_handle.request.y-self.test.odoData.pose.pose.position.y )>self.prec or abs(goal_handle.request.r-self.test.odoData.pose.pose.position.z )>self.prec:
             
-            feedback_msg.precision_log.append(0.5)
+            feedback_msg.precision_log.append(abs(goal_handle.request.x-self.test.odoData.pose.pose.position.x ) + abs(goal_handle.request.y-self.test.odoData.pose.pose.position.y ) + abs(goal_handle.request.r-self.test.odoData.pose.pose.position.z ))
             
             self.get_logger().info('Feedback: {0}'.format(feedback_msg.precision_log))
             goal_handle.publish_feedback(feedback_msg)
             
             #gettinng feedback from serail server to know if command went successfully or not
-            outcome = self.test.calculate_velocities( goal_handle.request.x, goal_handle.request.y, goal_handle.request.r, goal_handle.request.a)
+            outcome = self.test.calculate_velocities( goal_handle.request.x, goal_handle.request.y, goal_handle.request.r, goal_handle.request.a,self.prec,self.kp )
             '''self.get_logger().info('Your Request : x = %d , y = %d , r = %d, a = %d was %s'
             % (int(self.command_req.vx),int(self.command_req.vy),int(self.command_req.vr),int(self.command_req.airbrush), str(outcome)))
             '''
             self.get_logger().info(f'Your Request{outcome}')
             
-            time.sleep(1)
-        
+            time.sleep(0.2)
+        self.test.stop( )
         
         # Sending response to user input to let him know that his request has finished.
         goal_handle.succeed()
@@ -87,18 +108,6 @@ class VelocityCalculator(Node):
         result.precision = feedback_msg.precision_log
         return result
     
-    def calculate_velocities(self, x, y, r, a):
-        
-        #Calculate velocities
-        self.command_req.vx = 2 * x
-        self.command_req.vy = 2 * y
-        self.command_req.vr = 2 * r
-        self.command_req.airbrush = 2 * a    
-        
-        
-        self.future = self.command_cli.call_async(self.command_req)
-        rclpy.spin_until_future_complete(self, self.future,timeout_sec=1)
-        return self.future.result()
         
         
    

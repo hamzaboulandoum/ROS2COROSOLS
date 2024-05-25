@@ -6,11 +6,11 @@
 module action_tutorials_interfaces {
   module action {
     struct Position_Goal {
-      int32 x;
+      double x;
 
-      int32 y;
+      double y;
 
-      int32 r;
+      double r;
 
       int32 a;
     };

@@ -1,0 +1,27 @@
+[0.510s] Invoking command in '/home/hamzalegion/COROSOLS_WS/src/corosols': PYTHONPATH=/home/hamzalegion/COROSOLS_WS/build/corosols/prefix_override:/home/hamzalegion/COROSOLS_WS/install/corosols/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/hamzalegion/COROSOLS_WS/build/corosols/build install --record /home/hamzalegion/COROSOLS_WS/build/corosols/install.log --single-version-externally-managed install_data
+[0.709s] running egg_info
+[0.709s] writing ../../build/corosols/corosols.egg-info/PKG-INFO
+[0.710s] writing dependency_links to ../../build/corosols/corosols.egg-info/dependency_links.txt
+[0.710s] writing entry points to ../../build/corosols/corosols.egg-info/entry_points.txt
+[0.710s] writing requirements to ../../build/corosols/corosols.egg-info/requires.txt
+[0.710s] writing top-level names to ../../build/corosols/corosols.egg-info/top_level.txt
+[0.711s] reading manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'
+[0.712s] writing manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'
+[0.712s] running build
+[0.712s] running build_py
+[0.712s] copying corosols/velocity_calculator.py -> /home/hamzalegion/COROSOLS_WS/build/corosols/build/lib/corosols
+[0.713s] running install
+[0.713s] running install_lib
+[0.714s] copying /home/hamzalegion/COROSOLS_WS/build/corosols/build/lib/corosols/velocity_calculator.py -> /home/hamzalegion/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols
+[0.714s] byte-compiling /home/hamzalegion/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols/velocity_calculator.py to velocity_calculator.cpython-310.pyc
+[0.715s] running install_data
+[0.716s] running install_egg_info
+[0.717s] removing '/home/hamzalegion/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols-0.0.0-py3.10.egg-info' (and everything under it)
+[0.717s] Copying ../../build/corosols/corosols.egg-info to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols-0.0.0-py3.10.egg-info
+[0.718s] running install_scripts
+[0.734s] Installing input_client script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+[0.734s] Installing pose_broadcaster script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+[0.735s] Installing serial script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+[0.735s] Installing velocity_calculator script to /home/hamzalegion/COROSOLS_WS/install/corosols/lib/corosols
+[0.735s] writing list of installed files to '/home/hamzalegion/COROSOLS_WS/build/corosols/install.log'
+[0.758s] Invoked command in '/home/hamzalegion/COROSOLS_WS/src/corosols' returned '0': PYTHONPATH=/home/hamzalegion/COROSOLS_WS/build/corosols/prefix_override:/home/hamzalegion/COROSOLS_WS/install/corosols/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/hamzalegion/COROSOLS_WS/build/corosols/build install --record /home/hamzalegion/COROSOLS_WS/build/corosols/install.log --single-version-externally-managed install_data

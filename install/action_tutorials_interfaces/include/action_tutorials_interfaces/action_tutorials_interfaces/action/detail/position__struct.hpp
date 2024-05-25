@@ -38,9 +38,9 @@ struct Position_Goal_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
-      this->x = 0l;
-      this->y = 0l;
-      this->r = 0l;
+      this->x = 0.0;
+      this->y = 0.0;
+      this->r = 0.0;
       this->a = 0l;
     }
   }
@@ -51,22 +51,22 @@ struct Position_Goal_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
-      this->x = 0l;
-      this->y = 0l;
-      this->r = 0l;
+      this->x = 0.0;
+      this->y = 0.0;
+      this->r = 0.0;
       this->a = 0l;
     }
   }
 
   // field types and members
   using _x_type =
-    int32_t;
+    double;
   _x_type x;
   using _y_type =
-    int32_t;
+    double;
   _y_type y;
   using _r_type =
-    int32_t;
+    double;
   _r_type r;
   using _a_type =
     int32_t;
@@ -74,19 +74,19 @@ struct Position_Goal_
 
   // setters for named parameter idiom
   Type & set__x(
-    const int32_t & _arg)
+    const double & _arg)
   {
     this->x = _arg;
     return *this;
   }
   Type & set__y(
-    const int32_t & _arg)
+    const double & _arg)
   {
     this->y = _arg;
     return *this;
   }
   Type & set__r(
-    const int32_t & _arg)
+    const double & _arg)
   {
     this->r = _arg;
     return *this;

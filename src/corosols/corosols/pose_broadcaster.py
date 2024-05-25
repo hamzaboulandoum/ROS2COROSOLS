@@ -43,11 +43,7 @@ class tf2_broadcaster(Node):
         self.tf_static_broadcaster = StaticTransformBroadcaster(self)
         
         self.odom_publisher = self.create_publisher(Odometry, 'odom', 1)
-        self.subscription = self.create_subscription(
-            SerialData,
-            'topic',
-            self.listener_callback,
-            10)
+        self.subscription = self.create_subscription(SerialData,'robot_data',self.listener_callback,10)
         self.x=0
         self.y=0
         self.z=0
@@ -65,6 +61,13 @@ class tf2_broadcaster(Node):
         delta_time = float(self.get_clock().now().to_msg().sec - self.timestamp.sec)
         delta_time +=  (self.get_clock().now().to_msg().nanosec - self.timestamp.nanosec)*10**-9
         
+        if msg.x_speed > 10:
+            msg.x_speed = 0.0
+        if msg.y_speed > 10:
+            msg.y_speed = 0.0
+        if msg.z_speed > 10:
+            msg.z_speed = 0.0
+            
         self.x += msg.x_speed*(delta_time)
         self.y += msg.y_speed*(delta_time)
         self.z += msg.z_speed*(delta_time)
@@ -78,21 +81,6 @@ class tf2_broadcaster(Node):
         
         
         odom_quat = quaternion_from_euler(0, 0, self.z)
-        
-        '''t = TransformStamped()
-
-        t.header.stamp = self.get_clock().now().to_msg()
-        t.header.frame_id = 'odom'
-        t.child_frame_id = 'base_link'
-
-        t.transform.translation.x = self.x
-        t.transform.translation.y = self.y
-        t.transform.translation.z = 0.0
-        t.transform.rotation.x = odom_quat[0]
-        t.transform.rotation.y = odom_quat[1]
-        t.transform.rotation.z = odom_quat[2]
-        t.transform.rotation.w = odom_quat[3]
-        self.tf_static_broadcaster.sendTransform(t)    '''
         
         Odom.pose.pose.position.x = self.x
         Odom.pose.pose.position.y = self.y
@@ -109,9 +97,7 @@ class tf2_broadcaster(Node):
         Odom.twist.twist.angular.z = msg.z_gyro
         
         self.odom_publisher.publish(Odom)
-        self.get_logger().info(f'Publishing: {Odom}')
-        
-        self.get_logger().info(f'Publishing: {delta_time}')
+        self.get_logger().info(f'Publishing: \n x= {Odom.pose.pose.position.x}  vx = {msg.x_speed} \n y= {Odom.pose.pose.position.y}  vy = {msg.y_speed} \n z= {Odom.pose.pose.position.z}  vz = {msg.z_speed}')
 
 def main(args=None):
     rclpy.init(args=args)

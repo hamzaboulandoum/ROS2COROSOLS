@@ -20,9 +20,9 @@ extern "C"
 /// Struct defined in action/Position in the package action_tutorials_interfaces.
 typedef struct action_tutorials_interfaces__action__Position_Goal
 {
-  int32_t x;
-  int32_t y;
-  int32_t r;
+  double x;
+  double y;
+  double r;
   int32_t a;
 } action_tutorials_interfaces__action__Position_Goal;
 
