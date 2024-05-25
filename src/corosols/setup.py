@@ -21,17 +21,9 @@ setup(
     entry_points={
         'console_scripts': [
             'serial = corosols.serial_read:main',
-            'pose_broadcaster = corosols.pose_broadcaster:main',
-            'user_input = corosols.user_input:main',
-            'task = corosols.robot_task:main',
-            
+            'pose_broadcaster = corosols.pose_broadcaster:main',            
             'input_client = corosols.user_input_client:main',
             'velocity_calculator = corosols.velocity_calculator:main',
-            'fibonaci_client = corosols.fibonaci_client:main',
-            'fibonaci_server = corosols.fibonaci_server:main',
-            
-            
-            
         ],
     },
 )

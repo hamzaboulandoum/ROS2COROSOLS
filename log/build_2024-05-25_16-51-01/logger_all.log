@@ -1,0 +1,281 @@
+[1.270s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[1.270s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffa4a02fd0>>, merge_install=False, metas=['./colcon.meta'], mixin=None, mixin_files=None, mixin_verb=('build',), packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=6, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffa4a02fd0>, verb_name='build', verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffffa48c8220>)
+[2.418s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[2.419s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[2.419s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[2.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[2.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[2.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[2.421s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/hamzaboulandoum/corosols_ws'
+[2.421s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[2.422s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[2.422s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[2.423s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[2.423s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[2.423s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[2.423s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[2.424s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[2.424s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[2.491s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[2.492s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[2.492s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[2.492s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[2.493s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[2.493s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[2.494s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[2.494s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[2.495s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[2.496s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[2.496s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[2.497s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[2.497s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[2.498s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[2.498s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[2.499s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[2.499s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[2.500s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[2.500s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[2.500s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[2.501s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[2.501s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[2.501s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[2.502s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[2.502s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[2.502s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[2.503s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[2.503s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[2.504s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[2.504s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ignore'
+[2.505s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ignore_ament_install'
+[2.505s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['colcon_pkg']
+[2.505s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'colcon_pkg'
+[2.506s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['colcon_meta']
+[2.506s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'colcon_meta'
+[2.506s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['ros']
+[2.507s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ros'
+[2.521s] DEBUG:colcon.colcon_core.package_identification:Package 'src/action_tutorials_interfaces' with type 'ros.ament_cmake' and name 'action_tutorials_interfaces'
+[2.522s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extensions ['ignore', 'ignore_ament_install']
+[2.523s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'ignore'
+[2.523s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'ignore_ament_install'
+[2.524s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extensions ['colcon_pkg']
+[2.524s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'colcon_pkg'
+[2.524s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extensions ['colcon_meta']
+[2.524s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'colcon_meta'
+[2.525s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extensions ['ros']
+[2.525s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'ros'
+[2.529s] DEBUG:colcon.colcon_core.package_identification:Package 'src/corosols' with type 'ros.ament_python' and name 'corosols'
+[2.530s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[2.531s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ignore'
+[2.531s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ignore_ament_install'
+[2.531s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['colcon_pkg']
+[2.532s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'colcon_pkg'
+[2.532s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['colcon_meta']
+[2.532s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'colcon_meta'
+[2.533s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['ros']
+[2.533s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ros'
+[2.537s] DEBUG:colcon.colcon_core.package_identification:Package 'src/custom_interfaces' with type 'ros.ament_cmake' and name 'custom_interfaces'
+[2.537s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[2.538s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[2.538s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[2.538s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[2.538s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[2.673s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[2.674s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[2.698s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 364 installed packages in /opt/ros/humble
+[2.712s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[3.223s] WARNING:colcon.colcon_core.package_selection:Some selected packages are already built in one or more underlay workspaces:
+	'action_tutorials_interfaces' is in: /opt/ros/humble
+If a package in a merged underlay workspace is overridden and it installs headers, then all packages in the overlay must sort their include directories by workspace order. Failure to do so may result in build failures or undefined behavior at run time.
+If the overridden package is used by another package in any underlay, then the overriding package in the overlay must be API and ABI compatible or undefined behavior at run time may occur.
+
+If you understand the risks and want to override a package anyways, add the following to the command line:
+	--allow-overriding action_tutorials_interfaces
+
+This may be promoted to an error in a future release of colcon-override-check.
+[3.230s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_args' from command line to 'None'
+[3.230s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_target' from command line to 'None'
+[3.231s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[3.232s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[3.232s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[3.232s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[3.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[3.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[3.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[3.233s] DEBUG:colcon.colcon_core.verb:Building package 'action_tutorials_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces', 'merge_install': False, 'path': '/home/hamzaboulandoum/corosols_ws/src/action_tutorials_interfaces', 'symlink_install': False, 'test_result_base': None}
+[3.236s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_args' from command line to 'None'
+[3.237s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_target' from command line to 'None'
+[3.237s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[3.237s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[3.237s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[3.237s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[3.238s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[3.238s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[3.238s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[3.238s] DEBUG:colcon.colcon_core.verb:Building package 'custom_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces', 'merge_install': False, 'path': '/home/hamzaboulandoum/corosols_ws/src/custom_interfaces', 'symlink_install': False, 'test_result_base': None}
+[3.241s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_args' from command line to 'None'
+[3.241s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_target' from command line to 'None'
+[3.242s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[3.242s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_clean_cache' from command line to 'False'
+[3.242s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_clean_first' from command line to 'False'
+[3.242s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_force_configure' from command line to 'False'
+[3.242s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'ament_cmake_args' from command line to 'None'
+[3.243s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'catkin_cmake_args' from command line to 'None'
+[3.243s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'catkin_skip_building_tests' from command line to 'False'
+[3.243s] DEBUG:colcon.colcon_core.verb:Building package 'corosols' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/hamzaboulandoum/corosols_ws/build/corosols', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/hamzaboulandoum/corosols_ws/install/corosols', 'merge_install': False, 'path': '/home/hamzaboulandoum/corosols_ws/src/corosols', 'symlink_install': False, 'test_result_base': None}
+[3.244s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[3.249s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[3.251s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/hamzaboulandoum/corosols_ws/src/action_tutorials_interfaces' with build type 'ament_cmake'
+[3.252s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/hamzaboulandoum/corosols_ws/src/action_tutorials_interfaces'
+[3.268s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[3.270s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.270s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.305s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/hamzaboulandoum/corosols_ws/src/custom_interfaces' with build type 'ament_cmake'
+[3.308s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/hamzaboulandoum/corosols_ws/src/custom_interfaces'
+[3.312s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.313s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.387s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/hamzaboulandoum/corosols_ws/src/action_tutorials_interfaces -DCMAKE_INSTALL_PREFIX=/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces
+[3.513s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hamzaboulandoum/corosols_ws/build/custom_interfaces -- -j6 -l6
+[21.719s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/hamzaboulandoum/corosols_ws/src/action_tutorials_interfaces -DCMAKE_INSTALL_PREFIX=/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces
+[21.730s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces -- -j6 -l6
+[43.114s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hamzaboulandoum/corosols_ws/build/custom_interfaces -- -j6 -l6
+[43.835s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hamzaboulandoum/corosols_ws/build/custom_interfaces
+[44.947s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(custom_interfaces)
+[44.960s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/hamzaboulandoum/corosols_ws/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hamzaboulandoum/corosols_ws/build/custom_interfaces
+[44.993s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces' for CMake module files
+[45.009s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces' for CMake config files
+[45.026s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_interfaces', 'cmake_prefix_path')
+[45.030s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.ps1'
+[45.041s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.dsv'
+[45.047s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.sh'
+[45.058s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib'
+[45.061s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_interfaces', 'ld_library_path_lib')
+[45.062s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.ps1'
+[45.066s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.dsv'
+[45.070s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.sh'
+[45.073s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/bin'
+[45.074s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/pkgconfig/custom_interfaces.pc'
+[45.076s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.8/site-packages'
+[45.078s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/bin'
+[45.080s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.ps1'
+[45.088s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.dsv'
+[45.092s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.sh'
+[45.100s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.bash'
+[45.106s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.zsh'
+[45.112s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/colcon-core/packages/custom_interfaces)
+[45.692s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(custom_interfaces)
+[45.695s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces' for CMake module files
+[45.702s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces' for CMake config files
+[45.706s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_interfaces', 'cmake_prefix_path')
+[45.708s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.ps1'
+[45.713s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.dsv'
+[45.716s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.sh'
+[45.720s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib'
+[45.721s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_interfaces', 'ld_library_path_lib')
+[45.722s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.ps1'
+[45.725s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.dsv'
+[45.728s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.sh'
+[45.730s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/bin'
+[45.731s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/pkgconfig/custom_interfaces.pc'
+[45.734s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.8/site-packages'
+[45.735s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/bin'
+[45.737s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.ps1'
+[45.741s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.dsv'
+[45.744s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.sh'
+[45.748s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.bash'
+[45.751s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/custom_interfaces/package.zsh'
+[45.754s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/share/colcon-core/packages/custom_interfaces)
+[96.288s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces -- -j6 -l6
+[96.750s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces
+[97.369s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(action_tutorials_interfaces)
+[97.374s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces' for CMake module files
+[97.384s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hamzaboulandoum/corosols_ws/build/action_tutorials_interfaces
+[97.398s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces' for CMake config files
+[97.401s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'cmake_prefix_path')
+[97.403s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.ps1'
+[97.408s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.dsv'
+[97.412s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.sh'
+[97.416s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib'
+[97.417s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'ld_library_path_lib')
+[97.419s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.ps1'
+[97.423s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.dsv'
+[97.425s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.sh'
+[97.428s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/bin'
+[97.428s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib/pkgconfig/action_tutorials_interfaces.pc'
+[97.431s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib/python3.8/site-packages'
+[97.434s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/bin'
+[97.439s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.ps1'
+[97.443s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.dsv'
+[97.446s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.sh'
+[97.450s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.bash'
+[97.452s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.zsh'
+[97.455s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/colcon-core/packages/action_tutorials_interfaces)
+[97.905s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(action_tutorials_interfaces)
+[97.909s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces' for CMake module files
+[97.914s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces' for CMake config files
+[97.917s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'cmake_prefix_path')
+[97.918s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.ps1'
+[97.922s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.dsv'
+[97.925s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.sh'
+[97.929s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib'
+[97.930s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'ld_library_path_lib')
+[97.931s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.ps1'
+[97.933s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.dsv'
+[97.935s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.sh'
+[97.938s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/bin'
+[97.939s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib/pkgconfig/action_tutorials_interfaces.pc'
+[97.940s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib/python3.8/site-packages'
+[97.941s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/bin'
+[97.943s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.ps1'
+[97.947s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.dsv'
+[97.950s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.sh'
+[97.952s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.bash'
+[97.955s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.zsh'
+[97.957s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/share/colcon-core/packages/action_tutorials_interfaces)
+[97.960s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/hamzaboulandoum/corosols_ws/src/corosols' with build type 'ament_python'
+[97.962s] Level 1:colcon.colcon_core.shell:create_environment_hook('corosols', 'ament_prefix_path')
+[97.963s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/hook/ament_prefix_path.ps1'
+[97.967s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/hook/ament_prefix_path.dsv'
+[97.969s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/hook/ament_prefix_path.sh'
+[97.972s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[97.973s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[99.646s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/hamzaboulandoum/corosols_ws/src/corosols'
+[99.652s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[99.652s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[102.552s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/hamzaboulandoum/corosols_ws/src/corosols': AMENT_PREFIX_PATH=/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces LD_LIBRARY_PATH=/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib:/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib:/usr/local/cuda-11.4/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-11.4/lib64 PYTHONPATH=/home/hamzaboulandoum/corosols_ws/build/corosols/prefix_override:/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages:/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib/python3.9/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/hamzaboulandoum/corosols_ws/build/corosols/build install --record /home/hamzaboulandoum/corosols_ws/build/corosols/install.log --single-version-externally-managed install_data
+[104.801s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/corosols' for CMake module files
+[104.806s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/hamzaboulandoum/corosols_ws/src/corosols' returned '0': AMENT_PREFIX_PATH=/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hamzaboulandoum/corosols_ws/install/custom_interfaces:/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces LD_LIBRARY_PATH=/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib:/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib:/usr/local/cuda-11.4/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-11.4/lib64 PYTHONPATH=/home/hamzaboulandoum/corosols_ws/build/corosols/prefix_override:/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages:/home/hamzaboulandoum/corosols_ws/install/custom_interfaces/lib/python3.9/site-packages:/home/hamzaboulandoum/corosols_ws/install/action_tutorials_interfaces/lib/python3.9/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/hamzaboulandoum/corosols_ws/build/corosols/build install --record /home/hamzaboulandoum/corosols_ws/build/corosols/install.log --single-version-externally-managed install_data
+[104.811s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/corosols' for CMake config files
+[104.817s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/corosols/lib'
+[104.818s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/corosols/bin'
+[104.819s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/corosols/lib/pkgconfig/corosols.pc'
+[104.821s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/corosols/lib/python3.8/site-packages'
+[104.822s] Level 1:colcon.colcon_core.shell:create_environment_hook('corosols', 'pythonpath')
+[104.824s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/hook/pythonpath.ps1'
+[104.829s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/hook/pythonpath.dsv'
+[104.833s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/hook/pythonpath.sh'
+[104.838s] Level 1:colcon.colcon_core.environment:checking '/home/hamzaboulandoum/corosols_ws/install/corosols/bin'
+[104.839s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(corosols)
+[104.841s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/package.ps1'
+[104.846s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/package.dsv'
+[104.850s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/package.sh'
+[104.854s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/package.bash'
+[104.857s] INFO:colcon.colcon_core.shell:Creating package script '/home/hamzaboulandoum/corosols_ws/install/corosols/share/corosols/package.zsh'
+[104.861s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/hamzaboulandoum/corosols_ws/install/corosols/share/colcon-core/packages/corosols)
+[104.864s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[104.868s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[104.869s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[104.870s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[104.920s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[104.920s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[104.921s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[105.057s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[105.059s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/hamzaboulandoum/corosols_ws/install/local_setup.ps1'
+[105.064s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/hamzaboulandoum/corosols_ws/install/_local_setup_util_ps1.py'
+[105.072s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/hamzaboulandoum/corosols_ws/install/setup.ps1'
+[105.078s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/hamzaboulandoum/corosols_ws/install/local_setup.sh'
+[105.081s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/hamzaboulandoum/corosols_ws/install/_local_setup_util_sh.py'
+[105.084s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/hamzaboulandoum/corosols_ws/install/setup.sh'
+[105.090s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/hamzaboulandoum/corosols_ws/install/local_setup.bash'
+[105.093s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/hamzaboulandoum/corosols_ws/install/setup.bash'
+[105.098s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/hamzaboulandoum/corosols_ws/install/local_setup.zsh'
+[105.100s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/hamzaboulandoum/corosols_ws/install/setup.zsh'
