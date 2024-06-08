@@ -61,12 +61,6 @@ class tf2_broadcaster(Node):
         delta_time = float(self.get_clock().now().to_msg().sec - self.timestamp.sec)
         delta_time +=  (self.get_clock().now().to_msg().nanosec - self.timestamp.nanosec)*10**-9
         
-        if msg.x_speed > 10:
-            msg.x_speed = 0.0
-        if msg.y_speed > 10:
-            msg.y_speed = 0.0
-        if msg.z_speed > 10:
-            msg.z_speed = 0.0
             
         self.x += msg.x_speed*(delta_time)
         self.y += msg.y_speed*(delta_time)
@@ -82,7 +76,8 @@ class tf2_broadcaster(Node):
         
         odom_quat = quaternion_from_euler(0, 0, self.z)
         
-        Odom.pose.pose.position.x = self.x
+        # we can change the postion with the postion from the marvel mind device 
+        Odom.pose.pose.position.x = self.x 
         Odom.pose.pose.position.y = self.y
         Odom.pose.pose.position.z = self.z
         Odom.pose.pose.orientation.x = odom_quat[0]

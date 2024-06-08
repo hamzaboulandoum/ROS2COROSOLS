@@ -1,0 +1,4 @@
+# generated from rosidl_cmake/cmake/rosidl_cmake-extras.cmake.in
+
+set(marvelmind_ros2_msgs_IDL_FILES "msg/BeaconDistance.idl;msg/BeaconPositionAddressed.idl;msg/HedgeImuFusion.idl;msg/HedgeImuRaw.idl;msg/HedgePositionAddressed.idl;msg/HedgePositionAngle.idl;msg/HedgePosition.idl;msg/HedgeQuality.idl;msg/HedgeTelemetry.idl;msg/MarvelmindWaypoint.idl;msg/MarvelmindUserData.idl;srv/MarvelmindAPI.idl")
+set(marvelmind_ros2_msgs_INTERFACE_FILES "msg/BeaconDistance.msg;msg/BeaconPositionAddressed.msg;msg/HedgeImuFusion.msg;msg/HedgeImuRaw.msg;msg/HedgePositionAddressed.msg;msg/HedgePositionAngle.msg;msg/HedgePosition.msg;msg/HedgeQuality.msg;msg/HedgeTelemetry.msg;msg/MarvelmindWaypoint.msg;msg/MarvelmindUserData.msg;srv/MarvelmindAPI.srv;srv/MarvelmindAPI_Request.msg;srv/MarvelmindAPI_Response.msg")

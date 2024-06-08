@@ -77,7 +77,7 @@ class GCodeApp:
         self.upload_button.pack(pady=10)
         self.start_button = tk.Button(root, text="Start", command=self.start_sending)
         self.start_button.pack(pady=10)
-        self.file_path = None
+        self.file_path = "/home/hamzalegion/COROSOLS_WS/src/corosols/corosols/gcodefile.gcode"
 
     def upload_file(self):
         self.file_path = filedialog.askopenfilename(filetypes=[("G-code files", "*.gcode"), ("All files", "*.*")])
@@ -86,6 +86,7 @@ class GCodeApp:
             self.node.process_gcode_file(self.file_path)
 
     def start_sending(self):
+        self.node.process_gcode_file(self.file_path)
         if self.file_path:
             print('Starting to send G-code')  # Debugging line
             self.node.start_sending_gcode()

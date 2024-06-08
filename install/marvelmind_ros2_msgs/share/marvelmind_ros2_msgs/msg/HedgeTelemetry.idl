@@ -1,0 +1,14 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from marvelmind_ros2_msgs/msg/HedgeTelemetry.msg
+// generated code does not contain a copyright notice
+
+
+module marvelmind_ros2_msgs {
+  module msg {
+    struct HedgeTelemetry {
+      double battery_voltage;
+
+      int8 rssi_dbm;
+    };
+  };
+};

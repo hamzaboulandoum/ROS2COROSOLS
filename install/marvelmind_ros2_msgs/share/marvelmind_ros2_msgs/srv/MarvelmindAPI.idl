@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from marvelmind_ros2_msgs/srv/MarvelmindAPI.srv
+// generated code does not contain a copyright notice
+
+
+module marvelmind_ros2_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request")
+    struct MarvelmindAPI_Request {
+      int64 command_id;
+
+      sequence<uint8> request;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct MarvelmindAPI_Response {
+      boolean success;
+
+      int32 error_code;
+
+      sequence<uint8> response;
+    };
+  };
+};

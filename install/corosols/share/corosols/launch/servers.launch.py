@@ -22,7 +22,12 @@ def generate_launch_description():
         Node(
             package='corosols',
             executable='velocity_calculator',
-            name='velocity_calc'
+            name='velocity_calculator'
+        ),
+        Node(
+            package='corosols',
+            executable='pose_broadcaster',
+            name='pose_broadcaster'
         )
     ])
 

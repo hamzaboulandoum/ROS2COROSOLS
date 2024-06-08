@@ -28,22 +28,36 @@ class SendVelocity(Node):
         
     def odom_listener(self,msg):
         self.odoData = msg
+    
+    
         
     def calculate_velocities(self, x, y, r, a,prec,kp):
-        
+        def sign(x):
+            if x > 0:
+                return 1
+            elif x < 0:
+                return -1
+            else:
+                return 0
         #Calculate velocities
         if abs(x-self.odoData.pose.pose.position.x )>prec:
-            self.command_req.vx = (x-self.odoData.pose.pose.position.x )*kp
+            self.command_req.vx = sign(x-self.odoData.pose.pose.position.x )*0.2
+            if abs(x-self.odoData.pose.pose.position.x ) < 0.2:
+                self.command_req.vx = sign(x-self.odoData.pose.pose.position.x )*0.02
         else : 
             self.command_req.vx=0.0
             
         if abs(y-self.odoData.pose.pose.position.y )>prec:
-            self.command_req.vy = (y-self.odoData.pose.pose.position.y )*kp
+            self.command_req.vy = sign(y-self.odoData.pose.pose.position.y)*0.2
+            if abs(y-self.odoData.pose.pose.position.y ) < 0.2:
+                self.command_req.vy = sign(y-self.odoData.pose.pose.position.y)*0.02
         else : 
             self.command_req.vy=0.0
             
         if abs(r-self.odoData.pose.pose.position.z )>prec:
-            self.command_req.vr = (r-self.odoData.pose.pose.position.z )*kp
+            self.command_req.vr = sign(r-self.odoData.pose.pose.position.z )*0.2
+            if abs(r-self.odoData.pose.pose.position.z ) < 0.2:
+                self.command_req.vr = sign(r-self.odoData.pose.pose.position.z )*0.02
         else : 
             self.command_req.vr=0.0
             
@@ -74,7 +88,7 @@ class VelocityCalculator(Node):
             self.calculate_targets,
             )
         self.test = test 
-        self.prec =0.075
+        self.prec =0.01
         self.kp = 0.8
     
     def calculate_targets(self, goal_handle): 
