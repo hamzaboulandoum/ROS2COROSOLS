@@ -46,6 +46,20 @@ inline void to_flow_style_yaml(
     out << ", ";
   }
 
+  // member: stepperx
+  {
+    out << "stepperx: ";
+    rosidl_generator_traits::value_to_yaml(msg.stepperx, out);
+    out << ", ";
+  }
+
+  // member: steppery
+  {
+    out << "steppery: ";
+    rosidl_generator_traits::value_to_yaml(msg.steppery, out);
+    out << ", ";
+  }
+
   // member: airbrush
   {
     out << "airbrush: ";
@@ -85,6 +99,26 @@ inline void to_block_style_yaml(
     }
     out << "vr: ";
     rosidl_generator_traits::value_to_yaml(msg.vr, out);
+    out << "\n";
+  }
+
+  // member: stepperx
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "stepperx: ";
+    rosidl_generator_traits::value_to_yaml(msg.stepperx, out);
+    out << "\n";
+  }
+
+  // member: steppery
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "steppery: ";
+    rosidl_generator_traits::value_to_yaml(msg.steppery, out);
     out << "\n";
   }
 

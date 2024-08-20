@@ -12,6 +12,10 @@ module custom_interfaces {
 
       double vr;
 
+      double stepperx;
+
+      double steppery;
+
       int32 airbrush;
     };
     struct Commands_Response {

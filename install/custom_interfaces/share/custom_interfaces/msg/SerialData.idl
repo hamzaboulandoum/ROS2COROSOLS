@@ -25,6 +25,10 @@ module custom_interfaces {
       double z_gyro;
 
       double power_voltage;
+
+      double stepper_x;
+
+      double stepper_y;
     };
   };
 };

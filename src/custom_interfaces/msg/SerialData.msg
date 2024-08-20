@@ -11,3 +11,6 @@ float64 y_gyro
 float64 z_gyro 
 
 float64 power_voltage 
+
+float64 stepper_x
+float64 stepper_y

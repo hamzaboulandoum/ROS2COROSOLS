@@ -37,16 +37,48 @@ private:
   ::custom_interfaces::srv::Commands_Request msg_;
 };
 
+class Init_Commands_Request_steppery
+{
+public:
+  explicit Init_Commands_Request_steppery(::custom_interfaces::srv::Commands_Request & msg)
+  : msg_(msg)
+  {}
+  Init_Commands_Request_airbrush steppery(::custom_interfaces::srv::Commands_Request::_steppery_type arg)
+  {
+    msg_.steppery = std::move(arg);
+    return Init_Commands_Request_airbrush(msg_);
+  }
+
+private:
+  ::custom_interfaces::srv::Commands_Request msg_;
+};
+
+class Init_Commands_Request_stepperx
+{
+public:
+  explicit Init_Commands_Request_stepperx(::custom_interfaces::srv::Commands_Request & msg)
+  : msg_(msg)
+  {}
+  Init_Commands_Request_steppery stepperx(::custom_interfaces::srv::Commands_Request::_stepperx_type arg)
+  {
+    msg_.stepperx = std::move(arg);
+    return Init_Commands_Request_steppery(msg_);
+  }
+
+private:
+  ::custom_interfaces::srv::Commands_Request msg_;
+};
+
 class Init_Commands_Request_vr
 {
 public:
   explicit Init_Commands_Request_vr(::custom_interfaces::srv::Commands_Request & msg)
   : msg_(msg)
   {}
-  Init_Commands_Request_airbrush vr(::custom_interfaces::srv::Commands_Request::_vr_type arg)
+  Init_Commands_Request_stepperx vr(::custom_interfaces::srv::Commands_Request::_vr_type arg)
   {
     msg_.vr = std::move(arg);
-    return Init_Commands_Request_airbrush(msg_);
+    return Init_Commands_Request_stepperx(msg_);
   }
 
 private:

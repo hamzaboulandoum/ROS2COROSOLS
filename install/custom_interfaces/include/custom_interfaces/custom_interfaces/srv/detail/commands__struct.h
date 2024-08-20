@@ -23,6 +23,8 @@ typedef struct custom_interfaces__srv__Commands_Request
   double vx;
   double vy;
   double vr;
+  double stepperx;
+  double steppery;
   int32_t airbrush;
 } custom_interfaces__srv__Commands_Request;
 

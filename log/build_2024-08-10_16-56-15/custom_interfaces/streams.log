@@ -1,0 +1,40 @@
+[0.015s] Invoking command in '/home/hamzalegion/COROSOLS_WS/build/custom_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hamzalegion/COROSOLS_WS/build/custom_interfaces -- -j16 -l16
+[0.049s] [31mCMake Error at CMakeLists.txt:39:
+[0.049s]   Parse error.  Function missing ending ")".  Instead found unterminated
+[0.049s]   string with text "functions/gcode_processor.py
+[0.049s] 
+[0.050s]     # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
+[0.050s] 
+[0.050s]   )
+[0.050s] 
+[0.050s]   
+[0.050s] 
+[0.050s]   
+[0.050s] 
+[0.050s]   
+[0.050s] 
+[0.050s]   if(BUILD_TESTING)
+[0.050s] 
+[0.050s]     find_package(ament_lint_auto REQUIRED)
+[0.050s]     # the following line skips the linter which checks for copyrights
+[0.050s]     # comment the line when a copyright and license is added to all source files
+[0.050s]     set(ament_cmake_copyright_FOUND TRUE)
+[0.050s]     # the following line skips cpplint (only works in a git repo)
+[0.050s]     # comment the line when this package is in a git repo and when
+[0.051s]     # a copyright and license is added to all source files
+[0.051s]     set(ament_cmake_cpplint_FOUND TRUE)
+[0.051s]     ament_lint_auto_find_test_dependencies()
+[0.051s] 
+[0.051s]   endif()
+[0.051s] 
+[0.051s]   
+[0.051s] 
+[0.051s]   ament_package()
+[0.051s] 
+[0.051s]   ".
+[0.051s] 
+[0.051s] [0m
+[0.051s] -- Configuring incomplete, errors occurred!
+[0.051s] See also "/home/hamzalegion/COROSOLS_WS/build/custom_interfaces/CMakeFiles/CMakeOutput.log".
+[0.051s] gmake: *** [Makefile:963: cmake_check_build_system] Error 1
+[0.053s] Invoked command in '/home/hamzalegion/COROSOLS_WS/build/custom_interfaces' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hamzalegion/COROSOLS_WS/build/custom_interfaces -- -j16 -l16

@@ -2,7 +2,7 @@ import time
 from custom_interfaces.srv import Commands # type: ignore
 from action_tutorials_interfaces.action import Position # type: ignore
 from rclpy.action import ActionServer
-
+import serial
 import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionServer
@@ -10,7 +10,7 @@ from rclpy.action import ActionServer
 from nav_msgs.msg import Odometry
 #from custom_interfaces.msg import Target
 
-class SendVelocity(Node):
+class SendVelocity2(Node):
     def __init__(self):
         super().__init__('send_velocity')
         
@@ -77,7 +77,7 @@ class SendVelocity(Node):
         return self.future.result()
     
     
-class VelocityCalculator(Node):
+class VelocityCalculator2(Node):
 
     def __init__(self,test):
         super().__init__('velocity_calculator')
@@ -132,12 +132,13 @@ class VelocityCalculator(Node):
 def main():
 
     rclpy.init()
-    send_velocity = SendVelocity()
-    velocity_calculator = VelocityCalculator(send_velocity)
+    send_velocity = SendVelocity2()
+    velocity_calculator = VelocityCalculator2(send_velocity)
 
     rclpy.spin(velocity_calculator)
     send_velocity.destroy_node()
     velocity_calculator.destroy_node()
+    serial.close()
     rclpy.shutdown()
 
 

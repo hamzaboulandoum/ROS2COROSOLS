@@ -41,6 +41,8 @@ struct Commands_Request_
       this->vx = 0.0;
       this->vy = 0.0;
       this->vr = 0.0;
+      this->stepperx = 0.0;
+      this->steppery = 0.0;
       this->airbrush = 0l;
     }
   }
@@ -54,6 +56,8 @@ struct Commands_Request_
       this->vx = 0.0;
       this->vy = 0.0;
       this->vr = 0.0;
+      this->stepperx = 0.0;
+      this->steppery = 0.0;
       this->airbrush = 0l;
     }
   }
@@ -68,6 +72,12 @@ struct Commands_Request_
   using _vr_type =
     double;
   _vr_type vr;
+  using _stepperx_type =
+    double;
+  _stepperx_type stepperx;
+  using _steppery_type =
+    double;
+  _steppery_type steppery;
   using _airbrush_type =
     int32_t;
   _airbrush_type airbrush;
@@ -89,6 +99,18 @@ struct Commands_Request_
     const double & _arg)
   {
     this->vr = _arg;
+    return *this;
+  }
+  Type & set__stepperx(
+    const double & _arg)
+  {
+    this->stepperx = _arg;
+    return *this;
+  }
+  Type & set__steppery(
+    const double & _arg)
+  {
+    this->steppery = _arg;
     return *this;
   }
   Type & set__airbrush(
@@ -147,6 +169,12 @@ struct Commands_Request_
       return false;
     }
     if (this->vr != other.vr) {
+      return false;
+    }
+    if (this->stepperx != other.stepperx) {
+      return false;
+    }
+    if (this->steppery != other.steppery) {
       return false;
     }
     if (this->airbrush != other.airbrush) {

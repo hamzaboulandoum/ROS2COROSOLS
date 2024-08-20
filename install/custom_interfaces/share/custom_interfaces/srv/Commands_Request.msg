@@ -1,4 +1,6 @@
 float64 vx
 float64 vy
 float64 vr
+float64 stepperx
+float64 steppery
 int32 airbrush

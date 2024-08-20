@@ -62,8 +62,8 @@ class tf2_broadcaster(Node):
         delta_time +=  (self.get_clock().now().to_msg().nanosec - self.timestamp.nanosec)*10**-9
         
             
-        self.x += msg.x_speed*(delta_time)
-        self.y += msg.y_speed*(delta_time)
+        self.x += -msg.y_speed*(delta_time)
+        self.y += msg.x_speed*(delta_time)
         self.z += msg.z_speed*(delta_time)
         
         
@@ -92,20 +92,17 @@ class tf2_broadcaster(Node):
         Odom.twist.twist.angular.z = msg.z_gyro
         
         self.odom_publisher.publish(Odom)
-        self.get_logger().info(f'Publishing: \n x= {Odom.pose.pose.position.x}  vx = {msg.x_speed} \n y= {Odom.pose.pose.position.y}  vy = {msg.y_speed} \n z= {Odom.pose.pose.position.z}  vz = {msg.z_speed}')
+        #self.get_logger().info(f'Publishing: \n x= {Odom.pose.pose.position.x}  vx = {msg.x_speed} \n y= {Odom.pose.pose.position.y}  vy = {msg.y_speed} \n z= {Odom.pose.pose.position.z}  vz = {msg.z_speed}')
 
 def main(args=None):
     rclpy.init(args=args)
 
     tf2_broadcaster_corosols = tf2_broadcaster()
 
-    rclpy.spin(tf2_broadcaster_corosols)
-
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    tf2_broadcaster_corosols.destroy_node()
-    rclpy.shutdown()
+    try:
+        rclpy.spin(tf2_broadcaster_corosols)
+    except KeyboardInterrupt:
+        tf2_broadcaster_corosols.destroy_node()
 
 
 if __name__ == '__main__':

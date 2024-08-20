@@ -92,6 +92,20 @@ inline void to_flow_style_yaml(
   {
     out << "power_voltage: ";
     rosidl_generator_traits::value_to_yaml(msg.power_voltage, out);
+    out << ", ";
+  }
+
+  // member: stepper_x
+  {
+    out << "stepper_x: ";
+    rosidl_generator_traits::value_to_yaml(msg.stepper_x, out);
+    out << ", ";
+  }
+
+  // member: stepper_y
+  {
+    out << "stepper_y: ";
+    rosidl_generator_traits::value_to_yaml(msg.stepper_y, out);
   }
   out << "}";
 }  // NOLINT(readability/fn_size)
@@ -197,6 +211,26 @@ inline void to_block_style_yaml(
     }
     out << "power_voltage: ";
     rosidl_generator_traits::value_to_yaml(msg.power_voltage, out);
+    out << "\n";
+  }
+
+  // member: stepper_x
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "stepper_x: ";
+    rosidl_generator_traits::value_to_yaml(msg.stepper_x, out);
+    out << "\n";
+  }
+
+  // member: stepper_y
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "stepper_y: ";
+    rosidl_generator_traits::value_to_yaml(msg.stepper_y, out);
     out << "\n";
   }
 }  // NOLINT(readability/fn_size)

@@ -28,7 +28,7 @@ setup(
             'serial = corosols.serial_read:main',
             'pose_broadcaster = corosols.pose_broadcaster:main',            
             'input_client = corosols.user_input_client:main',
-            'velocity_calculator = corosols.velocity_calculator:main',
+            'robot_speeds = corosols.robot_speeds:main',           
         ],
     },
 )

@@ -21,16 +21,48 @@ namespace msg
 namespace builder
 {
 
+class Init_SerialData_stepper_y
+{
+public:
+  explicit Init_SerialData_stepper_y(::custom_interfaces::msg::SerialData & msg)
+  : msg_(msg)
+  {}
+  ::custom_interfaces::msg::SerialData stepper_y(::custom_interfaces::msg::SerialData::_stepper_y_type arg)
+  {
+    msg_.stepper_y = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::custom_interfaces::msg::SerialData msg_;
+};
+
+class Init_SerialData_stepper_x
+{
+public:
+  explicit Init_SerialData_stepper_x(::custom_interfaces::msg::SerialData & msg)
+  : msg_(msg)
+  {}
+  Init_SerialData_stepper_y stepper_x(::custom_interfaces::msg::SerialData::_stepper_x_type arg)
+  {
+    msg_.stepper_x = std::move(arg);
+    return Init_SerialData_stepper_y(msg_);
+  }
+
+private:
+  ::custom_interfaces::msg::SerialData msg_;
+};
+
 class Init_SerialData_power_voltage
 {
 public:
   explicit Init_SerialData_power_voltage(::custom_interfaces::msg::SerialData & msg)
   : msg_(msg)
   {}
-  ::custom_interfaces::msg::SerialData power_voltage(::custom_interfaces::msg::SerialData::_power_voltage_type arg)
+  Init_SerialData_stepper_x power_voltage(::custom_interfaces::msg::SerialData::_power_voltage_type arg)
   {
     msg_.power_voltage = std::move(arg);
-    return std::move(msg_);
+    return Init_SerialData_stepper_x(msg_);
   }
 
 private:

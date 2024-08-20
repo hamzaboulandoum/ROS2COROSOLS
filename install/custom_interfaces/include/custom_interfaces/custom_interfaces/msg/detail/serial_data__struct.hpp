@@ -48,6 +48,8 @@ struct SerialData_
       this->y_gyro = 0.0;
       this->z_gyro = 0.0;
       this->power_voltage = 0.0;
+      this->stepper_x = 0.0;
+      this->stepper_y = 0.0;
     }
   }
 
@@ -67,6 +69,8 @@ struct SerialData_
       this->y_gyro = 0.0;
       this->z_gyro = 0.0;
       this->power_voltage = 0.0;
+      this->stepper_x = 0.0;
+      this->stepper_y = 0.0;
     }
   }
 
@@ -101,6 +105,12 @@ struct SerialData_
   using _power_voltage_type =
     double;
   _power_voltage_type power_voltage;
+  using _stepper_x_type =
+    double;
+  _stepper_x_type stepper_x;
+  using _stepper_y_type =
+    double;
+  _stepper_y_type stepper_y;
 
   // setters for named parameter idiom
   Type & set__x_speed(
@@ -161,6 +171,18 @@ struct SerialData_
     const double & _arg)
   {
     this->power_voltage = _arg;
+    return *this;
+  }
+  Type & set__stepper_x(
+    const double & _arg)
+  {
+    this->stepper_x = _arg;
+    return *this;
+  }
+  Type & set__stepper_y(
+    const double & _arg)
+  {
+    this->stepper_y = _arg;
     return *this;
   }
 
@@ -234,6 +256,12 @@ struct SerialData_
       return false;
     }
     if (this->power_voltage != other.power_voltage) {
+      return false;
+    }
+    if (this->stepper_x != other.stepper_x) {
+      return false;
+    }
+    if (this->stepper_y != other.stepper_y) {
       return false;
     }
     return true;

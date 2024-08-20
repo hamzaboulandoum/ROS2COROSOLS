@@ -30,6 +30,8 @@ typedef struct custom_interfaces__msg__SerialData
   double y_gyro;
   double z_gyro;
   double power_voltage;
+  double stepper_x;
+  double stepper_y;
 } custom_interfaces__msg__SerialData;
 
 // Struct for a sequence of custom_interfaces__msg__SerialData.

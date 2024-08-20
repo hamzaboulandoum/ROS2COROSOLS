@@ -19,6 +19,8 @@ custom_interfaces__srv__Commands_Request__init(custom_interfaces__srv__Commands_
   // vx
   // vy
   // vr
+  // stepperx
+  // steppery
   // airbrush
   return true;
 }
@@ -32,6 +34,8 @@ custom_interfaces__srv__Commands_Request__fini(custom_interfaces__srv__Commands_
   // vx
   // vy
   // vr
+  // stepperx
+  // steppery
   // airbrush
 }
 
@@ -51,6 +55,14 @@ custom_interfaces__srv__Commands_Request__are_equal(const custom_interfaces__srv
   }
   // vr
   if (lhs->vr != rhs->vr) {
+    return false;
+  }
+  // stepperx
+  if (lhs->stepperx != rhs->stepperx) {
+    return false;
+  }
+  // steppery
+  if (lhs->steppery != rhs->steppery) {
     return false;
   }
   // airbrush
@@ -74,6 +86,10 @@ custom_interfaces__srv__Commands_Request__copy(
   output->vy = input->vy;
   // vr
   output->vr = input->vr;
+  // stepperx
+  output->stepperx = input->stepperx;
+  // steppery
+  output->steppery = input->steppery;
   // airbrush
   output->airbrush = input->airbrush;
   return true;

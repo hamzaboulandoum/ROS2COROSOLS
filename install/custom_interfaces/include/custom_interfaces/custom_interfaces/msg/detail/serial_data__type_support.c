@@ -31,7 +31,7 @@ void custom_interfaces__msg__SerialData__rosidl_typesupport_introspection_c__Ser
   custom_interfaces__msg__SerialData__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember custom_interfaces__msg__SerialData__rosidl_typesupport_introspection_c__SerialData_message_member_array[10] = {
+static rosidl_typesupport_introspection_c__MessageMember custom_interfaces__msg__SerialData__rosidl_typesupport_introspection_c__SerialData_message_member_array[12] = {
   {
     "x_speed",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_DOUBLE,  // type
@@ -201,13 +201,47 @@ static rosidl_typesupport_introspection_c__MessageMember custom_interfaces__msg_
     NULL,  // fetch(index, &value) function pointer
     NULL,  // assign(index, value) function pointer
     NULL  // resize(index) function pointer
+  },
+  {
+    "stepper_x",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_DOUBLE,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(custom_interfaces__msg__SerialData, stepper_x),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "stepper_y",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_DOUBLE,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(custom_interfaces__msg__SerialData, stepper_y),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers custom_interfaces__msg__SerialData__rosidl_typesupport_introspection_c__SerialData_message_members = {
   "custom_interfaces__msg",  // message namespace
   "SerialData",  // message name
-  10,  // number of fields
+  12,  // number of fields
   sizeof(custom_interfaces__msg__SerialData),
   custom_interfaces__msg__SerialData__rosidl_typesupport_introspection_c__SerialData_message_member_array,  // message members
   custom_interfaces__msg__SerialData__rosidl_typesupport_introspection_c__SerialData_init_function,  // function to initialize message memory (memory has to be allocated)

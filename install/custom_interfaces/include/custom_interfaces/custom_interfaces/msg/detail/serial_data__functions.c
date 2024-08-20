@@ -27,6 +27,8 @@ custom_interfaces__msg__SerialData__init(custom_interfaces__msg__SerialData * ms
   // y_gyro
   // z_gyro
   // power_voltage
+  // stepper_x
+  // stepper_y
   return true;
 }
 
@@ -46,6 +48,8 @@ custom_interfaces__msg__SerialData__fini(custom_interfaces__msg__SerialData * ms
   // y_gyro
   // z_gyro
   // power_voltage
+  // stepper_x
+  // stepper_y
 }
 
 bool
@@ -94,6 +98,14 @@ custom_interfaces__msg__SerialData__are_equal(const custom_interfaces__msg__Seri
   if (lhs->power_voltage != rhs->power_voltage) {
     return false;
   }
+  // stepper_x
+  if (lhs->stepper_x != rhs->stepper_x) {
+    return false;
+  }
+  // stepper_y
+  if (lhs->stepper_y != rhs->stepper_y) {
+    return false;
+  }
   return true;
 }
 
@@ -125,6 +137,10 @@ custom_interfaces__msg__SerialData__copy(
   output->z_gyro = input->z_gyro;
   // power_voltage
   output->power_voltage = input->power_voltage;
+  // stepper_x
+  output->stepper_x = input->stepper_x;
+  // stepper_y
+  output->stepper_y = input->stepper_y;
   return true;
 }
 
