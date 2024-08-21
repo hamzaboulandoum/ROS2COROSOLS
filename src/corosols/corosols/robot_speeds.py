@@ -18,9 +18,12 @@ from custom_interfaces.msg import SerialData
 from custom_interfaces.srv import Commands
 from action_tutorials_interfaces.action import Position
 from rclpy.action import ActionServer
-#from custom_interfaces.msg import Target
+import serial
 
 
+
+    
+    
 class Simulator:
     def __init__(self, target_points, printing, robot_speed, point_factor=1000, max_speed=0.1, min_speed=0.02):
         self.start_pos = robot_speed.getOdoData()
@@ -36,7 +39,7 @@ class Simulator:
         self.axis_velocities = []
         self.relative_airbrush_pos = np.array([-AXIS_X_LIMIT,-AXIS_Y_LIMIT])
         self.robot_speed = robot_speed
-        self.robot_pid_controller = PIDController(kp=50, ki=0, kd=0)
+        self.robot_pid_controller = PIDController(kp=10, ki=0, kd=0)
         self.prev_time = time.time()
         
         # New parameters
@@ -166,13 +169,13 @@ class RobotSpeed(Node):
     def getOdoData(self):
         return np.array([self.odoData.pose.pose.position.x,self.odoData.pose.pose.position.y])
         
- 
 def rclspin(node):
     try:
         rclpy.spin(node)
     except Exception:
         node.destroy_node()
         
+
 class RobotControlUI(tk.Tk):
     def __init__(self, robot_speed):
         super().__init__()
@@ -196,6 +199,10 @@ class RobotControlUI(tk.Tk):
         self.configure(bg='#1e1e1e')
         self.geometry('1400x800')
 
+        # Set full screen mode
+        self.attributes('-fullscreen', True)
+        self.bind('<Escape>', self.toggle_fullscreen)  # Bind Escape key to toggle fullscreen
+        
         self.create_ui_elements()
         self.init_simulation()
 
@@ -205,19 +212,22 @@ class RobotControlUI(tk.Tk):
         # Set up the close handler
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
+    
+    def toggle_fullscreen(self, event=None):
+        self.attributes('-fullscreen', not self.attributes('-fullscreen'))
+        
     def on_closing(self):
         os._exit(0)
-        
         
     def on_point_factor_change(self, *args):
         self.init_simulation()
 
     def on_speed_change(self, *args):
-        if self.min_speed :
-            if self.min_speed.get()>0:
+        if self.min_speed:
+            if self.min_speed.get() > 0:
                 self.simulator.min_speed = self.min_speed.get()
-        if self.max_speed :
-            if self.max_speed.get()>0:
+        if self.max_speed:
+            if self.max_speed.get() > 0:
                 self.simulator.max_speed = self.max_speed.get()
         
     def create_ui_elements(self):
@@ -277,34 +287,40 @@ class RobotControlUI(tk.Tk):
         ttk.Scale(frame, from_=from_, to=to, variable=variable, orient=tk.HORIZONTAL).pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
         ttk.Entry(frame, textvariable=variable, width=8).pack(side=tk.LEFT)
 
+    def create_styled_label(self, parent, label_text, value_text="0.000", bg_color='#34495E', fg_color='#ECF0F1', value_fg_color='#2ECC71'):
+        frame = tk.Frame(parent, bg=bg_color)
+        frame.pack(fill=tk.X, padx=10, pady=5)
+        
+        label = tk.Label(frame, text=label_text, bg=bg_color, fg=fg_color, width=15, anchor='w')
+        label.pack(side=tk.LEFT, padx=5)
+        
+        value_label = tk.Label(frame, text=value_text, bg=bg_color, fg=value_fg_color, width=10, anchor='e')
+        value_label.pack(side=tk.LEFT, padx=5)
+        
+        return label, value_label
+
     def create_info_labels(self, parent):
         info_frame = ttk.Frame(parent)
         info_frame.pack(fill=tk.X, pady=10)
         
-        self.create_info_label(info_frame, "Robot Position:")
-        self.robot_pos_label = self.create_info_label(info_frame, "")
-        self.create_info_label(info_frame, "Airbrush Position:")
-        self.airbrush_pos_label = self.create_info_label(info_frame, "")
-        self.create_info_label(info_frame, "Progress:")
-        self.progress_label = self.create_info_label(info_frame, "0%")
-        self.create_info_label(info_frame, "Robot Speed:")
-        self.speed_label = self.create_info_label(info_frame, "")
+        _, self.robot_pos_label = self.create_styled_label(info_frame, "Robot Position:")
+        _, self.airbrush_pos_label = self.create_styled_label(info_frame, "Airbrush Position:")
+        _, self.progress_label = self.create_styled_label(info_frame, "Progress:")
+        _, self.speed_label = self.create_styled_label(info_frame, "Robot Speed:")
         
         # Labels for additional robot data
-        self.create_info_label(info_frame, "Robot Data:", font=('Helvetica', 12, 'bold'))
+        robot_data_frame = ttk.Frame(info_frame)
+        robot_data_frame.pack(fill=tk.X, pady=10)
+        
+        ttk.Label(robot_data_frame, text="Robot Data:", font=('Helvetica', 12, 'bold')).pack(anchor='w', padx=5, pady=5)
+        
         self.robot_data_labels = {}
         for data in ['x_speed', 'y_speed', 'z_speed', 'x_accel', 'y_accel', 'z_accel', 
                      'x_gyro', 'y_gyro', 'z_gyro', 'power_voltage', 'stepper_x', 'stepper_y']:
-            self.create_info_label(info_frame, f"{data.replace('_', ' ').title()}:")
-            self.robot_data_labels[data] = self.create_info_label(info_frame, "")
-
-    def create_info_label(self, parent, text, font=('Helvetica', 10)):
-        label = ttk.Label(parent, text=text, font=font)
-        label.pack(anchor='w', padx=5, pady=2)
-        return label
+            _, self.robot_data_labels[data] = self.create_styled_label(robot_data_frame, f"{data.replace('_', ' ').title()}:")
 
     def browse_file(self):
-        filename = filedialog.askopenfilename(filetypes=[("G-code files", "*.txt"), ("All files", "*.*")],initialdir=os.path.abspath('gcode'))
+        filename = filedialog.askopenfilename(filetypes=[("G-code files", "*.txt"), ("All files", "*.*")],initialdir=os.path.abspath('src/corosols/corosols/gcode'))
         if filename:
             self.filename_var.set(filename)
             self.file_selected = True
@@ -360,7 +376,6 @@ class RobotControlUI(tk.Tk):
             self.robot_speed.command_req.airbrush = False
             self.robot_speed.send_speed()
             self.simulator.current_target_index = 0
-
 
     def init_plot(self):
         self.ax.clear()
@@ -418,24 +433,28 @@ class RobotControlUI(tk.Tk):
         segments = self.simulator.print_segments + [self.simulator.current_print_segment]
         self.print_segments.set_segments([segment for segment in segments if len(segment) > 1])
 
-        # Update labels
-        self.robot_pos_label.config(text=f"({self.simulator.robot_pos[0]:.2f}, {self.simulator.robot_pos[1]:.2f})")
-        self.airbrush_pos_label.config(text=f"({self.simulator.airbrush_pos[0]:.2f}, {self.simulator.airbrush_pos[1]:.2f})")
-        progress = (self.simulator.current_target_index / len(self.simulator.target_points)) * 100
-        self.progress_label.config(text=f"{progress:.1f}%")
-        speed = np.linalg.norm([self.robot_speed.command_req.vx, self.robot_speed.command_req.vy])
-        self.speed_label.config(text=f"{speed:.2f} m/s")
-
     def update_robot_data(self):
         for key, label in self.robot_data_labels.items():
             value = getattr(self.robot_speed.robot_data, key, 0.0)
-            label.config(text=f"{value:.2f}")
+            label.config(text=f"{value:.3f}")
+        
+        # Update other labels
+        robot_pos = self.simulator.robot_pos if self.simulator else (0, 0)
+        self.robot_pos_label.config(text=f"({robot_pos[0]:.2f}, {robot_pos[1]:.2f})")
+        
+        airbrush_pos = self.simulator.airbrush_pos if self.simulator else (0, 0)
+        self.airbrush_pos_label.config(text=f"({airbrush_pos[0]:.2f}, {airbrush_pos[1]:.2f})")
+        
+        progress = (self.simulator.current_target_index / len(self.simulator.target_points)) * 100 if self.simulator else 0
+        self.progress_label.config(text=f"{progress:.1f}%")
+        
+        speed = np.linalg.norm([self.robot_speed.command_req.vx, self.robot_speed.command_req.vy])
+        self.speed_label.config(text=f"{speed:.2f} m/s")
+        
         self.after(100, self.update_robot_data)  # Update every 100ms
-
 
 def main():
     rclpy.init()
-    
     robot_speed = RobotSpeed()
     
     # Create and start ROS2 spin thread
@@ -453,11 +472,9 @@ def main():
 if __name__ == "__main__":
     main()
     
-    
-import numpy as np
 
 #Parameters
-DEFAULT_FILENAME = os.path.abspath('gcode/Lines2.txt')
+DEFAULT_FILENAME = os.path.abspath('src/corosols/corosols/gcode/Lines2.txt')
 
 # Parmeters to vary
 #point_factor = 1000
@@ -631,7 +648,7 @@ def move_with_speed_vector(start_pos, speed_vector, dt, error_std = 0, ratio=[1,
 
 def calculate_projection_point(prev_target, current_target, current_pos,robot_pos,is_printing):
     v = np.array(current_target) - np.array(prev_target)                                                                                                         
-    u = np.array(current_pos) - np.array(prev_target)
+    u = np.array(robot_pos) - np.array(prev_target)
     t = np.dot(u, v) / np.dot(v, v)
     projection_point = np.array(prev_target) + t * v-robot_pos
     
@@ -644,7 +661,12 @@ def calculate_projection_point(prev_target, current_target, current_pos,robot_po
             move_to_target = move_to_target/factor  
     else:
         move_to_target = np.array([0,0])
+    
     if is_printing:
-        return projection_point+move_to_target
-    else :
-        return move_to_target
+        move_to_target = projection_point+move_to_target
+        
+    factor = np.max(np.abs(np.divide(move_to_target,np.array([AXIS_X_LIMIT,AXIS_Y_LIMIT]))))
+    if factor>1:
+            move_to_target = move_to_target/factor  
+    
+    return move_to_target

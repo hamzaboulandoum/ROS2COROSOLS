@@ -42,7 +42,7 @@ class tf2_broadcaster(Node):
         
         self.tf_static_broadcaster = StaticTransformBroadcaster(self)
         
-        self.odom_publisher = self.create_publisher(Odometry, 'odom', 1)
+        self.odom_publisher = self.create_publisher(Odometry, 'odom', 10)
         self.subscription = self.create_subscription(SerialData,'robot_data',self.listener_callback,10)
         self.x=0
         self.y=0

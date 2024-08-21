@@ -6,14 +6,14 @@ from custom_interfaces.srv import Commands # type: ignore
 from custom_interfaces.msg import SerialData # type: ignore
 import serial
 
-serial_port = "/dev/ttyACM0" # Update with your serial port
-baud_rate = 115200
+
 Stepper_X_LIMIT = 1125
 Stepper_Y_LIMIT = 300
 AXIS_X_LIMIT = 0.114
 AXIS_Y_LIMIT = 0.0325
+serial_port = "/dev/ttyACM0" # Update with your serial port
+baud_rate = 115200
 class SerialHandler(Node):
-    
     
     def convert_to_signed(self,value):
         if value & 0x8000:
@@ -27,20 +27,18 @@ class SerialHandler(Node):
         self.ser = serial.Serial(serial_port, baud_rate)
         time.sleep(0.1)
         self.ser.reset_input_buffer()
-
-        # Flush output buffer
         self.ser.reset_output_buffer()
-
         self.ser.flush()
         
         #THIS PUBLISHES THE DATA FROM STM32 To Topic topic
         self.publisher_ = self.create_publisher(SerialData, 'robot_data', 10)
-        timer_period = 0.005  # seconds        
+        timer_period = 0.05  # seconds        
         self.timer = self.create_timer(timer_period, self.timer_callback)
         
         self.velocity_srv = self.create_service(Commands, 'commands', self.send_data_to_serial)
-    
+        
     def send_data_to_serial(self, request, response):
+
         if self.ser.is_open:
             command_bytes = generate_command_bytes(request.vx, request.vy, request.vr,request.stepperx,request.steppery, 5000 if request.airbrush==1 else 0, 5000 if request.airbrush==1 else 0)
             try:
@@ -60,7 +58,8 @@ class SerialHandler(Node):
         return response
     
                
-    def timer_callback(self):       
+    def timer_callback(self):  
+           
         msg = SerialData()                 
         if self.ser.is_open:
             received_char = self.ser.read(1)
@@ -113,10 +112,9 @@ class SerialHandler(Node):
                     self.publisher_.publish(msg)
         else:
             pass
-
       
     def listener_callback(self, msg):
-        
+
         command_bytes = generate_command_bytes(msg.vx, msg.vy,msg.vr,msg.airbrush)
         for byte in command_bytes:
             self.ser.write(bytes([byte]))
@@ -177,10 +175,8 @@ def generate_command_bytes(velocity_x, velocity_y, angular_z, stepperx, steppery
 
 
 def main(args=None):
-    rclpy.init(args=args)
-
+    rclpy.init(args=None)
     serial_handler = SerialHandler()
-
     try :
         rclpy.spin(serial_handler)
     except KeyboardInterrupt:
