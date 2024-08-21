@@ -304,7 +304,7 @@ class RobotControlUI(tk.Tk):
         return label
 
     def browse_file(self):
-        filename = filedialog.askopenfilename(filetypes=[("G-code files", "*.txt"), ("All files", "*.*")],initialdir="/home/hamzalegion/COROSOLS_WS/src/corosols/corosols/gcode")
+        filename = filedialog.askopenfilename(filetypes=[("G-code files", "*.txt"), ("All files", "*.*")],initialdir=os.path.abspath('gcode'))
         if filename:
             self.filename_var.set(filename)
             self.file_selected = True
@@ -457,7 +457,7 @@ if __name__ == "__main__":
 import numpy as np
 
 #Parameters
-DEFAULT_FILENAME = "/home/hamzalegion/COROSOLS_WS/src/corosols/corosols/gcode/Lines2.txt"
+DEFAULT_FILENAME = os.path.abspath('gcode/Lines2.txt')
 
 # Parmeters to vary
 #point_factor = 1000
