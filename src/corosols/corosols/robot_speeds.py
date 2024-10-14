@@ -21,9 +21,6 @@ from rclpy.action import ActionServer
 import serial
 
 
-
-    
-    
 class Simulator:
     def __init__(self, target_points, printing, robot_speed, point_factor=1000, max_speed=0.1, min_speed=0.02):
         self.start_pos = robot_speed.getOdoData()
@@ -46,6 +43,7 @@ class Simulator:
         self.point_factor = point_factor
         self.max_speed = max_speed
         self.min_speed = min_speed
+        self.airbrush_acivation = True 
 
     def step(self, reset_target=False):
         if self.current_target_index >= len(self.target_points):
@@ -125,7 +123,8 @@ class Simulator:
             
         self.robot_speed.command_req.stepperx = float(self.relative_airbrush_pos[0])
         self.robot_speed.command_req.steppery = float(self.relative_airbrush_pos[1])
-    
+        if not self.airbrush_acivation:
+            self.robot_speed.command_req.airbrush = False
         self.robot_speed.send_speed()
                     
         return True
@@ -212,6 +211,9 @@ class RobotControlUI(tk.Tk):
         # Set up the close handler
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
+        # Airbrush activation state
+         # Airbrush activation state
+        self.airbrush_start_stop = False 
     
     def toggle_fullscreen(self, event=None):
         self.attributes('-fullscreen', not self.attributes('-fullscreen'))
@@ -269,6 +271,15 @@ class RobotControlUI(tk.Tk):
         self.start_button.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
         self.stop_button = ttk.Button(button_frame, text="Stop", command=self.stop_simulation, state=tk.DISABLED)
         self.stop_button.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
+        
+        button_frame2 = ttk.Frame(control_frame)
+        button_frame2.pack(fill=tk.X, pady=10)
+        
+        self.airbrush_button = ttk.Button(button_frame2, text="Start Airbrush", command=self.start_stop_airbrush)
+        self.airbrush_button.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
+
+        self.airbrush_activation_button = ttk.Button(button_frame2, text="Deactivate Airbrush", command=self.airbrush_activation)
+        self.airbrush_activation_button.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
 
         # Parameter controls
         param_frame = ttk.Frame(control_frame)
@@ -279,6 +290,25 @@ class RobotControlUI(tk.Tk):
 
         # Create labels for displaying values
         self.create_info_labels(control_frame)
+
+    def airbrush_activation(self):
+        if self.simulator.airbrush_acivation:
+            self.airbrush_activation_button.config(text="Activate Airbrush")
+        else:
+            self.airbrush_activation_button.config(text="Deactivate Airbrush")
+        self.simulator.airbrush_acivation = not self.simulator.airbrush_acivation
+        # Optionally, send a command to the action server to change state
+        # self.send_goal_for_airbrush_activation()
+
+    def start_stop_airbrush(self):
+        if self.airbrush_start_stop:
+            self.airbrush_button.config(text="Stop Airbrush")
+            self.robot_speed.command_req.airbrush = True
+        else:
+            self.airbrush_button.config(text="Start Airbrush")
+            self.robot_speed.command_req.airbrush = False
+        self.robot_speed.send_speed()
+        self.airbrush_start_stop = not self.airbrush_start_stop
 
     def create_parameter_control(self, parent, label, variable, from_, to):
         frame = ttk.Frame(parent)
@@ -591,11 +621,14 @@ def is_axis_movement_reachable(current_pos, target_pos):
     movement = np.array(target_pos) - np.array(current_pos)
     return abs(movement[0]) <= AXIS_X_LIMIT and abs(movement[1]) <= AXIS_Y_LIMIT
 
+
 def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_speed, min_speed, dt, pid_controller):
     # Calculate desired path vector
     path_vector = np.array(target_pos) - np.array(prev_target_pos)
     path_length = np.linalg.norm(path_vector)
+    
     if path_length == 0:
+        # Prevent division by zero if the path length is too small (targets are the same)
         return np.array([0, 0])
     
     normalized_path_vector = path_vector / path_length
@@ -619,13 +652,16 @@ def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_s
     # Calculate direction to target
     direction_vector = np.array(target_pos) - np.array(current_pos)
     distance = np.linalg.norm(direction_vector)
+    
     if distance == 0:
+        # Avoid division by zero if the robot is at the target
         return np.array([0, 0])
+    
     normalized_direction_vector = direction_vector / distance
 
     # Calculate speed based on distance to target
     raw_speed = distance / dt
-    
+
     # Apply speed limits, preserving direction
     speed = np.clip(raw_speed, -max_speed, max_speed)
     if abs(speed) < min_speed:
@@ -634,7 +670,11 @@ def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_s
     # Combine path following and error correction
     perpendicular_vector = np.array([-normalized_path_vector[1], normalized_path_vector[0]])
     corrected_direction = normalized_direction_vector - correction * perpendicular_vector
-    corrected_direction /= np.linalg.norm(corrected_direction)
+
+    # Normalize corrected direction, but ensure it's not a zero vector
+    corrected_direction_norm = np.linalg.norm(corrected_direction)
+    if corrected_direction_norm > 0:
+        corrected_direction /= corrected_direction_norm
 
     # Calculate final speed vector
     speed_vector = corrected_direction * speed
@@ -642,31 +682,44 @@ def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_s
     return speed_vector
 
 
-def move_with_speed_vector(start_pos, speed_vector, dt, error_std = 0, ratio=[1,1],publisher = None):
-    new_pos = np.array(start_pos) + (speed_vector)*ratio * dt 
+def move_with_speed_vector(start_pos, speed_vector, dt, error_std=0, ratio=[1,1], publisher=None):
+    # Adjust robot position based on speed vector and ratio, applying time step
+    new_pos = np.array(start_pos) + speed_vector * ratio * dt
     return new_pos
 
-def calculate_projection_point(prev_target, current_target, current_pos,robot_pos,is_printing):
-    v = np.array(current_target) - np.array(prev_target)                                                                                                         
+
+def calculate_projection_point(prev_target, current_target, current_pos, robot_pos, is_printing):
+    v = np.array(current_target) - np.array(prev_target)
     u = np.array(robot_pos) - np.array(prev_target)
-    t = np.dot(u, v) / np.dot(v, v)
-    projection_point = np.array(prev_target) + t * v-robot_pos
+
+    v_norm_sq = np.dot(v, v)
+    if v_norm_sq == 0:
+        # Avoid division by zero if prev_target and current_target are too close
+        return np.array([0, 0])
+    
+    # Projection of current robot position onto the path
+    t = np.dot(u, v) / v_norm_sq
+    projection_point = np.array(prev_target) + t * v - robot_pos
     
     move_to_target = current_target - (robot_pos + projection_point)
-    
-    factor = np.max(np.abs(np.divide(move_to_target,np.array([AXIS_X_LIMIT,AXIS_Y_LIMIT]))))
-    
-    if np.linalg.norm(current_target-robot_pos)<AXIS_Y_LIMIT: 
-        if factor>1:
-            move_to_target = move_to_target/factor  
+
+    # Calculate scaling factor based on axis limits
+    factor = np.max(np.abs(np.divide(move_to_target, np.array([AXIS_X_LIMIT, AXIS_Y_LIMIT]))))
+
+    # Apply scaling based on proximity to the target
+    if np.linalg.norm(current_target - robot_pos) < AXIS_Y_LIMIT:
+        if factor > 1:
+            move_to_target = move_to_target / factor  
     else:
-        move_to_target = np.array([0,0])
-    
+        move_to_target = np.array([0, 0])
+
     if is_printing:
-        move_to_target = projection_point+move_to_target
-        
-    factor = np.max(np.abs(np.divide(move_to_target,np.array([AXIS_X_LIMIT,AXIS_Y_LIMIT]))))
-    if factor>1:
-            move_to_target = move_to_target/factor  
-    
+        move_to_target = projection_point + move_to_target
+
+    # Recalculate scaling factor after adjustments
+    factor = np.max(np.abs(np.divide(move_to_target, np.array([AXIS_X_LIMIT, AXIS_Y_LIMIT]))))
+    if factor > 1:
+        move_to_target = move_to_target / factor  
+
     return move_to_target
+

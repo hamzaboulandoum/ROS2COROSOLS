@@ -1,4 +1,0 @@
-Invoking command in '/home/hamzalegion/COROSOLS_WS/build/marvelmind_ros2_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hamzalegion/COROSOLS_WS/build/marvelmind_ros2_msgs -- -j16 -l16
-Invoked command in '/home/hamzalegion/COROSOLS_WS/build/marvelmind_ros2_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hamzalegion/COROSOLS_WS/build/marvelmind_ros2_msgs -- -j16 -l16
-Invoking command in '/home/hamzalegion/COROSOLS_WS/build/marvelmind_ros2_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hamzalegion/COROSOLS_WS/build/marvelmind_ros2_msgs
-Invoked command in '/home/hamzalegion/COROSOLS_WS/build/marvelmind_ros2_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hamzalegion/COROSOLS_WS/build/marvelmind_ros2_msgs
