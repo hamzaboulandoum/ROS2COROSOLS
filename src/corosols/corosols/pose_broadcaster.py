@@ -87,8 +87,8 @@ class tf2_broadcaster(Node):
         
         Odom.child_frame_id = 'base_link'
         Odom.twist.twist = Twist()
-        Odom.twist.twist.linear.x = msg.x_speed
-        Odom.twist.twist.linear.y = msg.y_speed
+        Odom.twist.twist.linear.x = -msg.y_speed
+        Odom.twist.twist.linear.y = msg.x_speed
         Odom.twist.twist.angular.z = msg.z_gyro
         
         self.odom_publisher.publish(Odom)

@@ -19,7 +19,22 @@ from custom_interfaces.srv import Commands
 from action_tutorials_interfaces.action import Position
 from rclpy.action import ActionServer
 import serial
+import csv 
 
+class Logger:
+    def __init__(self, log_file):
+        self.log_file = log_file
+        # Initialize CSV writer
+        self.file = open(self.log_file, mode='w', newline='')
+        self.writer = csv.writer(self.file)
+        self.writer.writerow(['id','current_pos', 'corrected_direction', 'prev_target_pos', 'target_pos', 'speed_vector'])
+        self.id = 0
+    def log_step(self, *args):
+        # Log relevant data for debugging and analysis
+        self.writer.writerow( [self.id] + [arg for arg in args])
+        self.id += 1
+    def close(self):
+        self.file.close()
 
 class Simulator:
     def __init__(self, target_points, printing, robot_speed, point_factor=1000, max_speed=0.1, min_speed=0.02):
@@ -36,7 +51,7 @@ class Simulator:
         self.axis_velocities = []
         self.relative_airbrush_pos = np.array([-AXIS_X_LIMIT,-AXIS_Y_LIMIT])
         self.robot_speed = robot_speed
-        self.robot_pid_controller = PIDController(kp=10, ki=0, kd=0)
+        self.robot_pid_controllerX = PIDController(kp=20, ki=2, kd=0)
         self.prev_time = time.time()
         
         # New parameters
@@ -44,6 +59,7 @@ class Simulator:
         self.max_speed = max_speed
         self.min_speed = min_speed
         self.airbrush_acivation = True 
+        self.logger = Logger('simulator_log.csv')
 
     def step(self, reset_target=False):
         if self.current_target_index >= len(self.target_points):
@@ -61,14 +77,24 @@ class Simulator:
     
         current_target, _, _ = self.target_points[self.current_target_index]
         self.robot_pos = self.robot_speed.getOdoData()
-        
+        current_target = np.array(current_target)
         is_printing = self.printing[self.current_target_index]
-        
+         
+        if self.current_target_index<self.target_points.__len__()-1:
+            self.next_target = np.array(self.target_points[self.current_target_index + 1][0])
+        else:
+            self.next_target = np.zeros(2)
+
         if self.current_target_index > 0:
-            prev_target = self.target_points[self.current_target_index - 1][0]
+            prev_target = np.array(self.target_points[self.current_target_index - 1][0])
         else:
             prev_target = self.start_pos
-            
+
+        if self.current_target_index > 1:
+            before_previous_target = np.array(self.target_points[self.current_target_index - 2][0])
+        else:
+            before_previous_target = self.start_pos
+
         if reset_target:
             current_target = np.array([0,0])
             is_printing = False
@@ -77,29 +103,41 @@ class Simulator:
         # Linear movement
         self.airbrush_pos = self.robot_pos + np.array([self.robot_speed.robot_data.stepper_x,self.robot_speed.robot_data.stepper_y])
         
-        self.relative_airbrush_pos = calculate_projection_point(prev_target, current_target, self.airbrush_pos, self.robot_pos, is_printing) 
+        self.relative_airbrush_pos = calculate_projection_point(prev_target, 
+                                                                current_target, 
+                                                                self.airbrush_pos, 
+                                                                self.robot_pos, 
+                                                                is_printing, 
+                                                                logger=self.logger,
+                                                                vx=self.robot_speed.odoData.twist.twist.linear.x,
+                                                                vy=self.robot_speed.odoData.twist.twist.linear.y,
+                                                                dt=dt) 
         
         robot_velocity = calculate_robot_speed_vector(
-            (self.airbrush_pos+self.robot_pos)/2, 
+            self.robot_pos, 
             prev_target,
             current_target, 
             self.max_speed,  # Use instance variable
             self.min_speed,  # Use instance variable
             dt,
-            self.robot_pid_controller
+            self.robot_pid_controllerX,
+            logger = self.logger,
+            mode = 1,
+            next_target = self.next_target,
+            before_previous=before_previous_target
         )
         self.robot_velocities.append(robot_velocity)
         
         if reset_target:
             ratio = np.clip(abs(self.robot_pos-current_target)/AXIS_Y_LIMIT/(self.max_speed/0.03),0,1)
         else:
-            ratio = np.clip(abs(self.robot_pos-current_target)/AXIS_Y_LIMIT/(self.max_speed/0.03),0,1)*np.clip(abs(self.robot_pos-prev_target)/AXIS_Y_LIMIT/(self.max_speed/0.15),0.1/(self.max_speed/0.15),1)
+            ratio = minn(np.clip(abs(self.robot_pos-current_target)/AXIS_Y_LIMIT/1.5,[0.05,0.05],[1,1]),np.clip(abs(current_target-prev_target)/AXIS_Y_LIMIT/1.5,[0.05,0.05],[1,1]))
         
         error = np.clip(np.linalg.norm(self.relative_airbrush_pos-np.array([self.robot_speed.robot_data.stepper_x,self.robot_speed.robot_data.stepper_y]))*20*(self.max_speed/0.15),1,100*(self.max_speed/0.15))
-        self.robot_speed.command_req.vy = -float(robot_velocity[0]*ratio[0]/error)
-        self.robot_speed.command_req.vx = float(robot_velocity[1]*ratio[1]/error)
+        self.robot_speed.command_req.vy = -float(robot_velocity[0])#*ratio[0]/error)
+        self.robot_speed.command_req.vx = float(robot_velocity[1])#*ratio[1]/error)
         self.robot_speed.command_req.airbrush = is_printing
-        
+        self.logger.log_step(self.robot_pos, robot_velocity,[self.robot_speed.command_req.vx,self.robot_speed.command_req.vy], [self.robot_speed.odoData.twist.twist.linear.x,self.robot_speed.odoData.twist.twist.linear.y], prev_target,dt)
         self.robot_points.append(self.robot_pos.copy())
 
         if is_printing:
@@ -128,7 +166,14 @@ class Simulator:
         self.robot_speed.send_speed()
                     
         return True
-    
+def minn(a,b):
+    l=[]
+    for i in range(0,len(a)):
+        if a[i]<=b[i]:
+            l.append(a[i])
+        else :
+            l.append(b[i])
+    return l
 class RobotSpeed(Node):
     def __init__(self):
         super().__init__('robot_speed')
@@ -380,7 +425,7 @@ class RobotControlUI(tk.Tk):
         self.start_button.config(text="Pause")
         self.stop_button.config(state=tk.NORMAL)
         if self.animation is None:
-            self.animation = FuncAnimation(self.fig, self.animate, interval=50, blit=True)
+            self.animation = FuncAnimation(self.fig, self.animate, interval=2, blit=True)
         self.canvas.draw()
 
     def pause_simulation(self):
@@ -514,7 +559,7 @@ DEFAULT_FILENAME = os.path.abspath('src/corosols/corosols/gcode/Lines2.txt')
 # Fixed Parameters
 robot_size = 0.5  # Robot size in meters (50 cm)
 axis_size = (0.24, 0.16)  # 2D axis size in meters (24 cm x 16 cm)
-axis_precision = 0.01  # 2D axis precision in meters (2 mm)
+axis_precision = 0.005  # 2D axis precision in meters (2 mm)
 AXIS_X_LIMIT = 0.114  # 12 cm in meters
 AXIS_Y_LIMIT = 0.0325  # 6 cm in meters
 
@@ -621,105 +666,213 @@ def is_axis_movement_reachable(current_pos, target_pos):
     movement = np.array(target_pos) - np.array(current_pos)
     return abs(movement[0]) <= AXIS_X_LIMIT and abs(movement[1]) <= AXIS_Y_LIMIT
 
-
-def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_speed, min_speed, dt, pid_controller):
-    # Calculate desired path vector
-    path_vector = np.array(target_pos) - np.array(prev_target_pos)
+def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_speed, min_speed, dt, pid_controller,
+                               logger=None, mode=1,next_target = np.zeros(2),before_previous = np.zeros(2)):
+    """
+    Calculate robot speed vector with perpendicular error correction for path following.
+    Added checks to ensure correct path direction and prevent backwards movement.
+    
+    Args:
+        current_pos (array-like): Current robot position [x, y]
+        prev_target_pos (array-like): Previous target position [x, y]
+        target_pos (array-like): Current target position [x, y]
+        max_speed (float): Maximum allowed speed
+        min_speed (float): Minimum allowed speed
+        dt (float): Time step
+        pid_controller: PID controller object for perpendicular error correction
+        logger: Optional logger object
+        mode (int): Control mode (1: normal, 2: precise)
+    
+    Returns:
+        numpy.ndarray: Speed vector [vx, vy]
+    """
+    # Convert inputs to numpy arrays
+    current_pos = np.array(current_pos, dtype=float)
+    prev_target_pos = np.array(prev_target_pos, dtype=float)
+    target_pos = np.array(target_pos, dtype=float)
+    
+    # Calculate path vector and normalize it
+    path_vector = target_pos - prev_target_pos
     path_length = np.linalg.norm(path_vector)
     
-    if path_length == 0:
-        # Prevent division by zero if the path length is too small (targets are the same)
-        return np.array([0, 0])
+    if path_length < 1e-6:
+        if logger:
+            logger.warning("Path segment too short")
+        return np.zeros(2)
     
-    normalized_path_vector = path_vector / path_length
-
-    # Calculate current position vector relative to previous target
-    current_vector = np.array(current_pos) - np.array(prev_target_pos)
-
-    # Project current position onto the path
-    projection = np.dot(current_vector, normalized_path_vector) * normalized_path_vector
-
-    # Calculate error (perpendicular distance from path)
-    error_vector = current_vector - projection
-    error = np.linalg.norm(error_vector)
+    path_direction = path_vector / path_length
     
-    # Determine sign of error (which side of the path the robot is on)
-    error_sign = np.sign(np.cross(normalized_path_vector, error_vector))
+    # Calculate vector from current position to target
+    to_target = target_pos - current_pos
+    to_target_length = np.linalg.norm(to_target)
 
-    # Use PID controller to calculate correction
-    correction = pid_controller.update(error * error_sign, dt)
+    from_target = current_pos - prev_target_pos
+    from_target_length = np.linalg.norm(from_target)
 
-    # Calculate direction to target
-    direction_vector = np.array(target_pos) - np.array(current_pos)
-    distance = np.linalg.norm(direction_vector)
+    # Check if we're headed in the wrong direction
+    # by comparing the dot product of path direction and direction to target
+    direction_alignment = np.dot(path_direction, to_target / to_target_length) if to_target_length > 1e-6 else 1.0
     
-    if distance == 0:
-        # Avoid division by zero if the robot is at the target
-        return np.array([0, 0])
+    # If we're headed in significantly wrong direction, adjust path direction
+    if direction_alignment < -0.5:  # threshold can be adjusted
+        path_direction = -path_direction
+        # Recalculate relative position with new direction
+        relative_pos = current_pos - target_pos
+    else:
+        relative_pos = current_pos - prev_target_pos
     
-    normalized_direction_vector = direction_vector / distance
+    # Calculate perpendicular vector to path (right-hand normal)
+    perpendicular_direction = np.array([-path_direction[1], path_direction[0]])
+    
+    # Calculate parallel and perpendicular components
+    parallel_dist = np.dot(relative_pos, path_direction)
+    perp_dist = np.dot(relative_pos, perpendicular_direction)
+    
+    # Calculate projection point on path
+    projection_point = prev_target_pos + parallel_dist * path_direction
+    
+    # Calculate signed perpendicular error
+    signed_error = perp_dist
+    
+    # Get PID correction for perpendicular error
+    correction = pid_controller.update(signed_error, dt)
+    
+    # Calculate progress along path (0 to 1)
+    path_progress = np.clip(parallel_dist / path_length, 0, 1)
+    
+    # Calculate base forward speed based on progress and error
+    # Modified error damping to be less aggressive
+    error_damping = np.exp(-abs(signed_error) * 0.5)  # Made damping less aggressive
+    
+    # Modified progress factor to maintain speed better
+    progress_factor = 1.0 - (0.1 * path_progress ** 2)  # Less aggressive slowdown
+    
+    # Add distance-based speed scaling
+    
+    next_path_vector = next_target - target_pos
+    before_previous_vector = prev_target_pos - before_previous
 
-    # Calculate speed based on distance to target
-    raw_speed = distance / dt
+    angle = angle_between_vectors_np(path_vector, next_path_vector)
+    angle_factor = np.clip(1.0 - (np.abs(angle) / np.pi), 0.1, 1.0)
 
-    # Apply speed limits, preserving direction
-    speed = np.clip(raw_speed, -max_speed, max_speed)
-    if abs(speed) < min_speed:
-        speed = min_speed if speed >= 0 else -min_speed
+    angle2 = angle_between_vectors_np(before_previous_vector, path_vector)
+    angle_factor2 = np.clip(1.0 - (np.abs(angle2) / np.pi), 0.1, 1.0)
 
-    # Combine path following and error correction
-    perpendicular_vector = np.array([-normalized_path_vector[1], normalized_path_vector[0]])
-    corrected_direction = normalized_direction_vector - correction * perpendicular_vector
-
-    # Normalize corrected direction, but ensure it's not a zero vector
-    corrected_direction_norm = np.linalg.norm(corrected_direction)
-    if corrected_direction_norm > 0:
-        corrected_direction /= corrected_direction_norm
-
-    # Calculate final speed vector
-    speed_vector = corrected_direction * speed
-
+    if to_target_length < 0.1:
+        distance_factor = max(angle_factor, to_target_length *10)
+    else:
+        if from_target_length < 0.1:
+            distance_factor = max(angle_factor2, from_target_length *10)
+        else:
+            distance_factor = 1.0
+    
+    
+    
+    base_speed = min(max_speed,
+                    max(min_speed,
+                        max_speed * error_damping * progress_factor * distance_factor))
+    
+    # Forward component: along the path
+    forward_component = base_speed * path_direction
+    
+    # Corrective component: perpendicular to path
+    correction_scale = min(1.0, base_speed / max_speed)
+    correction_speed = -correction * correction_scale * max_speed * 0.5  # Reduced correction intensity
+    correction_component = correction_speed * perpendicular_direction
+    
+    # Combine components for final speed vector
+    speed_vector = forward_component + correction_component
+    
+    # Add direction verification
+    if np.dot(speed_vector, to_target) < 0 and to_target_length > min_speed * dt:
+        # Project speed vector onto direction to target
+        speed_vector = np.dot(speed_vector, to_target/to_target_length) * to_target/to_target_length
+    
+    # Limit the final speed vector magnitude
+    speed_magnitude = np.linalg.norm(speed_vector)
+    if speed_magnitude > max_speed:
+        speed_vector = (speed_vector / speed_magnitude) * max_speed
+    elif speed_magnitude < min_speed and speed_magnitude > 0:
+        speed_vector = (speed_vector / speed_magnitude) * min_speed
+        
+    
     return speed_vector
 
+def angle_between_vectors_np(u, v):
+    u = np.array(u)
+    v = np.array(v)
+    cos_theta = np.dot(u, v) / (np.linalg.norm(u) * np.linalg.norm(v))
+    angle_rad = np.arccos(np.clip(cos_theta, -1.0, 1.0))
+    return angle_rad
 
-def move_with_speed_vector(start_pos, speed_vector, dt, error_std=0, ratio=[1,1], publisher=None):
-    # Adjust robot position based on speed vector and ratio, applying time step
-    new_pos = np.array(start_pos) + speed_vector * ratio * dt
-    return new_pos
-
-
-def calculate_projection_point(prev_target, current_target, current_pos, robot_pos, is_printing):
-    v = np.array(current_target) - np.array(prev_target)
-    u = np.array(robot_pos) - np.array(prev_target)
-
-    v_norm_sq = np.dot(v, v)
-    if v_norm_sq == 0:
-        # Avoid division by zero if prev_target and current_target are too close
-        return np.array([0, 0])
+def calculate_projection_point(prev_target, current_target, current_pos, robot_pos, is_printing, logger=None,vx=0,vy=0,dt=1):
+    """
+    Calculate the projection point and movement vector for a robot following a path.
     
-    # Projection of current robot position onto the path
-    t = np.dot(u, v) / v_norm_sq
-    projection_point = np.array(prev_target) + t * v - robot_pos
+    Args:
+        prev_target (array-like): Previous target position [x, y]
+        current_target (array-like): Current target position [x, y]
+        current_pos (array-like): Current position of the airbrush [x, y]
+        robot_pos (array-like): Current position of the robot base [x, y]
+        is_printing (bool): Whether the robot is currently printing
+        logger: Optional logger object
     
-    move_to_target = current_target - (robot_pos + projection_point)
+    Returns:
+        numpy.ndarray: Movement vector for the robot
+    """
+    # Convert inputs to numpy arrays
+    prev_target = np.array(prev_target)
+    current_target = np.array(current_target)
+    robot_pos = np.array(robot_pos)
+    
+    # Calculate path vector and robot position vector
+    path_vector = current_target - prev_target
+    robot_vector = robot_pos - prev_target
+    
+    # Calculate path length squared
+    path_length_sq = np.dot(path_vector, path_vector)
+    
+    if path_length_sq < 1e-10:  # Use small epsilon instead of exact zero
+        return np.zeros(2)
+    
+    # Calculate projection parameter (t)
+    t = np.clip(np.dot(robot_vector, path_vector) / path_length_sq, 0, 1)
+    
+    # Calculate the closest point on the path segment
+    projection_point = prev_target + t * path_vector
+    
 
-    # Calculate scaling factor based on axis limits
-    factor = np.max(np.abs(np.divide(move_to_target, np.array([AXIS_X_LIMIT, AXIS_Y_LIMIT]))))
+    current_velocity = np.array([vx, vy])
+    predicted_pos = robot_pos + current_velocity * dt*3
+    predicted_vector = predicted_pos - prev_target
+    t_predicted = np.clip(np.dot(predicted_vector, path_vector) / path_length_sq, 0, 1)
+    predicted_projection = prev_target + t_predicted * path_vector
 
-    # Apply scaling based on proximity to the target
-    if np.linalg.norm(current_target - robot_pos) < AXIS_Y_LIMIT:
-        if factor > 1:
-            move_to_target = move_to_target / factor  
-    else:
-        move_to_target = np.array([0, 0])
-
+    # Calculate the vector from robot position to projection point
+    to_projection = predicted_projection - robot_pos 
+    
     if is_printing:
-        move_to_target = projection_point + move_to_target
-
-    # Recalculate scaling factor after adjustments
-    factor = np.max(np.abs(np.divide(move_to_target, np.array([AXIS_X_LIMIT, AXIS_Y_LIMIT]))))
-    if factor > 1:
-        move_to_target = move_to_target / factor  
-
+        # When printing, we need to consider the next target
+        # Calculate how far along the path we should move based on proximity to target
+        remaining_distance = np.linalg.norm(current_target - projection_point)
+        path_direction = path_vector / np.sqrt(path_length_sq)
+        
+        # Add a component moving towards the next target
+        # The closer we are to the current projection, the more we look ahead
+        look_ahead = min(remaining_distance, AXIS_X_LIMIT * 0.1)  # Adjust 0.1 based on desired look-ahead
+        move_to_target = to_projection + look_ahead * path_direction
+    else:
+        # When not printing, just move to the projection point
+        move_to_target = to_projection
+    
+    # Scale the movement vector if it exceeds axis limits
+    move_magnitude = np.abs(move_to_target)
+    scale_factors = np.divide(move_magnitude, [AXIS_X_LIMIT, AXIS_Y_LIMIT])
+    max_scale = np.max(scale_factors)
+    
+    if max_scale > 1:
+        move_to_target = move_to_target / max_scale
+        
+    
     return move_to_target
 
