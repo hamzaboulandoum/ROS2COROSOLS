@@ -491,7 +491,7 @@ class RobotControlUI(tk.Tk):
         self.axis_rectangle = Rectangle(self.simulator.robot_pos - [AXIS_X_LIMIT, AXIS_Y_LIMIT], 
                                         2*AXIS_X_LIMIT, 2*AXIS_Y_LIMIT, fill=False, edgecolor='#ff8c00', linestyle='--')
         self.robot_path, = self.ax.plot([], [], color='#ff0000', linewidth=0.5, alpha=0.5, label='Robot Path')
-        self.print_segments = LineCollection([], cmap="pwr", linewidths=2, label='Print Path')
+        self.print_segments = LineCollection([], cmap="Reds", linewidths=2, label='Print Path')
 
         self.ax.add_patch(self.robot_circle)
         self.ax.add_patch(self.airbrush_circle)
@@ -566,7 +566,7 @@ class RobotControlUI(tk.Tk):
             colors_array = np.array(all_colors)
 
             # Create color mapping
-            cmap = plt.get_cmap("pwr")
+            cmap = plt.get_cmap("Reds")
             if len(colors_array) > 0:
                 # Normalize color values
                 norm = plt.Normalize(vmin=min(colors_array), vmax=max(colors_array))

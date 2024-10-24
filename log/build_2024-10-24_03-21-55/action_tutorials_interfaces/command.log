@@ -1,0 +1,4 @@
+Invoking command in '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces': /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/action_tutorials_interfaces -- -j8 -l8
+Invoked command in '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces' returned '0': /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/action_tutorials_interfaces -- -j8 -l8
+Invoking command in '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces': /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/action_tutorials_interfaces
+Invoked command in '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces' returned '0': /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/action_tutorials_interfaces
