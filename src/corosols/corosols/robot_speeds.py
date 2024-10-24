@@ -20,7 +20,9 @@ from action_tutorials_interfaces.action import Position
 from rclpy.action import ActionServer
 import serial
 import csv 
+import matplotlib
 
+cmap = matplotlib.cm.get_cmap('Spectral')
 class Logger:
     def __init__(self, log_file):
         self.log_file = log_file
@@ -53,13 +55,18 @@ class Simulator:
         self.robot_speed = robot_speed
         self.robot_pid_controllerX = PIDController(kp=20, ki=2, kd=0)
         self.prev_time = time.time()
-        
+        self.current_error_colors = []
+        self.error_colors = []
         # New parameters
         self.point_factor = point_factor
         self.max_speed = max_speed
         self.min_speed = min_speed
         self.airbrush_acivation = True 
         self.logger = Logger('simulator_log.csv')
+        self.error = 0
+        self.max_error = 0
+        self.average_error = 0
+        self.N_error =0
 
     def step(self, reset_target=False):
         if self.current_target_index >= len(self.target_points):
@@ -103,7 +110,7 @@ class Simulator:
         # Linear movement
         self.airbrush_pos = self.robot_pos + np.array([self.robot_speed.robot_data.stepper_x,self.robot_speed.robot_data.stepper_y])
         
-        self.relative_airbrush_pos = calculate_projection_point(prev_target, 
+        self.relative_airbrush_pos,self.error = calculate_projection_point(prev_target, 
                                                                 current_target, 
                                                                 self.airbrush_pos, 
                                                                 self.robot_pos, 
@@ -127,7 +134,11 @@ class Simulator:
             before_previous=before_previous_target
         )
         self.robot_velocities.append(robot_velocity)
-        
+        if is_printing:
+            self.max_error = max(self.max_error,self.error)
+            self.average_error = (self.average_error*self.N_error + self.error)/(self.N_error+1)
+            self.N_error += 1
+
         if reset_target:
             ratio = np.clip(abs(self.robot_pos-current_target)/AXIS_Y_LIMIT/(self.max_speed/0.03),0,1)
         else:
@@ -137,16 +148,17 @@ class Simulator:
         self.robot_speed.command_req.vy = -float(robot_velocity[0])#*ratio[0]/error)
         self.robot_speed.command_req.vx = float(robot_velocity[1])#*ratio[1]/error)
         self.robot_speed.command_req.airbrush = is_printing
-        self.logger.log_step(self.robot_pos, robot_velocity,[self.robot_speed.command_req.vx,self.robot_speed.command_req.vy], [self.robot_speed.odoData.twist.twist.linear.x,self.robot_speed.odoData.twist.twist.linear.y], prev_target,dt)
+        self.logger.log_step(self.robot_pos, robot_velocity,[self.robot_speed.command_req.vx,self.robot_speed.command_req.vy], [self.robot_speed.odoData.twist.twist.linear.x,self.robot_speed.odoData.twist.twist.linear.y], prev_target,self.error)
         self.robot_points.append(self.robot_pos.copy())
 
         if is_printing:
-            if not self.current_print_segment:
-                self.current_print_segment.append(self.airbrush_pos.copy())
             self.current_print_segment.append(self.airbrush_pos.copy())
+            self.current_error_colors.append(self.error)
         elif self.current_print_segment:
             self.print_segments.append(self.current_print_segment)
+            self.error_colors.append(self.current_error_colors)
             self.current_print_segment = []
+            self.current_error_colors = []
 
         # Check if we've reached the target.
         if np.linalg.norm(self.airbrush_pos - current_target) <= axis_precision:
@@ -209,6 +221,7 @@ class RobotSpeed(Node):
             rclpy.spin_until_future_complete(self, self.future,timeout_sec=1)
             return self.future.result()
         except KeyboardInterrupt:
+            
             pass
     def getOdoData(self):
         return np.array([self.odoData.pose.pose.position.x,self.odoData.pose.pose.position.y])
@@ -382,6 +395,10 @@ class RobotControlUI(tk.Tk):
         _, self.airbrush_pos_label = self.create_styled_label(info_frame, "Airbrush Position:")
         _, self.progress_label = self.create_styled_label(info_frame, "Progress:")
         _, self.speed_label = self.create_styled_label(info_frame, "Robot Speed:")
+
+        _, self.error = self.create_styled_label(info_frame, "Actual error:")
+        _, self.max_error = self.create_styled_label(info_frame, "Maximum error:")
+        _, self.avg_error = self.create_styled_label(info_frame, "Average error:")
         
         # Labels for additional robot data
         robot_data_frame = ttk.Frame(info_frame)
@@ -474,13 +491,12 @@ class RobotControlUI(tk.Tk):
         self.axis_rectangle = Rectangle(self.simulator.robot_pos - [AXIS_X_LIMIT, AXIS_Y_LIMIT], 
                                         2*AXIS_X_LIMIT, 2*AXIS_Y_LIMIT, fill=False, edgecolor='#ff8c00', linestyle='--')
         self.robot_path, = self.ax.plot([], [], color='#ff0000', linewidth=0.5, alpha=0.5, label='Robot Path')
-        self.print_segments = LineCollection([], colors='#ffffff', linewidths=2, label='Print Path')
+        self.print_segments = LineCollection([], cmap="pwr", linewidths=2, label='Print Path')
 
         self.ax.add_patch(self.robot_circle)
         self.ax.add_patch(self.airbrush_circle)
         self.ax.add_patch(self.axis_rectangle)
         self.ax.add_collection(self.print_segments)
-
         self.canvas.draw()
 
     def animate(self, frame):
@@ -504,9 +520,64 @@ class RobotControlUI(tk.Tk):
         robot_path = np.array(self.simulator.robot_points)
         self.robot_path.set_data(robot_path[:, 0], robot_path[:, 1])
 
-        # Update print segments
-        segments = self.simulator.print_segments + [self.simulator.current_print_segment]
-        self.print_segments.set_segments([segment for segment in segments if len(segment) > 1])
+        # Create point-to-point segments and corresponding colors
+        all_segments = []
+        all_colors = []
+
+        # Process existing segments
+        for main_segment, main_error_color in zip(self.simulator.print_segments, self.simulator.error_colors):
+            if len(main_segment) > 1:
+                # Process each print_segment as if it were a current_print_segment
+                for i in range(len(main_segment) - 1):
+                    # Create segment pair
+                    segment_pair = np.array([main_segment[i], main_segment[i + 1]]).reshape(1, 2, 2)
+                    all_segments.append(segment_pair[0])
+                    
+                    # Handle error color
+                    if isinstance(main_error_color, (list, np.ndarray)):
+                        # Use corresponding error color if it's an array
+                        color = main_error_color[i]
+                    else:
+                        # Use the single color value
+                        color = main_error_color
+                    all_colors.append(color)
+
+        # Process current segment if it exists
+        if len(self.simulator.current_print_segment) > 1:
+            for i in range(len(self.simulator.current_print_segment) - 1):
+                # Create segment pair
+                segment_pair = np.array([
+                    self.simulator.current_print_segment[i],
+                    self.simulator.current_print_segment[i + 1]
+                ]).reshape(1, 2, 2)
+                all_segments.append(segment_pair[0])
+                
+                # Handle error color
+                if isinstance(self.simulator.current_error_colors, (list, np.ndarray)):
+                    color = self.simulator.current_error_colors[i]
+                else:
+                    color = self.simulator.current_error_colors
+                all_colors.append(color)
+
+        # Update the LineCollection if we have segments
+        if all_segments:
+            # Convert to numpy arrays
+            segments_array = np.array(all_segments)
+            colors_array = np.array(all_colors)
+
+            # Create color mapping
+            cmap = plt.get_cmap("pwr")
+            if len(colors_array) > 0:
+                # Normalize color values
+                norm = plt.Normalize(vmin=min(colors_array), vmax=max(colors_array))
+                colors = cmap(norm(colors_array))
+
+                # Update the LineCollection
+                self.print_segments.set_segments(segments_array)
+                self.print_segments.set_color(colors)
+
+                # Log for debugging
+                self.robot_speed.get_logger().info(f'Segments: {len(segments_array)}, Colors: {len(colors)}')
 
     def update_robot_data(self):
         for key, label in self.robot_data_labels.items():
@@ -525,6 +596,10 @@ class RobotControlUI(tk.Tk):
         
         speed = np.linalg.norm([self.robot_speed.command_req.vx, self.robot_speed.command_req.vy])
         self.speed_label.config(text=f"{speed:.2f} m/s")
+
+        self.error.config(text=f"{self.simulator.error:.1f} cm")
+        self.max_error.config(text=f"{self.simulator.max_error:.1f} cm")
+        self.avg_error.config(text=f"{self.simulator.average_error:.1f} cm")
         
         self.after(100, self.update_robot_data)  # Update every 100ms
 
@@ -854,16 +929,29 @@ def calculate_projection_point(prev_target, current_target, current_pos, robot_p
     if is_printing:
         # When printing, we need to consider the next target
         # Calculate how far along the path we should move based on proximity to target
-        remaining_distance = np.linalg.norm(current_target - projection_point)
+        remaining_distance = np.linalg.norm(current_target - predicted_projection)
         path_direction = path_vector / np.sqrt(path_length_sq)
         
         # Add a component moving towards the next target
         # The closer we are to the current projection, the more we look ahead
         look_ahead = min(remaining_distance, AXIS_X_LIMIT * 0.1)  # Adjust 0.1 based on desired look-ahead
         move_to_target = to_projection + look_ahead * path_direction
+
+
+        relative_pos = current_pos - prev_target
+    
+        # Calculate perpendicular vector to path (right-hand normal)
+        perpendicular_direction = np.array([-path_direction[1], path_direction[0]])
+        
+        # Calculate parallel and perpendicular components
+        perp_dist = np.dot(relative_pos, perpendicular_direction)
+
+
     else:
         # When not printing, just move to the projection point
         move_to_target = to_projection
+        perp_dist =0
+
     
     # Scale the movement vector if it exceeds axis limits
     move_magnitude = np.abs(move_to_target)
@@ -874,5 +962,6 @@ def calculate_projection_point(prev_target, current_target, current_pos, robot_p
         move_to_target = move_to_target / max_scale
         
     
-    return move_to_target
+
+    return move_to_target, np.abs(perp_dist)*100
 
