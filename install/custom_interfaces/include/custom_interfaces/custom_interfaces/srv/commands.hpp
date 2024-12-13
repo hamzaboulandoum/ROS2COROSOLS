@@ -7,5 +7,6 @@
 #include "custom_interfaces/srv/detail/commands__struct.hpp"
 #include "custom_interfaces/srv/detail/commands__builder.hpp"
 #include "custom_interfaces/srv/detail/commands__traits.hpp"
+#include "custom_interfaces/srv/detail/commands__type_support.hpp"
 
 #endif  // CUSTOM_INTERFACES__SRV__COMMANDS_HPP_

@@ -7,5 +7,6 @@
 #include "custom_interfaces/msg/detail/serial_data__struct.hpp"
 #include "custom_interfaces/msg/detail/serial_data__builder.hpp"
 #include "custom_interfaces/msg/detail/serial_data__traits.hpp"
+#include "custom_interfaces/msg/detail/serial_data__type_support.hpp"
 
 #endif  // CUSTOM_INTERFACES__MSG__SERIAL_DATA_HPP_

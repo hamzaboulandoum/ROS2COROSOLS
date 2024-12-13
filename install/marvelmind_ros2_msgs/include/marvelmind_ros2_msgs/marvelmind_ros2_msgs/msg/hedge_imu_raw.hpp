@@ -7,5 +7,6 @@
 #include "marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__struct.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__builder.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__traits.hpp"
+#include "marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__type_support.hpp"
 
 #endif  // MARVELMIND_ROS2_MSGS__MSG__HEDGE_IMU_RAW_HPP_

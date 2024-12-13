@@ -7,5 +7,6 @@
 #include "action_tutorials_interfaces/action/detail/position__struct.hpp"
 #include "action_tutorials_interfaces/action/detail/position__builder.hpp"
 #include "action_tutorials_interfaces/action/detail/position__traits.hpp"
+#include "action_tutorials_interfaces/action/detail/position__type_support.hpp"
 
 #endif  // ACTION_TUTORIALS_INTERFACES__ACTION__POSITION_HPP_

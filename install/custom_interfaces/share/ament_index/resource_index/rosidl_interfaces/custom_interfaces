@@ -1,3 +1,5 @@
+msg/ImuData.idl
+msg/ImuData.msg
 msg/SerialData.idl
 msg/SerialData.msg
 srv/Commands.idl

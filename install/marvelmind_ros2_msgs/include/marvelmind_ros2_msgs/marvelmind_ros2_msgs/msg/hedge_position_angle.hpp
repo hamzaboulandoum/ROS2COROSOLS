@@ -7,5 +7,6 @@
 #include "marvelmind_ros2_msgs/msg/detail/hedge_position_angle__struct.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/hedge_position_angle__builder.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/hedge_position_angle__traits.hpp"
+#include "marvelmind_ros2_msgs/msg/detail/hedge_position_angle__type_support.hpp"
 
 #endif  // MARVELMIND_ROS2_MSGS__MSG__HEDGE_POSITION_ANGLE_HPP_

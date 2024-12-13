@@ -7,5 +7,6 @@
 #include "marvelmind_ros2_msgs/srv/detail/marvelmind_api__struct.hpp"
 #include "marvelmind_ros2_msgs/srv/detail/marvelmind_api__builder.hpp"
 #include "marvelmind_ros2_msgs/srv/detail/marvelmind_api__traits.hpp"
+#include "marvelmind_ros2_msgs/srv/detail/marvelmind_api__type_support.hpp"
 
 #endif  // MARVELMIND_ROS2_MSGS__SRV__MARVELMIND_API_HPP_

@@ -7,5 +7,6 @@
 #include "marvelmind_ros2_msgs/msg/detail/hedge_quality__struct.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/hedge_quality__builder.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/hedge_quality__traits.hpp"
+#include "marvelmind_ros2_msgs/msg/detail/hedge_quality__type_support.hpp"
 
 #endif  // MARVELMIND_ROS2_MSGS__MSG__HEDGE_QUALITY_HPP_

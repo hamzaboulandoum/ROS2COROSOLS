@@ -7,5 +7,6 @@
 #include "marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__struct.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__builder.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__traits.hpp"
+#include "marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__type_support.hpp"
 
 #endif  // MARVELMIND_ROS2_MSGS__MSG__MARVELMIND_WAYPOINT_HPP_

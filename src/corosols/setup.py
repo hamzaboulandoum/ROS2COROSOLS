@@ -28,7 +28,9 @@ setup(
             'serial = corosols.serial_read:main',
             'pose_broadcaster = corosols.pose_broadcaster:main',            
             'input_client = corosols.user_input_client:main',
-            'robot_speeds = corosols.robot_speeds:main',           
+            'robot_speeds = corosols.robot_speeds:main',
+            'imu_broadcaster = corosols.imu_broadcaster:main',  
+            'station_connector = corosols.geocom',         
         ],
     },
 )

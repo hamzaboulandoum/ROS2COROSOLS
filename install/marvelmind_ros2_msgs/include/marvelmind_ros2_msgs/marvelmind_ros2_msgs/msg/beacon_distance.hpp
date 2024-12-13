@@ -7,5 +7,6 @@
 #include "marvelmind_ros2_msgs/msg/detail/beacon_distance__struct.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/beacon_distance__builder.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/beacon_distance__traits.hpp"
+#include "marvelmind_ros2_msgs/msg/detail/beacon_distance__type_support.hpp"
 
 #endif  // MARVELMIND_ROS2_MSGS__MSG__BEACON_DISTANCE_HPP_

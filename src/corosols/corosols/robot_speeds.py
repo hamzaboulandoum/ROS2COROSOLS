@@ -14,10 +14,9 @@ import threading
 import rclpy
 from rclpy.node import Node
 from nav_msgs.msg import Odometry
+from std_msgs.msg import String
 from custom_interfaces.msg import SerialData
 from custom_interfaces.srv import Commands
-from action_tutorials_interfaces.action import Position
-from rclpy.action import ActionServer
 import serial
 import csv 
 import matplotlib
@@ -189,14 +188,20 @@ def minn(a,b):
 class RobotSpeed(Node):
     def __init__(self):
         super().__init__('robot_speed')
-        
+        self.x_offset = 0
+        self.y_offset = 0
+        self.x_reverse = 1
+        self.y_reverse = 1
         # Create a command client to communicate with serial
-        
+        self.station_status = False 
+        self.prism_status = False 
         self.odom_subscription = self.create_subscription(
             Odometry, 'odom', self.odom_listener, 1)
         self.robot_data_subscription  = self.create_subscription(
             SerialData, 'robot_data', self.robot_data_listener, 1)
-        
+        self.parameters_publisher = self.create_publisher(String, 'robot_params', 10)
+        self.parameters_subscription = self.create_subscription(String, 'robot_params', self.params_listener, 10)
+
         self.command_cli = self.create_client(Commands, 'commands')
         while not self.command_cli.wait_for_service(timeout_sec = 1.0):
             self.get_logger().info('service not available, waiting again...')
@@ -207,6 +212,17 @@ class RobotSpeed(Node):
         self.odoData = Odometry()
         self.robot_data = SerialData()
         
+    def params_listener(self,msg):
+        data = msg.data
+        params = data.split(';')
+        if params[0] == 'Station_status':
+            if params[1] == '1':
+                self.station_status = True
+                self.prism_status = True
+            elif params[1] == '0':
+                self.station_status = False
+            elif params[1] == 'E1':
+                self.prism_status = False
         
     def odom_listener(self,msg):
         self.odoData = msg
@@ -224,7 +240,7 @@ class RobotSpeed(Node):
             
             pass
     def getOdoData(self):
-        return np.array([self.odoData.pose.pose.position.x,self.odoData.pose.pose.position.y])
+        return np.array([self.x_reverse*(self.odoData.pose.pose.position.x-self.x_offset),self.y_reverse*(self.odoData.pose.pose.position.y-self.y_offset)])
         
 def rclspin(node):
     try:
@@ -243,7 +259,8 @@ class RobotControlUI(tk.Tk):
         self.is_paused = True
         self.file_selected = True
         self.init_pos = False
-
+        self.station_status = tk.BooleanVar(value=False)
+        self.station_status.trace_add('write', self.update_station_button)
         # Initialize parameters
         self.point_factor = tk.DoubleVar(value=1000)
         self.max_speed = tk.DoubleVar(value=0.1)
@@ -299,17 +316,40 @@ class RobotControlUI(tk.Tk):
         style.configure('TEntry', fieldbackground='#2d2d2d', foreground='#ffffff')
         style.configure('TLabel', background='#1e1e1e', foreground='#ffffff')
 
-        # Create main frame
+        
+
+        station_frame = ttk.Frame(self)
+        station_frame.pack(side=tk.TOP, fill=tk.X, padx=10)
+        ttk.Label(station_frame, text="Station IP:").pack(side=tk.LEFT)
+        self.station_ip = tk.StringVar(value='10.27.212.64')
+        ttk.Entry(station_frame, textvariable=self.station_ip, width=15).pack(side=tk.LEFT)
+        ttk.Label(station_frame, text="Port:").pack(side=tk.LEFT)
+        self.station_port = tk.StringVar(value='1212')
+        ttk.Entry(station_frame, textvariable=self.station_port, width=5).pack(side=tk.LEFT)
+        self.station_conn_button = ttk.Button(station_frame, text="Connect", command=self.connect_to_station)
+        self.station_conn_button.pack(side=tk.LEFT, padx=5)
+        self.reset_origin_button = ttk.Button(station_frame, text="Reset Origin", command=self.reset_origin)
+        self.reset_origin_button.pack(side=tk.LEFT, padx=10)
+        self.default_origin_button = ttk.Button(station_frame, text="Default Origin", command=self.default_origin)
+        self.default_origin_button.pack(side=tk.LEFT, padx=10)
+        self.reverse_x_button = ttk.Button(station_frame, text="Reverse X", command=self.reverse_x)
+        self.reverse_x_button.pack(side=tk.LEFT, padx=10)
+        self.reverse_y_button = ttk.Button(station_frame, text="Reverse Y", command=self.reverse_y)
+        self.reverse_y_button.pack(side=tk.LEFT, padx=10)
+        self.default_orientation_button = ttk.Button(station_frame, text="Default Orientation", command=self.default_orientation)
+        self.default_orientation_button.pack(side=tk.LEFT, padx=10)
+        #  Create main frame
         main_frame = ttk.Frame(self)
         main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-
         # Create and pack the matplotlib figure
         self.fig, self.ax = plt.subplots(figsize=(8, 6))
         self.fig.patch.set_facecolor('#1e1e1e')
         self.ax.set_facecolor('#2d2d2d')
         self.canvas = FigureCanvasTkAgg(self.fig, master=main_frame)
         self.canvas.draw()
-        self.canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH,expand=True)
+
+        
 
         # Create frame for controls and data display
         control_frame = ttk.Frame(main_frame)
@@ -348,7 +388,47 @@ class RobotControlUI(tk.Tk):
 
         # Create labels for displaying values
         self.create_info_labels(control_frame)
+    
+    def reset_origin(self):
+        self.robot_speed.x_offset = self.robot_speed.odoData.pose.pose.position.x
+        self.robot_speed.y_offset = self.robot_speed.odoData.pose.pose.position.y
+    def default_origin(self):
+        self.robot_speed.x_offset = 0
+        self.robot_speed.y_offset = 0
+    def reverse_x(self):
+        self.robot_speed.x_reverse = -self.robot_speed.x_reverse
+        if self.robot_speed.x_reverse == -1:
+            self.reverse_x_button.config(text="X reversed")
+        else:
+            self.reverse_x_button.config(text="Reverse X")
 
+    def reverse_y(self):
+        self.robot_speed.y_reverse = -self.robot_speed.y_reverse
+        if self.robot_speed.y_reverse == -1:
+            self.reverse_y_button.config(text="Y reversed")
+        else:
+            self.reverse_y_button.config(text="Reverse Y")
+    def default_orientation(self):
+        self.robot_speed.x_reverse = 1
+        self.robot_speed.y_reverse = 1
+        self.reverse_x_button.config(text="Reverse X")
+        self.reverse_y_button.config(text="Reverse Y")
+    def connect_to_station(self):
+        msg = String()
+        msg.data = f"ip;{self.station_ip.get()}"
+        self.robot_speed.parameters_publisher.publish(msg)
+        msg.data = f"port;{self.station_port.get()}"
+        self.robot_speed.parameters_publisher.publish(msg)
+        msg.data = "Connect_to_station"
+        self.robot_speed.parameters_publisher.publish(msg)
+    
+    def update_station_button(self, *args):
+        if self.station_status.get():
+            self.station_conn_button.config(text="Connected")
+            self.station_conn_button.config(state=tk.DISABLED)
+        else:
+            self.station_conn_button.config(text="Connect")
+            self.station_conn_button.config(state=tk.NORMAL)
     def airbrush_activation(self):
         if self.simulator.airbrush_acivation:
             self.airbrush_activation_button.config(text="Activate Airbrush")
@@ -583,9 +663,14 @@ class RobotControlUI(tk.Tk):
         for key, label in self.robot_data_labels.items():
             value = getattr(self.robot_speed.robot_data, key, 0.0)
             label.config(text=f"{value:.3f}")
-        
+
         # Update other labels
-        robot_pos = self.simulator.robot_pos if self.simulator else (0, 0)
+        self.station_status.set(self.robot_speed.station_status)
+        if not self.robot_speed.prism_status or not self.robot_speed.station_status:
+            self.pause_simulation()
+        
+        self.robot_speed.getOdoData()
+        robot_pos = self.robot_speed.getOdoData()
         self.robot_pos_label.config(text=f"({robot_pos[0]:.2f}, {robot_pos[1]:.2f})")
         
         airbrush_pos = self.simulator.airbrush_pos if self.simulator else (0, 0)
@@ -771,8 +856,6 @@ def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_s
     path_length = np.linalg.norm(path_vector)
     
     if path_length < 1e-6:
-        if logger:
-            logger.warning("Path segment too short")
         return np.zeros(2)
     
     path_direction = path_vector / path_length
@@ -789,12 +872,7 @@ def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_s
     direction_alignment = np.dot(path_direction, to_target / to_target_length) if to_target_length > 1e-6 else 1.0
     
     # If we're headed in significantly wrong direction, adjust path direction
-    if direction_alignment < -0.5:  # threshold can be adjusted
-        path_direction = -path_direction
-        # Recalculate relative position with new direction
-        relative_pos = current_pos - target_pos
-    else:
-        relative_pos = current_pos - prev_target_pos
+    relative_pos = current_pos - prev_target_pos
     
     # Calculate perpendicular vector to path (right-hand normal)
     perpendicular_direction = np.array([-path_direction[1], path_direction[0]])

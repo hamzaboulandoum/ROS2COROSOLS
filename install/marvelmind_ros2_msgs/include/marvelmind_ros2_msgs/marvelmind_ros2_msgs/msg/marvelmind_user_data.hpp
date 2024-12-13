@@ -7,5 +7,6 @@
 #include "marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__struct.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__builder.hpp"
 #include "marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__traits.hpp"
+#include "marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__type_support.hpp"
 
 #endif  // MARVELMIND_ROS2_MSGS__MSG__MARVELMIND_USER_DATA_HPP_
