@@ -21,7 +21,7 @@ class SerialDataPublisher(Node):
         self.TYPE_SYS_STATE = '50'
         
         self.FRAME_LENGTHS = {
-            self.TYPE_IMU: 0x56,          # 86 bytes
+            self.TYPE_IMU: 0x38,          # 86 bytes
             self.TYPE_AHRS: 0x30,         # 48 bytes
             self.TYPE_INSGPS: 0x48,       # 72 bytes
             self.TYPE_GEODETIC_POS: 0x20, # 32 bytes
@@ -112,20 +112,20 @@ class SerialDataPublisher(Node):
     def process_imu_data(self, data):
         """Process IMU data frame and publish to ROS topic"""
         try:
-            self.imu_data.gyroscope_x = struct.unpack('f', data[0:4])[0]
+            '''self.imu_data.gyroscope_x = struct.unpack('f', data[0:4])[0]
             self.imu_data.gyroscope_y = struct.unpack('f', data[4:8])[0]
-            self.imu_data.gyroscope_z = struct.unpack('f', data[8:12])[0]
+            self.imu_data.gyroscope_z = struct.unpack('f', data[8:12])[0]'''
             self.imu_data.accelerometer_x = struct.unpack('f', data[12:16])[0]
             self.imu_data.accelerometer_y = struct.unpack('f', data[16:20])[0]
             self.imu_data.accelerometer_z = struct.unpack('f', data[20:24])[0]
-            self.imu_data.magnetometer_x = struct.unpack('f', data[24:28])[0]
+            '''self.imu_data.magnetometer_x = struct.unpack('f', data[24:28])[0]
             self.imu_data.magnetometer_y = struct.unpack('f', data[28:32])[0]
             self.imu_data.magnetometer_z = struct.unpack('f', data[32:36])[0]
             
             # Additional IMU data logging
             self.imu_data.temperature = struct.unpack('f', data[36:40])[0]
             self.imu_data.pressure = struct.unpack('f', data[40:44])[0]
-            self.imu_data.pressure_temp = struct.unpack('f', data[44:48])[0]
+            self.imu_data.pressure_temp = struct.unpack('f', data[44:48])[0]'''
             self.imu_data.timestamp = struct.unpack('i', data[48:52])[0]
             
             
@@ -137,18 +137,17 @@ class SerialDataPublisher(Node):
     def process_ahrs_data(self, data):
         """Process AHRS data frame"""
         try:
-            self.imu_data.roll_speed = struct.unpack('f', data[0:4])[0]
+            '''self.imu_data.roll_speed = struct.unpack('f', data[0:4])[0]
             self.imu_data.pitch_speed = struct.unpack('f', data[4:8])[0]
-            self.imu_data.heading_speed = struct.unpack('f', data[8:12])[0]
+            self.imu_data.heading_speed = struct.unpack('f', data[8:12])[0]'''
             self.imu_data.roll = struct.unpack('f', data[12:16])[0]
             self.imu_data.pitch = struct.unpack('f', data[16:20])[0]
             self.imu_data.heading = struct.unpack('f', data[20:24])[0]
-            self.imu_data.q1 = struct.unpack('f', data[24:28])[0]
+            '''self.imu_data.q1 = struct.unpack('f', data[24:28])[0]
             self.imu_data.q2 = struct.unpack('f', data[28:32])[0]
             self.imu_data.q3 = struct.unpack('f', data[32:36])[0]
-            self.imu_data.q4 = struct.unpack('f', data[36:40])[0]
+            self.imu_data.q4 = struct.unpack('f', data[36:40])[0]'''
             self.publisher_.publish(self.imu_data)
-            
         except struct.error as e:
             self.get_logger().error(f"Error unpacking AHRS data: {e}")
 

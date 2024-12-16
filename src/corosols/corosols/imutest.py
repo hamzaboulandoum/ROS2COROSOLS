@@ -14,7 +14,7 @@ class SerialDataPublisher(Node):
         
         # Constants for frame parsing
         self.FRAME_HEAD = 'fc'
-        self.TYPE_IMU = '61'
+        self.TYPE_IMU = '40'
         self.TYPE_AHRS = '41'
         self.TYPE_INSGPS = '42'
         self.TYPE_GEODETIC_POS = '5c'

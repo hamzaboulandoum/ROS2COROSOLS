@@ -338,6 +338,11 @@ class RobotControlUI(tk.Tk):
         self.reverse_y_button.pack(side=tk.LEFT, padx=10)
         self.default_orientation_button = ttk.Button(station_frame, text="Default Orientation", command=self.default_orientation)
         self.default_orientation_button.pack(side=tk.LEFT, padx=10)
+
+        self.reset_angles_button = ttk.Button(station_frame, text="Reset angles", command=self.reset_angles)
+        self.reset_angles_button.pack(side=tk.LEFT, padx=10)
+        self.default_angles_button = ttk.Button(station_frame, text="Default angles", command=self.default_angles)
+        self.default_angles_button.pack(side=tk.LEFT, padx=10)
         #  Create main frame
         main_frame = ttk.Frame(self)
         main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
@@ -388,7 +393,14 @@ class RobotControlUI(tk.Tk):
 
         # Create labels for displaying values
         self.create_info_labels(control_frame)
-    
+    def reset_angles(self):
+        msg = String()
+        msg.data = "angles_offset;1"
+        self.robot_speed.parameters_publisher.publish(msg)
+    def default_angles(self):
+        msg = String()
+        msg.data = "angles_offset;0"
+        self.robot_speed.parameters_publisher.publish(msg)
     def reset_origin(self):
         self.robot_speed.x_offset = self.robot_speed.odoData.pose.pose.position.x
         self.robot_speed.y_offset = self.robot_speed.odoData.pose.pose.position.y
@@ -487,9 +499,17 @@ class RobotControlUI(tk.Tk):
         ttk.Label(robot_data_frame, text="Robot Data:", font=('Helvetica', 12, 'bold')).pack(anchor='w', padx=5, pady=5)
         
         self.robot_data_labels = {}
-        for data in ['x_speed', 'y_speed', 'z_speed', 'x_accel', 'y_accel', 'z_accel', 
-                     'x_gyro', 'y_gyro', 'z_gyro', 'power_voltage', 'stepper_x', 'stepper_y']:
+        for data in ['power_voltage', 'stepper_x', 'stepper_y']:
             _, self.robot_data_labels[data] = self.create_styled_label(robot_data_frame, f"{data.replace('_', ' ').title()}:")
+        
+        imu_data_frame = ttk.Frame(info_frame)
+        imu_data_frame.pack(fill=tk.X, pady=10)
+        
+        ttk.Label(imu_data_frame, text="IMU Data:", font=('Helvetica', 12, 'bold')).pack(anchor='w', padx=5, pady=5)
+
+        self.imu_data_labels = {}
+        for data in ['roll', 'pitch', 'heading', 'X speed', 'Y speed', 'Z speed']:
+            _, self.imu_data_labels[data] = self.create_styled_label(imu_data_frame, f"{data.replace('_', ' ').title()}:")
 
     def browse_file(self):
         filename = filedialog.askopenfilename(filetypes=[("G-code files", "*.txt"), ("All files", "*.*")],initialdir=os.path.abspath('src/corosols/corosols/gcode'))
@@ -663,6 +683,21 @@ class RobotControlUI(tk.Tk):
         for key, label in self.robot_data_labels.items():
             value = getattr(self.robot_speed.robot_data, key, 0.0)
             label.config(text=f"{value:.3f}")
+
+        X_speed = self.robot_speed.odoData.twist.twist.linear.x
+        Y_speed = self.robot_speed.odoData.twist.twist.linear.y
+        Z_speed = self.robot_speed.odoData.twist.twist.linear.z
+
+        self.imu_data_labels['X speed'].config(text=f"{X_speed:.3f}")
+        self.imu_data_labels['Y speed'].config(text=f"{Y_speed:.3f}")
+        self.imu_data_labels['Z speed'].config(text=f"{Z_speed:.3f}")
+
+        roll = self.robot_speed.odoData.pose.pose.orientation.x
+        pitch = self.robot_speed.odoData.pose.pose.orientation.y
+        heading = self.robot_speed.odoData.pose.pose.orientation.z
+        self.imu_data_labels['roll'].config(text=f"{roll:.3f}")
+        self.imu_data_labels['pitch'].config(text=f"{pitch:.3f}")
+        self.imu_data_labels['heading'].config(text=f"{heading:.3f}")
 
         # Update other labels
         self.station_status.set(self.robot_speed.station_status)

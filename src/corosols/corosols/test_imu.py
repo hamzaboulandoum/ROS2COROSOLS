@@ -43,7 +43,7 @@ isrun = True
 def parse_opt(known=False):
     parser = argparse.ArgumentParser()
     # parser.add_argument('--debugs', type=bool, default=False, help='if debug info output in terminal ')
-    parser.add_argument('--port', type=str, default='/dev/ttyACM0', help='the models serial port receive data; example: '
+    parser.add_argument('--port', type=str, default='/dev/ttyACM1', help='the models serial port receive data; example: '
                                                                  '    Windows: COM3'
                                                                  '    Linux: /dev/ttyUSB0')
 
@@ -122,7 +122,7 @@ def receive_data():
             # print("IMU_Temperature : " + str(struct.unpack('f', data_s[36:40])[0]))
             # print("Pressure : " + str(struct.unpack('f', data_s[40:44])[0]))
             # print("Pressure_Temperature : " + str(struct.unpack('f', data_s[44:48])[0]))
-            # print("Timestamp(us) : " + str(struct.unpack('ii', data_s[48:56])[0]))
+            print("Timestamp(us) : " + str(struct.unpack('ii', data_s[48:56])[0]))
         # 读取并解析AHRS数据
         elif head_type == TYPE_AHRS:
             data_s = serial_.read(int(AHRS_LEN, 16))

@@ -10,7 +10,6 @@ from geometry_msgs.msg import TransformStamped
 import math
 import numpy as np
 from custom_interfaces.msg import ImuData
-import math
 import socket
 
 # Global transaction ID for GeoCOM requests
@@ -50,17 +49,28 @@ class tf2_broadcaster(Node):
         self.tf_static_broadcaster = StaticTransformBroadcaster(self)
         
         self.odom_publisher = self.create_publisher(Odometry, 'odom', 10)
-        #self.subscription = self.create_subscription(SerialData,'robot_data',self.listener_callback,10)
+        self.subscription = self.create_subscription(ImuData,'imu_data',self.imu_callback,10)
         timer_period = 0.05  # seconds        
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer = self.create_timer(timer_period, self.station_callback)
 
         self.params = self.create_subscription(String,'robot_params',self.params_listener,10)
         self.parameters_publisher = self.create_publisher(String, 'robot_params', 10)
-
+        self.Odom = Odometry()
         self.x=0
         self.y=0
         self.z=0
+
+        self.roll_offset = 0
+        self.pitch_offset = 0
+        self.heading_offset = 0
+
+        self.x_accel = 0
+        self.y_accel = 0
+        self.z_accel = 0
+
         self.timestamp = self.get_clock().now().to_msg()
+        self.imu_timestamp = None
+
     def params_listener(self,msg):
         data = msg.data
         params = data.split(';')
@@ -70,8 +80,16 @@ class tf2_broadcaster(Node):
             self.port = int(params[1])
         elif params[0] == 'Connect_to_station':
             self.connect_to_station()
-    def timer_callback(self):
-        Odom = Odometry()
+        elif params[0] == 'angles_offset':
+            if params[1] =='1':
+                self.roll_offset = self.Odom.pose.pose.orientation.x 
+                self.pitch_offset = self.Odom.pose.pose.orientation.y
+                self.heading_offset = self.Odom.pose.pose.orientation.z
+            else :
+                self.roll_offset = 0
+                self.pitch_offset = 0
+                self.heading_offset = 0
+    def station_callback(self):
         if self.station_socket:
             response  = self.getposition()
             if response:
@@ -83,71 +101,89 @@ class tf2_broadcaster(Node):
             self.z = z
             self.timestamp = self.get_clock().now().to_msg()
         
-            Odom.header = Header()
-            Odom.header.stamp = self.get_clock().now().to_msg()
-            Odom.header.frame_id = 'odom'
+            self.Odom.header = Header()
+            self.Odom.header.stamp = self.get_clock().now().to_msg()
+            self.Odom.header.frame_id = 'odom'
             
-            
-            odom_quat = quaternion_from_euler(0, 0, self.z)
             
             # we can change the postion with the postion from the marvel mind device 
-            Odom.pose.pose.position.x = self.x 
-            Odom.pose.pose.position.y = self.y
-            Odom.pose.pose.position.z = self.z
-            Odom.pose.pose.orientation.x = odom_quat[0]
-            Odom.pose.pose.orientation.y = odom_quat[1]
-            Odom.pose.pose.orientation.z = odom_quat[2]
-            Odom.pose.pose.orientation.w = odom_quat[3]
+            self.Odom.pose.pose.position.x = self.x 
+            self.Odom.pose.pose.position.y = self.y
+            self.Odom.pose.pose.position.z = self.z
+
+            self.odom_publisher.publish(self.Odom)
             
-            Odom.child_frame_id = 'base_link'
-            Odom.twist.twist = Twist()
-            Odom.twist.twist.linear.x = 0.0 #speed X 
-            Odom.twist.twist.linear.y = 0.0 #speed X 
-            Odom.twist.twist.angular.z = 0.0 #angular speed
-            
-            self.odom_publisher.publish(Odom)
         else :
             self.parameters_publisher.publish(String(data='Station_status;0'))
     
-    def listener_callback(self, msg):
+    def imu_callback(self, msg):
         
-        Odom = Odometry()
+        if not self.imu_timestamp :
+            self.imu_timestamp = msg.timestamp
+
+        delta_time = float(msg.timestamp - self.imu_timestamp)*10**-6
         
-        delta_time = float(self.get_clock().now().to_msg().sec - self.timestamp.sec)
-        delta_time +=  (self.get_clock().now().to_msg().nanosec - self.timestamp.nanosec)*10**-9
+        self.imu_timestamp = msg.timestamp
+
+
+        self.x_accel, self.y_accel, self.z_accel = self.transform_acceleration(msg.accelerometer_x, msg.accelerometer_y, msg.accelerometer_z, msg.roll, msg.pitch, msg.heading)
         
-            
-        self.x += -msg.y_speed*(delta_time)
-        self.y += msg.x_speed*(delta_time)
-        self.z += msg.z_speed*(delta_time)
+        self.Odom.twist.twist.linear.x = self.x_accel*(delta_time) #speed X
+        self.Odom.twist.twist.linear.y = self.y_accel*(delta_time) #speed Y
+        self.Odom.twist.twist.linear.z = self.z_accel*(delta_time)
+        
+        self.Odom.pose.pose.orientation.x = msg.roll - self.roll_offset
+        self.Odom.pose.pose.orientation.y = msg.pitch - self.pitch_offset
+        self.Odom.pose.pose.orientation.z = msg.heading - self.heading_offset
+
         
         
-        self.timestamp = self.get_clock().now().to_msg()
-        
-        Odom.header = Header()
-        Odom.header.stamp = self.get_clock().now().to_msg()
-        Odom.header.frame_id = 'odom'
-        
-        
-        odom_quat = quaternion_from_euler(0, 0, self.z)
-        
-        # we can change the postion with the postion from the marvel mind device 
-        Odom.pose.pose.position.x = self.x 
-        Odom.pose.pose.position.y = self.y
-        Odom.pose.pose.position.z = self.z
-        Odom.pose.pose.orientation.x = odom_quat[0]
-        Odom.pose.pose.orientation.y = odom_quat[1]
-        Odom.pose.pose.orientation.z = odom_quat[2]
-        Odom.pose.pose.orientation.w = odom_quat[3]
-        
-        Odom.child_frame_id = 'base_link'
-        Odom.twist.twist = Twist()
-        Odom.twist.twist.linear.x = -msg.y_speed
-        Odom.twist.twist.linear.y = msg.x_speed
-        Odom.twist.twist.angular.z = msg.z_gyro
-        
-        self.odom_publisher.publish(Odom)
-        #self.get_logger().info(f'Publishing: \n x= {Odom.pose.pose.position.x}  vx = {msg.x_speed} \n y= {Odom.pose.pose.position.y}  vy = {msg.y_speed} \n z= {Odom.pose.pose.position.z}  vz = {msg.z_speed}')
+        self.odom_publisher.publish(self.Odom)
+
+    def transform_acceleration(self, raw_x, raw_y, raw_z, roll, pitch, heading):
+        """
+        Transforms raw acceleration values to actual acceleration values using roll, pitch, and heading.
+
+        Args:
+            raw_x (float): Raw acceleration along the X-axis in the body frame.
+            raw_y (float): Raw acceleration along the Y-axis in the body frame.
+            raw_z (float): Raw acceleration along the Z-axis in the body frame.
+            roll (float): Roll angle in radians.
+            pitch (float): Pitch angle in radians.
+            heading (float): Heading (yaw) angle in radians.
+
+        Returns:
+            (tuple): Transformed acceleration values in the global frame (x, y, z).
+        """
+        # Rotation matrices
+        R_roll = np.array([
+            [1, 0, 0],
+            [0, math.cos(roll), -math.sin(roll)],
+            [0, math.sin(roll), math.cos(roll)]
+        ])
+
+        R_pitch = np.array([
+            [math.cos(pitch), 0, math.sin(pitch)],
+            [0, 1, 0],
+            [-math.sin(pitch), 0, math.cos(pitch)]
+        ])
+
+        R_heading = np.array([
+            [math.cos(heading), -math.sin(heading), 0],
+            [math.sin(heading), math.cos(heading), 0],
+            [0, 0, 1]
+        ])
+
+        # Combined rotation matrix (Z * Y * X order)
+        R = R_heading @ R_pitch @ R_roll
+
+        # Raw acceleration vector in the body frame
+        raw_accel = np.array([raw_x, raw_y, raw_z])
+
+        # Transform to global frame
+        global_accel = R @ raw_accel
+
+        return global_accel[0], global_accel[1], global_accel[2]
     def connect_to_station(self, timeout=5):
         """
         Establish a TCP/IP connection to the Leica TS13 station.

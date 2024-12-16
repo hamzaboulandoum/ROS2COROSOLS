@@ -1,0 +1,479 @@
+[0.521s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.521s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7576dca46500>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7576dca45660>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7576dca45660>>, mixin_verb=('build',))
+[1.209s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.209s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.209s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.209s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.209s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.209s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.209s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/youssef/COROSOLS_WS'
+[1.209s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.229s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.229s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.229s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.230s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.230s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.230s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.230s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.230s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.230s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.230s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.231s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ignore'
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ignore_ament_install'
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['colcon_pkg']
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'colcon_pkg'
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['colcon_meta']
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'colcon_meta'
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['ros']
+[1.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ros'
+[1.237s] DEBUG:colcon.colcon_core.package_identification:Package 'src/action_tutorials_interfaces' with type 'ros.ament_cmake' and name 'action_tutorials_interfaces'
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extensions ['ignore', 'ignore_ament_install']
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'ignore'
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'ignore_ament_install'
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extensions ['colcon_pkg']
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'colcon_pkg'
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extensions ['colcon_meta']
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'colcon_meta'
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extensions ['ros']
+[1.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/corosols) by extension 'ros'
+[1.239s] DEBUG:colcon.colcon_core.package_identification:Package 'src/corosols' with type 'ros.ament_python' and name 'corosols'
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ignore'
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ignore_ament_install'
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['colcon_pkg']
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'colcon_pkg'
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['colcon_meta']
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'colcon_meta'
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['ros']
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ros'
+[1.240s] DEBUG:colcon.colcon_core.package_identification:Package 'src/custom_interfaces' with type 'ros.ament_cmake' and name 'custom_interfaces'
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extensions ['ignore', 'ignore_ament_install']
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extension 'ignore'
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extension 'ignore_ament_install'
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extensions ['colcon_pkg']
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extension 'colcon_pkg'
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extensions ['colcon_meta']
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extension 'colcon_meta'
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extensions ['ros']
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_msgs_upstream-main) by extension 'ros'
+[1.242s] DEBUG:colcon.colcon_core.package_identification:Package 'src/marvelmind_ros2_msgs_upstream-main' with type 'ros.ament_cmake' and name 'marvelmind_ros2_msgs'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extensions ['ignore', 'ignore_ament_install']
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extension 'ignore'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extension 'ignore_ament_install'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extensions ['colcon_pkg']
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extension 'colcon_pkg'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extensions ['colcon_meta']
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extension 'colcon_meta'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extensions ['ros']
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/marvelmind_ros2_upstream-main) by extension 'ros'
+[1.245s] DEBUG:colcon.colcon_core.package_identification:Package 'src/marvelmind_ros2_upstream-main' with type 'ros.ament_cmake' and name 'marvelmind_ros2'
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extensions ['ignore', 'ignore_ament_install']
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'ignore'
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'ignore_ament_install'
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extensions ['colcon_pkg']
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'colcon_pkg'
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extensions ['colcon_meta']
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'colcon_meta'
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extensions ['ros']
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'ros'
+[1.247s] DEBUG:colcon.colcon_core.package_identification:Package 'src/sllidar_ros2' with type 'ros.ament_cmake' and name 'sllidar_ros2'
+[1.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.295s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.295s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.299s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 270 installed packages in /opt/ros/humble
+[1.301s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.353s] WARNING:colcon.colcon_core.package_selection:Some selected packages are already built in one or more underlay workspaces:
+	'action_tutorials_interfaces' is in: /opt/ros/humble
+If a package in a merged underlay workspace is overridden and it installs headers, then all packages in the overlay must sort their include directories by workspace order. Failure to do so may result in build failures or undefined behavior at run time.
+If the overridden package is used by another package in any underlay, then the overriding package in the overlay must be API and ABI compatible or undefined behavior at run time may occur.
+
+If you understand the risks and want to override a package anyways, add the following to the command line:
+	--allow-overriding action_tutorials_interfaces
+
+This may be promoted to an error in a future release of colcon-override-check.
+[1.354s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_args' from command line to 'None'
+[1.354s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_target' from command line to 'None'
+[1.354s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.354s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[1.354s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[1.354s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[1.354s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[1.354s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[1.355s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.355s] DEBUG:colcon.colcon_core.verb:Building package 'action_tutorials_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces', 'merge_install': False, 'path': '/home/youssef/COROSOLS_WS/src/action_tutorials_interfaces', 'symlink_install': False, 'test_result_base': None}
+[1.355s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_args' from command line to 'None'
+[1.355s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_target' from command line to 'None'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'custom_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.356s] DEBUG:colcon.colcon_core.verb:Building package 'custom_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/youssef/COROSOLS_WS/build/custom_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/youssef/COROSOLS_WS/install/custom_interfaces', 'merge_install': False, 'path': '/home/youssef/COROSOLS_WS/src/custom_interfaces', 'symlink_install': False, 'test_result_base': None}
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'cmake_args' from command line to 'None'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'cmake_target' from command line to 'None'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.357s] DEBUG:colcon.colcon_core.verb:Building package 'marvelmind_ros2_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs', 'merge_install': False, 'path': '/home/youssef/COROSOLS_WS/src/marvelmind_ros2_msgs_upstream-main', 'symlink_install': False, 'test_result_base': None}
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_args' from command line to 'None'
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_target' from command line to 'None'
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_clean_cache' from command line to 'False'
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_clean_first' from command line to 'False'
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_force_configure' from command line to 'False'
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'ament_cmake_args' from command line to 'None'
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'catkin_cmake_args' from command line to 'None'
+[1.358s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.358s] DEBUG:colcon.colcon_core.verb:Building package 'sllidar_ros2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/youssef/COROSOLS_WS/build/sllidar_ros2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/youssef/COROSOLS_WS/install/sllidar_ros2', 'merge_install': False, 'path': '/home/youssef/COROSOLS_WS/src/sllidar_ros2', 'symlink_install': False, 'test_result_base': None}
+[1.359s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_args' from command line to 'None'
+[1.359s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_target' from command line to 'None'
+[1.359s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.359s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_clean_cache' from command line to 'False'
+[1.359s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_clean_first' from command line to 'False'
+[1.359s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'cmake_force_configure' from command line to 'False'
+[1.359s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'ament_cmake_args' from command line to 'None'
+[1.359s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'catkin_cmake_args' from command line to 'None'
+[1.360s] Level 5:colcon.colcon_core.verb:set package 'corosols' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.360s] DEBUG:colcon.colcon_core.verb:Building package 'corosols' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/youssef/COROSOLS_WS/build/corosols', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/youssef/COROSOLS_WS/install/corosols', 'merge_install': False, 'path': '/home/youssef/COROSOLS_WS/src/corosols', 'symlink_install': False, 'test_result_base': None}
+[1.360s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'cmake_args' from command line to 'None'
+[1.361s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'cmake_target' from command line to 'None'
+[1.361s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.361s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'cmake_clean_cache' from command line to 'False'
+[1.361s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'cmake_clean_first' from command line to 'False'
+[1.361s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'cmake_force_configure' from command line to 'False'
+[1.361s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'ament_cmake_args' from command line to 'None'
+[1.361s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'catkin_cmake_args' from command line to 'None'
+[1.361s] Level 5:colcon.colcon_core.verb:set package 'marvelmind_ros2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.361s] DEBUG:colcon.colcon_core.verb:Building package 'marvelmind_ros2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/youssef/COROSOLS_WS/build/marvelmind_ros2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/youssef/COROSOLS_WS/install/marvelmind_ros2', 'merge_install': False, 'path': '/home/youssef/COROSOLS_WS/src/marvelmind_ros2_upstream-main', 'symlink_install': False, 'test_result_base': None}
+[1.361s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.363s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.364s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/youssef/COROSOLS_WS/src/action_tutorials_interfaces' with build type 'ament_cmake'
+[1.364s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/youssef/COROSOLS_WS/src/action_tutorials_interfaces'
+[1.369s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.369s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.370s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.375s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/youssef/COROSOLS_WS/src/custom_interfaces' with build type 'ament_cmake'
+[1.375s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/youssef/COROSOLS_WS/src/custom_interfaces'
+[1.376s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.376s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.381s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/youssef/COROSOLS_WS/src/marvelmind_ros2_msgs_upstream-main' with build type 'ament_cmake'
+[1.381s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/youssef/COROSOLS_WS/src/marvelmind_ros2_msgs_upstream-main'
+[1.382s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.382s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.389s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/youssef/COROSOLS_WS/src/sllidar_ros2' with build type 'ament_cmake'
+[1.389s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/youssef/COROSOLS_WS/src/sllidar_ros2'
+[1.390s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.391s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.407s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/action_tutorials_interfaces -- -j8 -l8
+[1.421s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/custom_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/custom_interfaces -- -j8 -l8
+[1.434s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs -- -j8 -l8
+[1.443s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/sllidar_ros2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/sllidar_ros2 -- -j8 -l8
+[1.863s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/sllidar_ros2' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/sllidar_ros2 -- -j8 -l8
+[1.895s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/sllidar_ros2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/sllidar_ros2
+[1.946s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sllidar_ros2)
+[1.948s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/sllidar_ros2' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/sllidar_ros2
+[1.955s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2' for CMake module files
+[1.957s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2' for CMake config files
+[1.958s] Level 1:colcon.colcon_core.shell:create_environment_hook('sllidar_ros2', 'cmake_prefix_path')
+[1.958s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.ps1'
+[1.961s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.dsv'
+[1.962s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.sh'
+[1.964s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/lib'
+[1.965s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/bin'
+[1.965s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/lib/pkgconfig/sllidar_ros2.pc'
+[1.966s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/lib/python3.10/site-packages'
+[1.966s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/bin'
+[1.967s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.ps1'
+[1.970s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.dsv'
+[1.972s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.sh'
+[1.976s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.bash'
+[1.980s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.zsh'
+[1.983s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/colcon-core/packages/sllidar_ros2)
+[1.985s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sllidar_ros2)
+[1.985s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2' for CMake module files
+[1.987s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2' for CMake config files
+[1.988s] Level 1:colcon.colcon_core.shell:create_environment_hook('sllidar_ros2', 'cmake_prefix_path')
+[1.989s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.ps1'
+[1.990s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.dsv'
+[1.991s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.sh'
+[1.997s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/lib'
+[1.997s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/bin'
+[1.997s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/lib/pkgconfig/sllidar_ros2.pc'
+[1.998s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/lib/python3.10/site-packages'
+[1.998s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/sllidar_ros2/bin'
+[1.999s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.ps1'
+[2.004s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.dsv'
+[2.005s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.sh'
+[2.008s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.bash'
+[2.009s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/sllidar_ros2/package.zsh'
+[2.010s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/sllidar_ros2/share/colcon-core/packages/sllidar_ros2)
+[2.561s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs -- -j8 -l8
+[2.566s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs
+[2.573s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/action_tutorials_interfaces -- -j8 -l8
+[2.578s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/action_tutorials_interfaces
+[2.583s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/custom_interfaces -- -j8 -l8
+[2.615s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/custom_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/custom_interfaces
+[2.723s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(marvelmind_ros2_msgs)
+[2.724s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs' for CMake module files
+[2.732s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs' for CMake config files
+[2.749s] Level 1:colcon.colcon_core.shell:create_environment_hook('marvelmind_ros2_msgs', 'cmake_prefix_path')
+[2.750s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/cmake_prefix_path.ps1'
+[2.751s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/cmake_prefix_path.dsv'
+[2.753s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/cmake_prefix_path.sh'
+[2.755s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib'
+[2.755s] Level 1:colcon.colcon_core.shell:create_environment_hook('marvelmind_ros2_msgs', 'ld_library_path_lib')
+[2.756s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/ld_library_path_lib.ps1'
+[2.757s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/ld_library_path_lib.dsv'
+[2.759s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/ld_library_path_lib.sh'
+[2.760s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/marvelmind_ros2_msgs
+[2.761s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/bin'
+[2.761s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/pkgconfig/marvelmind_ros2_msgs.pc'
+[2.762s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/python3.10/site-packages'
+[2.762s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/bin'
+[2.763s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.ps1'
+[2.764s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.dsv'
+[2.765s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.sh'
+[2.766s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.bash'
+[2.767s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.zsh'
+[2.768s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/colcon-core/packages/marvelmind_ros2_msgs)
+[2.770s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(marvelmind_ros2_msgs)
+[2.770s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs' for CMake module files
+[2.771s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs' for CMake config files
+[2.772s] Level 1:colcon.colcon_core.shell:create_environment_hook('marvelmind_ros2_msgs', 'cmake_prefix_path')
+[2.773s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/cmake_prefix_path.ps1'
+[2.773s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/cmake_prefix_path.dsv'
+[2.773s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/cmake_prefix_path.sh'
+[2.774s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib'
+[2.774s] Level 1:colcon.colcon_core.shell:create_environment_hook('marvelmind_ros2_msgs', 'ld_library_path_lib')
+[2.775s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/ld_library_path_lib.ps1'
+[2.775s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/ld_library_path_lib.dsv'
+[2.775s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/hook/ld_library_path_lib.sh'
+[2.776s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/bin'
+[2.776s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/pkgconfig/marvelmind_ros2_msgs.pc'
+[2.776s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/python3.10/site-packages'
+[2.777s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/bin'
+[2.777s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.ps1'
+[2.778s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.dsv'
+[2.778s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.sh'
+[2.779s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.bash'
+[2.780s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.zsh'
+[2.781s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/share/colcon-core/packages/marvelmind_ros2_msgs)
+[2.781s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/youssef/COROSOLS_WS/src/marvelmind_ros2_upstream-main' with build type 'ament_cmake'
+[2.782s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/youssef/COROSOLS_WS/src/marvelmind_ros2_upstream-main'
+[2.782s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.782s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.789s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(custom_interfaces)
+[2.789s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces' for CMake module files
+[2.791s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/custom_interfaces
+[2.792s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces' for CMake config files
+[2.795s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_interfaces', 'cmake_prefix_path')
+[2.795s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.ps1'
+[2.797s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.dsv'
+[2.797s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.sh'
+[2.799s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/lib'
+[2.799s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_interfaces', 'ld_library_path_lib')
+[2.800s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.ps1'
+[2.801s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.dsv'
+[2.802s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.sh'
+[2.803s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/bin'
+[2.803s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/lib/pkgconfig/custom_interfaces.pc'
+[2.804s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/lib/python3.10/site-packages'
+[2.804s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/bin'
+[2.805s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.ps1'
+[2.807s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.dsv'
+[2.808s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.sh'
+[2.809s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.bash'
+[2.811s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.zsh'
+[2.812s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/custom_interfaces/share/colcon-core/packages/custom_interfaces)
+[2.814s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(custom_interfaces)
+[2.815s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces' for CMake module files
+[2.817s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces' for CMake config files
+[2.819s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_interfaces', 'cmake_prefix_path')
+[2.820s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.ps1'
+[2.822s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.dsv'
+[2.823s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/cmake_prefix_path.sh'
+[2.824s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/lib'
+[2.825s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_interfaces', 'ld_library_path_lib')
+[2.825s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.ps1'
+[2.827s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.dsv'
+[2.828s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/hook/ld_library_path_lib.sh'
+[2.829s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/bin'
+[2.829s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/lib/pkgconfig/custom_interfaces.pc'
+[2.830s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/lib/python3.10/site-packages'
+[2.831s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/custom_interfaces/bin'
+[2.832s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.ps1'
+[2.833s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.dsv'
+[2.835s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.sh'
+[2.836s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.bash'
+[2.837s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.zsh'
+[2.839s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/custom_interfaces/share/colcon-core/packages/custom_interfaces)
+[2.841s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(action_tutorials_interfaces)
+[2.841s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces' for CMake module files
+[2.842s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/action_tutorials_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/action_tutorials_interfaces
+[2.844s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces' for CMake config files
+[2.845s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'cmake_prefix_path')
+[2.845s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.ps1'
+[2.846s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.dsv'
+[2.847s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.sh'
+[2.849s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib'
+[2.849s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'ld_library_path_lib')
+[2.850s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.ps1'
+[2.850s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.dsv'
+[2.851s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.sh'
+[2.852s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/bin'
+[2.852s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib/pkgconfig/action_tutorials_interfaces.pc'
+[2.852s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib/python3.10/site-packages'
+[2.852s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/bin'
+[2.853s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.ps1'
+[2.854s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.dsv'
+[2.855s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.sh'
+[2.856s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.bash'
+[2.856s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.zsh'
+[2.857s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/colcon-core/packages/action_tutorials_interfaces)
+[2.858s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(action_tutorials_interfaces)
+[2.858s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces' for CMake module files
+[2.859s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces' for CMake config files
+[2.860s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'cmake_prefix_path')
+[2.861s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.ps1'
+[2.862s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.dsv'
+[2.863s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.sh'
+[2.864s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib'
+[2.864s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'ld_library_path_lib')
+[2.865s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.ps1'
+[2.866s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.dsv'
+[2.867s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.sh'
+[2.868s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/bin'
+[2.868s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib/pkgconfig/action_tutorials_interfaces.pc'
+[2.868s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib/python3.10/site-packages'
+[2.868s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/bin'
+[2.869s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.ps1'
+[2.870s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.dsv'
+[2.871s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.sh'
+[2.872s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.bash'
+[2.873s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.zsh'
+[2.874s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/share/colcon-core/packages/action_tutorials_interfaces)
+[2.876s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/youssef/COROSOLS_WS/src/corosols' with build type 'ament_python'
+[2.876s] Level 1:colcon.colcon_core.shell:create_environment_hook('corosols', 'ament_prefix_path')
+[2.877s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/hook/ament_prefix_path.ps1'
+[2.879s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/hook/ament_prefix_path.dsv'
+[2.881s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/hook/ament_prefix_path.sh'
+[2.882s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.883s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.898s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2': AMENT_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/marvelmind_ros2 -- -j8 -l8
+[3.453s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/youssef/COROSOLS_WS/src/corosols'
+[3.454s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.454s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.460s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2' returned '0': AMENT_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/marvelmind_ros2 -- -j8 -l8
+[3.464s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2': AMENT_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/marvelmind_ros2
+[3.488s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(marvelmind_ros2)
+[3.489s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2' for CMake module files
+[3.490s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2' returned '0': AMENT_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/marvelmind_ros2
+[3.491s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2' for CMake config files
+[3.492s] Level 1:colcon.colcon_core.shell:create_environment_hook('marvelmind_ros2', 'cmake_prefix_path')
+[3.493s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/hook/cmake_prefix_path.ps1'
+[3.493s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/hook/cmake_prefix_path.dsv'
+[3.494s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/hook/cmake_prefix_path.sh'
+[3.495s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/lib'
+[3.496s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/bin'
+[3.496s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/lib/pkgconfig/marvelmind_ros2.pc'
+[3.496s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/lib/python3.10/site-packages'
+[3.497s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/bin'
+[3.498s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.ps1'
+[3.499s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.dsv'
+[3.499s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.sh'
+[3.500s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.bash'
+[3.501s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.zsh'
+[3.502s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/colcon-core/packages/marvelmind_ros2)
+[3.503s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(marvelmind_ros2)
+[3.503s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2' for CMake module files
+[3.504s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2' for CMake config files
+[3.505s] Level 1:colcon.colcon_core.shell:create_environment_hook('marvelmind_ros2', 'cmake_prefix_path')
+[3.505s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/hook/cmake_prefix_path.ps1'
+[3.506s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/hook/cmake_prefix_path.dsv'
+[3.506s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/hook/cmake_prefix_path.sh'
+[3.507s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/lib'
+[3.507s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/bin'
+[3.507s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/lib/pkgconfig/marvelmind_ros2.pc'
+[3.508s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/lib/python3.10/site-packages'
+[3.508s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/bin'
+[3.509s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.ps1'
+[3.510s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.dsv'
+[3.511s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.sh'
+[3.512s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.bash'
+[3.512s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.zsh'
+[3.513s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/colcon-core/packages/marvelmind_ros2)
+[4.492s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/youssef/COROSOLS_WS/src/corosols': AMENT_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces LD_LIBRARY_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces/lib:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/youssef/COROSOLS_WS/build/corosols/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages:/home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/youssef/COROSOLS_WS/build/corosols/build install --record /home/youssef/COROSOLS_WS/build/corosols/install.log --single-version-externally-managed install_data
+[5.160s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/corosols' for CMake module files
+[5.161s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/youssef/COROSOLS_WS/src/corosols' returned '0': AMENT_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces LD_LIBRARY_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces/lib:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/youssef/COROSOLS_WS/build/corosols/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages:/home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/youssef/COROSOLS_WS/build/corosols/build install --record /home/youssef/COROSOLS_WS/build/corosols/install.log --single-version-externally-managed install_data
+[5.162s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/corosols' for CMake config files
+[5.163s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/corosols/lib'
+[5.164s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/corosols/bin'
+[5.164s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/corosols/lib/pkgconfig/corosols.pc'
+[5.164s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages'
+[5.164s] Level 1:colcon.colcon_core.shell:create_environment_hook('corosols', 'pythonpath')
+[5.165s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/hook/pythonpath.ps1'
+[5.166s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/hook/pythonpath.dsv'
+[5.167s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/hook/pythonpath.sh'
+[5.168s] Level 1:colcon.colcon_core.environment:checking '/home/youssef/COROSOLS_WS/install/corosols/bin'
+[5.168s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(corosols)
+[5.168s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/package.ps1'
+[5.169s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/package.dsv'
+[5.170s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/package.sh'
+[5.171s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/package.bash'
+[5.172s] INFO:colcon.colcon_core.shell:Creating package script '/home/youssef/COROSOLS_WS/install/corosols/share/corosols/package.zsh'
+[5.172s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/youssef/COROSOLS_WS/install/corosols/share/colcon-core/packages/corosols)
+[5.173s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[5.173s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[5.173s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[5.174s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[5.187s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[5.187s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[5.188s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[5.226s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[5.227s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/youssef/COROSOLS_WS/install/local_setup.ps1'
+[5.230s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/youssef/COROSOLS_WS/install/_local_setup_util_ps1.py'
+[5.235s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/youssef/COROSOLS_WS/install/setup.ps1'
+[5.237s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/youssef/COROSOLS_WS/install/local_setup.sh'
+[5.238s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/youssef/COROSOLS_WS/install/_local_setup_util_sh.py'
+[5.239s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/youssef/COROSOLS_WS/install/setup.sh'
+[5.241s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/youssef/COROSOLS_WS/install/local_setup.bash'
+[5.243s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/youssef/COROSOLS_WS/install/setup.bash'
+[5.245s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/youssef/COROSOLS_WS/install/local_setup.zsh'
+[5.246s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/youssef/COROSOLS_WS/install/setup.zsh'
