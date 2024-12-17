@@ -1,6 +1,6 @@
 import os
 import sys
-from tkinter import filedialog
+from tkinter import filedialog, simpledialog
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -144,6 +144,7 @@ class Simulator:
             ratio = minn(np.clip(abs(self.robot_pos-current_target)/AXIS_Y_LIMIT/1.5,[0.05,0.05],[1,1]),np.clip(abs(current_target-prev_target)/AXIS_Y_LIMIT/1.5,[0.05,0.05],[1,1]))
         
         error = np.clip(np.linalg.norm(self.relative_airbrush_pos-np.array([self.robot_speed.robot_data.stepper_x,self.robot_speed.robot_data.stepper_y]))*20*(self.max_speed/0.15),1,100*(self.max_speed/0.15))
+        self.robot_speed.command_req.vr = self.robot_speed.odoData.pose.pose.orientation.z
         self.robot_speed.command_req.vy = -float(robot_velocity[0])#*ratio[0]/error)
         self.robot_speed.command_req.vx = float(robot_velocity[1])#*ratio[1]/error)
         self.robot_speed.command_req.airbrush = is_printing
@@ -221,8 +222,15 @@ class RobotSpeed(Node):
                 self.prism_status = True
             elif params[1] == '0':
                 self.station_status = False
-            elif params[1] == 'E1':
+        elif params[0] == 'Station_error':
+            if params[1] == 'E1':
                 self.prism_status = False
+            elif params[1]=='E2':
+                tk.messagebox.showwarning(title = "Station error: Status E2",message = params[2])
+                self.prism_status = True
+            elif params[1]=='E3':
+                tk.messagebox.showwarning(title = "Station error: Status E3",message = params[2])
+                self.prism_status = True
         
     def odom_listener(self,msg):
         self.odoData = msg
@@ -261,6 +269,8 @@ class RobotControlUI(tk.Tk):
         self.init_pos = False
         self.station_status = tk.BooleanVar(value=False)
         self.station_status.trace_add('write', self.update_station_button)
+        self.station_ip = tk.StringVar(value="10.27.212.20")
+        self.station_port = tk.StringVar(value="1212")
         # Initialize parameters
         self.point_factor = tk.DoubleVar(value=1000)
         self.max_speed = tk.DoubleVar(value=0.1)
@@ -316,45 +326,43 @@ class RobotControlUI(tk.Tk):
         style.configure('TEntry', fieldbackground='#2d2d2d', foreground='#ffffff')
         style.configure('TLabel', background='#1e1e1e', foreground='#ffffff')
 
-        
+        # Create menu bar
+        menu_bar = tk.Menu(self, background='#1e1e1e', foreground='#ffffff', activebackground='#005fb3', activeforeground='#ffffff')
+        self.config(menu=menu_bar)
 
-        station_frame = ttk.Frame(self)
-        station_frame.pack(side=tk.TOP, fill=tk.X, padx=10)
-        ttk.Label(station_frame, text="Station IP:").pack(side=tk.LEFT)
-        self.station_ip = tk.StringVar(value='10.27.212.64')
-        ttk.Entry(station_frame, textvariable=self.station_ip, width=15).pack(side=tk.LEFT)
-        ttk.Label(station_frame, text="Port:").pack(side=tk.LEFT)
-        self.station_port = tk.StringVar(value='1212')
-        ttk.Entry(station_frame, textvariable=self.station_port, width=5).pack(side=tk.LEFT)
-        self.station_conn_button = ttk.Button(station_frame, text="Connect", command=self.connect_to_station)
-        self.station_conn_button.pack(side=tk.LEFT, padx=5)
-        self.reset_origin_button = ttk.Button(station_frame, text="Reset Origin", command=self.reset_origin)
-        self.reset_origin_button.pack(side=tk.LEFT, padx=10)
-        self.default_origin_button = ttk.Button(station_frame, text="Default Origin", command=self.default_origin)
-        self.default_origin_button.pack(side=tk.LEFT, padx=10)
-        self.reverse_x_button = ttk.Button(station_frame, text="Reverse X", command=self.reverse_x)
-        self.reverse_x_button.pack(side=tk.LEFT, padx=10)
-        self.reverse_y_button = ttk.Button(station_frame, text="Reverse Y", command=self.reverse_y)
-        self.reverse_y_button.pack(side=tk.LEFT, padx=10)
-        self.default_orientation_button = ttk.Button(station_frame, text="Default Orientation", command=self.default_orientation)
-        self.default_orientation_button.pack(side=tk.LEFT, padx=10)
+        # Configuration menu
+        config_menu = tk.Menu(menu_bar, tearoff=0, background='#1e1e1e', foreground='#ffffff')
+        menu_bar.add_cascade(label="Configuration", menu=config_menu)
 
-        self.reset_angles_button = ttk.Button(station_frame, text="Reset angles", command=self.reset_angles)
-        self.reset_angles_button.pack(side=tk.LEFT, padx=10)
-        self.default_angles_button = ttk.Button(station_frame, text="Default angles", command=self.default_angles)
-        self.default_angles_button.pack(side=tk.LEFT, padx=10)
-        #  Create main frame
+        # Station Settings submenu
+        self.station_menu = tk.Menu(config_menu, tearoff=0, background='#1e1e1e', foreground='#ffffff')
+        config_menu.add_cascade(label="Station Settings", menu=self.station_menu )
+        self.station_menu .add_command(label="Set Station IP", command=self.set_station_ip)
+        self.station_menu .add_command(label="Set Port", command=self.set_station_port)
+        self.station_menu .add_command(label="Connect", command=self.connect_to_station)
+
+        # Other configuration commands
+        config_menu.add_separator()
+        config_menu.add_command(label="Reset Origin", command=self.reset_origin)
+        config_menu.add_command(label="Default Origin", command=self.default_origin)
+        config_menu.add_command(label="Reverse X", command=self.reverse_x)
+        config_menu.add_command(label="Reverse Y", command=self.reverse_y)
+        config_menu.add_command(label="Default Orientation", command=self.default_orientation)
+        config_menu.add_separator()
+        config_menu.add_command(label="Reset Angles", command=self.reset_angles)
+        config_menu.add_command(label="Default Angles", command=self.default_angles)
+
+        # Create main frame
         main_frame = ttk.Frame(self)
         main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+
         # Create and pack the matplotlib figure
         self.fig, self.ax = plt.subplots(figsize=(8, 6))
         self.fig.patch.set_facecolor('#1e1e1e')
         self.ax.set_facecolor('#2d2d2d')
         self.canvas = FigureCanvasTkAgg(self.fig, master=main_frame)
         self.canvas.draw()
-        self.canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH,expand=True)
-
-        
+        self.canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         # Create frame for controls and data display
         control_frame = ttk.Frame(main_frame)
@@ -374,10 +382,10 @@ class RobotControlUI(tk.Tk):
         self.start_button.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
         self.stop_button = ttk.Button(button_frame, text="Stop", command=self.stop_simulation, state=tk.DISABLED)
         self.stop_button.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
-        
+
         button_frame2 = ttk.Frame(control_frame)
         button_frame2.pack(fill=tk.X, pady=10)
-        
+
         self.airbrush_button = ttk.Button(button_frame2, text="Start Airbrush", command=self.start_stop_airbrush)
         self.airbrush_button.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
 
@@ -393,6 +401,16 @@ class RobotControlUI(tk.Tk):
 
         # Create labels for displaying values
         self.create_info_labels(control_frame)
+
+    def set_station_ip(self):
+        ip = simpledialog.askstring("Station IP", "Enter Station IP:", initialvalue=self.station_ip.get())
+        if ip:
+            self.station_ip.set(ip)
+
+    def set_station_port(self):
+        port = simpledialog.askstring("Station Port", "Enter Station Port:", initialvalue=self.station_port.get())
+        if port:
+            self.station_port.set(port)
     def reset_angles(self):
         msg = String()
         msg.data = "angles_offset;1"
@@ -436,11 +454,9 @@ class RobotControlUI(tk.Tk):
     
     def update_station_button(self, *args):
         if self.station_status.get():
-            self.station_conn_button.config(text="Connected")
-            self.station_conn_button.config(state=tk.DISABLED)
+            self.station_menu.entryconfig(2,label = "Connected")
         else:
-            self.station_conn_button.config(text="Connect")
-            self.station_conn_button.config(state=tk.NORMAL)
+            self.station_menu.entryconfig(2,label = "Connect")
     def airbrush_activation(self):
         if self.simulator.airbrush_acivation:
             self.airbrush_activation_button.config(text="Activate Airbrush")
@@ -700,7 +716,9 @@ class RobotControlUI(tk.Tk):
         self.imu_data_labels['heading'].config(text=f"{heading:.3f}")
 
         # Update other labels
-        self.station_status.set(self.robot_speed.station_status)
+        if self.station_status.get() != self.robot_speed.station_status:
+            self.station_status.set(self.robot_speed.station_status)
+
         if not self.robot_speed.prism_status or not self.robot_speed.station_status:
             self.pause_simulation()
         

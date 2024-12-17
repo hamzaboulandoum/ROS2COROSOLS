@@ -68,8 +68,11 @@ class tf2_broadcaster(Node):
         self.y_accel = 0
         self.z_accel = 0
 
+
         self.timestamp = self.get_clock().now().to_msg()
         self.imu_timestamp = None
+
+        self.error_is_sent = False
 
     def params_listener(self,msg):
         data = msg.data
@@ -92,26 +95,24 @@ class tf2_broadcaster(Node):
     def station_callback(self):
         if self.station_socket:
             response  = self.getposition()
-            if response:
+            if response != [0.0,0.0,0.0]:
                 x, y, z = response
-            else :
-                self.parameters_publisher.publish(String(data='Station_error;E1'))
-            self.x = x
-            self.y = y
-            self.z = z
-            self.timestamp = self.get_clock().now().to_msg()
-        
-            self.Odom.header = Header()
-            self.Odom.header.stamp = self.get_clock().now().to_msg()
-            self.Odom.header.frame_id = 'odom'
+                self.x = x
+                self.y = y
+                self.z = z
+                self.timestamp = self.get_clock().now().to_msg()
             
-            
-            # we can change the postion with the postion from the marvel mind device 
-            self.Odom.pose.pose.position.x = self.x 
-            self.Odom.pose.pose.position.y = self.y
-            self.Odom.pose.pose.position.z = self.z
+                self.Odom.header = Header()
+                self.Odom.header.stamp = self.get_clock().now().to_msg()
+                self.Odom.header.frame_id = 'odom'
+                
+                
+                # we can change the postion with the postion from the marvel mind device 
+                self.Odom.pose.pose.position.x = self.x 
+                self.Odom.pose.pose.position.y = self.y
+                self.Odom.pose.pose.position.z = self.z
 
-            self.odom_publisher.publish(self.Odom)
+                self.odom_publisher.publish(self.Odom)
             
         else :
             self.parameters_publisher.publish(String(data='Station_status;0'))
@@ -196,11 +197,16 @@ class tf2_broadcaster(Node):
         Returns:
             socket.socket: Socket connection object.
         """
-        self.station_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.station_socket.settimeout(timeout)
-        self.station_socket.connect((self.ip, self.port))
-        if self.station_socket:
-            self.parameters_publisher.publish(String(data='Station_status;1'))
+        try :
+            self.station_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.station_socket.settimeout(timeout)
+            self.station_socket.connect((self.ip, self.port))
+            if self.station_socket:
+                self.parameters_publisher.publish(String(data='Station_status;1'))
+        except Exception as e:
+            self.parameters_publisher.publish(String(data=f'Station_error;E2;{e}'))
+            self.parameters_publisher.publish(String(data='Station_status;0'))
+            self.station_socket = None
 
     def TMC_QuickDist(self):
         """
@@ -212,13 +218,16 @@ class tf2_broadcaster(Node):
         Returns:
             str: Measurement result or error message.
         """
-        response = self.send_command_to_station( 2117)
+        response = self.send_command_to_station(2117)
         if response :
-            distance_result = response.split(",")
-            alpha = float(distance_result[3])
-            omega = float(distance_result[4])
-            distance = float(distance_result[5])
-            return alpha, omega, distance
+            try:
+                distance_result = response.split(",")
+                alpha = float(distance_result[3])
+                omega = float(distance_result[4])
+                distance = float(distance_result[5])
+                return alpha, omega, distance
+            except:
+                return 0.0, 0.0, 0.0
         else :
             self.parameters_publisher.publish(String(data='Station_error;E1'))
     # Function to send a command and receive a response
@@ -240,9 +249,12 @@ class tf2_broadcaster(Node):
 
             # Wait and receive response
             response = self.station_socket.recv(1024).decode('utf-8').strip()
+            
             return response
         except Exception as e:
-            return None
+            if not self.error_is_sent:
+                self.error_is_sent = True
+                self.parameters_publisher.publish(String(data=f'Station_error;E3;{e}'))
 
 
     # Example GeoCOM functions
@@ -296,6 +308,8 @@ class tf2_broadcaster(Node):
         response = self.TMC_QuickDist()
         if response:
             theta, phi , distance = response
+            if self.error_is_sent and distance !=0.0:
+                self.error_is_sent = False
             return spherical_to_cartesian(distance, theta, phi)
         else :
             self.parameters_publisher.publish(String(data='Station_error;E1'))
