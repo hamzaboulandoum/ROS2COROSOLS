@@ -1,0 +1,31 @@
+[1.672s] Invoking command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2': CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/youssef/COROSOLS_WS/install/sllidar_ros2:/home/youssef/COROSOLS_WS/install/marvelmind_ros2:/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces:/home/youssef/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/marvelmind_ros2 -- -j8 -l8
+[1.987s] [ 25%] Built target marvelmind_api_lib
+[1.993s] [ 50%] Built target marvelmind_hedge_lib
+[2.177s] [100%] Built target marvelmind_ros2
+[2.178s] [100%] Built target marvelmind_api_ros2
+[2.237s] Invoked command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2' returned '0': CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/youssef/COROSOLS_WS/install/sllidar_ros2:/home/youssef/COROSOLS_WS/install/marvelmind_ros2:/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces:/home/youssef/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/marvelmind_ros2 -- -j8 -l8
+[2.250s] Invoking command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2': CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/youssef/COROSOLS_WS/install/sllidar_ros2:/home/youssef/COROSOLS_WS/install/marvelmind_ros2:/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces:/home/youssef/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/marvelmind_ros2
+[2.289s] -- Install configuration: ""
+[2.290s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/lib/marvelmind_ros2/marvelmind_ros2
+[2.293s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/lib/marvelmind_ros2/marvelmind_api_ros2
+[2.294s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/config
+[2.295s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/config/marvelmind_ros2_config.yaml
+[2.296s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/launch
+[2.297s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/launch/marvelmind_ros2.launch.py
+[2.300s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/launch/marvelmind_api_ros2.launch.py
+[2.301s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/ament_index/resource_index/package_run_dependencies/marvelmind_ros2
+[2.302s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/ament_index/resource_index/parent_prefix_path/marvelmind_ros2
+[2.303s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/environment/ament_prefix_path.sh
+[2.303s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/environment/ament_prefix_path.dsv
+[2.310s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/environment/path.sh
+[2.312s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/environment/path.dsv
+[2.312s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/local_setup.bash
+[2.313s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/local_setup.sh
+[2.313s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/local_setup.zsh
+[2.314s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/local_setup.dsv
+[2.314s] -- Installing: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.dsv
+[2.315s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/ament_index/resource_index/packages/marvelmind_ros2
+[2.316s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/cmake/marvelmind_ros2Config.cmake
+[2.327s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/cmake/marvelmind_ros2Config-version.cmake
+[2.328s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.xml
+[2.329s] Invoked command in '/home/youssef/COROSOLS_WS/build/marvelmind_ros2' returned '0': CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/youssef/COROSOLS_WS/install/sllidar_ros2:/home/youssef/COROSOLS_WS/install/marvelmind_ros2:/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces:/home/youssef/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/marvelmind_ros2

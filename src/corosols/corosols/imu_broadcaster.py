@@ -115,8 +115,8 @@ class SerialDataPublisher(Node):
             '''self.imu_data.gyroscope_x = struct.unpack('f', data[0:4])[0]
             self.imu_data.gyroscope_y = struct.unpack('f', data[4:8])[0]
             self.imu_data.gyroscope_z = struct.unpack('f', data[8:12])[0]'''
-            self.imu_data.accelerometer_x = struct.unpack('f', data[12:16])[0]
-            self.imu_data.accelerometer_y = struct.unpack('f', data[16:20])[0]
+            self.imu_data.accelerometer_x = struct.unpack('f', data[16:20])[0] # x and y are reversed 
+            self.imu_data.accelerometer_y = struct.unpack('f', data[12:16])[0]
             self.imu_data.accelerometer_z = struct.unpack('f', data[20:24])[0]
             '''self.imu_data.magnetometer_x = struct.unpack('f', data[24:28])[0]
             self.imu_data.magnetometer_y = struct.unpack('f', data[28:32])[0]

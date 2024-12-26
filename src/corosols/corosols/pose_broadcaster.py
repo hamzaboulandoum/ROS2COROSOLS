@@ -1,3 +1,4 @@
+import time
 import rclpy
 from rclpy.node import Node
 from nav_msgs.msg import Odometry
@@ -50,7 +51,7 @@ class tf2_broadcaster(Node):
         
         self.odom_publisher = self.create_publisher(Odometry, 'odom', 10)
         self.subscription = self.create_subscription(ImuData,'imu_data',self.imu_callback,10)
-        timer_period = 0.05  # seconds        
+        timer_period = 0.01  # seconds        
         self.timer = self.create_timer(timer_period, self.station_callback)
 
         self.params = self.create_subscription(String,'robot_params',self.params_listener,10)
@@ -59,7 +60,7 @@ class tf2_broadcaster(Node):
         self.x=0
         self.y=0
         self.z=0
-
+        
         self.roll_offset = 0
         self.pitch_offset = 0
         self.heading_offset = 0
@@ -71,8 +72,9 @@ class tf2_broadcaster(Node):
 
         self.timestamp = self.get_clock().now().to_msg()
         self.imu_timestamp = None
-
+        self.t = time.time()
         self.error_is_sent = False
+        self.station_freq = 0
 
     def params_listener(self,msg):
         data = msg.data
@@ -94,14 +96,18 @@ class tf2_broadcaster(Node):
                 self.heading_offset = 0
     def station_callback(self):
         if self.station_socket:
+            self.t = time.time()
             response  = self.getposition()
+            self.station_freq = 1/(time.time()-self.t)
+            
             if response != [0.0,0.0,0.0]:
                 x, y, z = response
+
                 self.x = x
                 self.y = y
                 self.z = z
                 self.timestamp = self.get_clock().now().to_msg()
-            
+                self.get_logger().info(f'freq: {self.station_freq:.2f}Hz x: {self.x} y: {self.y} z: {self.z}')
                 self.Odom.header = Header()
                 self.Odom.header.stamp = self.get_clock().now().to_msg()
                 self.Odom.header.frame_id = 'odom'
@@ -136,10 +142,6 @@ class tf2_broadcaster(Node):
         self.Odom.pose.pose.orientation.x = msg.roll - self.roll_offset
         self.Odom.pose.pose.orientation.y = msg.pitch - self.pitch_offset
         self.Odom.pose.pose.orientation.z = msg.heading - self.heading_offset
-
-        
-        
-        self.odom_publisher.publish(self.Odom)
 
     def transform_acceleration(self, raw_x, raw_y, raw_z, roll, pitch, heading):
         """

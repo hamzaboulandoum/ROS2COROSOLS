@@ -1,0 +1,29 @@
+[4.256s] Invoking command in '/home/youssef/COROSOLS_WS/src/corosols': CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces:/home/youssef/COROSOLS_WS/install/sllidar_ros2:/home/youssef/COROSOLS_WS/install/marvelmind_ros2:/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs LD_LIBRARY_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces/lib:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib:/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/youssef/COROSOLS_WS/build/corosols/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/youssef/COROSOLS_WS/build/corosols/build install --record /home/youssef/COROSOLS_WS/build/corosols/install.log --single-version-externally-managed install_data
+[5.805s] running egg_info
+[5.809s] writing ../../build/corosols/corosols.egg-info/PKG-INFO
+[5.810s] writing dependency_links to ../../build/corosols/corosols.egg-info/dependency_links.txt
+[5.812s] writing entry points to ../../build/corosols/corosols.egg-info/entry_points.txt
+[5.812s] writing requirements to ../../build/corosols/corosols.egg-info/requires.txt
+[5.813s] writing top-level names to ../../build/corosols/corosols.egg-info/top_level.txt
+[5.824s] reading manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'
+[5.830s] writing manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'
+[5.830s] running build
+[5.830s] running build_py
+[5.832s] copying corosols/robot_speeds.py -> /home/youssef/COROSOLS_WS/build/corosols/build/lib/corosols
+[5.837s] running install
+[5.839s] running install_lib
+[5.845s] copying /home/youssef/COROSOLS_WS/build/corosols/build/lib/corosols/robot_speeds.py -> /home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols
+[5.850s] byte-compiling /home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols/robot_speeds.py to robot_speeds.cpython-310.pyc
+[5.901s] running install_data
+[5.903s] running install_egg_info
+[5.913s] removing '/home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols-0.0.0-py3.10.egg-info' (and everything under it)
+[5.915s] Copying ../../build/corosols/corosols.egg-info to /home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols-0.0.0-py3.10.egg-info
+[5.920s] running install_scripts
+[6.033s] Installing imu_broadcaster script to /home/youssef/COROSOLS_WS/install/corosols/lib/corosols
+[6.034s] Installing input_client script to /home/youssef/COROSOLS_WS/install/corosols/lib/corosols
+[6.035s] Installing pose_broadcaster script to /home/youssef/COROSOLS_WS/install/corosols/lib/corosols
+[6.035s] Installing robot_speeds script to /home/youssef/COROSOLS_WS/install/corosols/lib/corosols
+[6.036s] Installing serial script to /home/youssef/COROSOLS_WS/install/corosols/lib/corosols
+[6.037s] Installing station_connector script to /home/youssef/COROSOLS_WS/install/corosols/lib/corosols
+[6.038s] writing list of installed files to '/home/youssef/COROSOLS_WS/build/corosols/install.log'
+[6.137s] Invoked command in '/home/youssef/COROSOLS_WS/src/corosols' returned '0': CMAKE_PREFIX_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces:/home/youssef/COROSOLS_WS/install/sllidar_ros2:/home/youssef/COROSOLS_WS/install/marvelmind_ros2:/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs LD_LIBRARY_PATH=/home/youssef/COROSOLS_WS/install/custom_interfaces/lib:/home/youssef/COROSOLS_WS/install/action_tutorials_interfaces/lib:/home/youssef/COROSOLS_WS/install/marvelmind_ros2_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/youssef/COROSOLS_WS/build/corosols/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/youssef/COROSOLS_WS/install/corosols/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/youssef/COROSOLS_WS/build/corosols/build install --record /home/youssef/COROSOLS_WS/build/corosols/install.log --single-version-externally-managed install_data
