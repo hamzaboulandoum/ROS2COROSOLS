@@ -7,11 +7,12 @@ from custom_interfaces.msg import SerialData # type: ignore
 import serial
 
 
-Stepper_X_LIMIT = 1125
-Stepper_Y_LIMIT = 300
+Stepper_X_LIMIT = 2250
+Stepper_Y_LIMIT = 600
 AXIS_X_LIMIT = 0.114
 AXIS_Y_LIMIT = 0.0325
-serial_port = "/dev/ttyACM0" # Update with your serial port
+serial_port = "/dev/ttyACM0" 
+serial_port_stepper = "/dev/ttyUSB0"
 baud_rate = 115200
 class SerialHandler(Node):
     
@@ -25,10 +26,15 @@ class SerialHandler(Node):
         super().__init__('serial_handler')
         
         self.ser = serial.Serial(serial_port, baud_rate)
+        self.ser_stepper = serial.Serial(serial_port_stepper, baud_rate)
         time.sleep(0.1)
         self.ser.reset_input_buffer()
         self.ser.reset_output_buffer()
         self.ser.flush()
+
+        self.ser_stepper.reset_input_buffer()
+        self.ser_stepper.reset_output_buffer()
+        self.ser_stepper.flush()
         
         #THIS PUBLISHES THE DATA FROM STM32 To Topic topic
         self.publisher_ = self.create_publisher(SerialData, 'robot_data', 10)
@@ -36,16 +42,26 @@ class SerialHandler(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
         
         self.velocity_srv = self.create_service(Commands, 'commands', self.send_data_to_serial)
-        
+        self.Stepper_X = 0.0
+        self.Stepper_Y = 0.0
     def send_data_to_serial(self, request, response):
 
-        if self.ser.is_open:
-            command_bytes = generate_command_bytes(request.vx, request.vy, request.vr,request.stepperx,request.steppery, 5000 if request.airbrush==1 else 0, 5000 if request.airbrush==1 else 0)
+        if self.ser.is_open and self.ser_stepper.is_open:
+            command_bytes = generate_command_bytes(request.vx, request.vy, request.vr,request.stepperx,request.steppery, request.airbrush, request.ab_servo)
+            stepperx = int((request.stepperx+AXIS_X_LIMIT)/(2*AXIS_X_LIMIT)*Stepper_X_LIMIT)
+            steppery = int((request.steppery+AXIS_Y_LIMIT)/(2*AXIS_Y_LIMIT)*Stepper_Y_LIMIT)
             try:
                 self.ser.write(bytes(command_bytes))
             except KeyboardInterrupt:
                 self.ser.close()
-            
+            try:
+                data = "{"+f"{stepperx};{steppery}"+"}\n"
+                self.ser_stepper.write(data.encode())
+            except KeyboardInterrupt:
+                self.ser_stepper.close()
+
+            self.Stepper_X = request.stepperx
+            self.Stepper_Y = request.steppery
             #Getting commands from velocity calculator
             #self.get_logger().info('Incoming request : x: %f y: %f r: %f  s1: %f s2: %f a: %d' % (request.vx, request.vy,request.vr,request.stepperx, request.steppery, request.airbrush)) 
             
@@ -84,8 +100,8 @@ class SerialHandler(Node):
 
                 Power_Voltage = self.convert_to_signed((received_data[20] << 8) | received_data[21])
 
-                Stepper_X = self.convert_to_signed((received_data[24] << 8) | received_data[25])
-                Stepper_Y = self.convert_to_signed((received_data[22] << 8) | received_data[23])
+                #Stepper_X = self.convert_to_signed((received_data[24] << 8) | received_data[25])
+                #Stepper_Y = self.convert_to_signed((received_data[22] << 8) | received_data[23])
 
                 Checksum = received_data[26]
                 Frame_Tail = received_data[27]
@@ -105,8 +121,8 @@ class SerialHandler(Node):
                     msg.z_gyro = Z_gyro/1000
 
                     msg.power_voltage = Power_Voltage/1000
-                    msg.stepper_x = (Stepper_X/Stepper_X_LIMIT)*(AXIS_X_LIMIT*2)-AXIS_X_LIMIT
-                    msg.stepper_y = (Stepper_Y/Stepper_Y_LIMIT)*(AXIS_Y_LIMIT*2)-AXIS_Y_LIMIT
+                    msg.stepper_x =self.Stepper_X
+                    msg.stepper_y = self.Stepper_Y
                     
                     
                     self.publisher_.publish(msg)
@@ -115,7 +131,7 @@ class SerialHandler(Node):
       
     def listener_callback(self, msg):
 
-        command_bytes = generate_command_bytes(msg.vx, msg.vy,msg.vr,msg.airbrush)
+        command_bytes = generate_command_bytes(msg.vx, msg.vy,msg.vr,msg.stepperx,msg.steppery,msg.airbrush,msg.ab_servo)
         for byte in command_bytes:
             self.ser.write(bytes([byte]))
             time.sleep(0.001) #-----  Why do we have this maybe needs to be removed since we are already calling the function multiple times.
@@ -135,7 +151,7 @@ def Check_Sum(data, count_number, mode):
 
     return check_sum
 
-def generate_command_bytes(velocity_x, velocity_y, angular_z, stepperx, steppery, compressor1, compressor2):
+def generate_command_bytes(velocity_x, velocity_y, angular_z, stepperx, steppery, compressor1, ab_servo):
     # Scale the velocity values by 1000 to match the expected format
     velocity_x = int(float(velocity_x) * 1000)
     velocity_y = int(float(velocity_y) * 1000)
@@ -143,10 +159,10 @@ def generate_command_bytes(velocity_x, velocity_y, angular_z, stepperx, steppery
     stepperx = int((stepperx+AXIS_X_LIMIT)/(2*AXIS_X_LIMIT)*Stepper_X_LIMIT)
     steppery = int((steppery+AXIS_Y_LIMIT)/(2*AXIS_Y_LIMIT)*Stepper_Y_LIMIT)
     print([stepperx,steppery])
-    compressor1 = int(compressor1)
-    compressor2 = int(compressor2)
+    compressor1 = int(compressor1*6000/100)
+    ab_servo = int(850-ab_servo*350/100)
     print(compressor1)
-    print(compressor2)
+    print(ab_servo)
     command = [
         0x7B,  # FRAME_HEADER
         0x00,
@@ -163,8 +179,8 @@ def generate_command_bytes(velocity_x, velocity_y, angular_z, stepperx, steppery
         stepperx & 0xFF,  # Low byte of stepper2
         compressor1 >> 8 & 0xFF,  # High byte of compressor1
         compressor1 & 0xFF,  # Low byte of compressor1
-        compressor2 >> 8 & 0xFF,  # High byte of compressor2
-        compressor2 & 0xFF,  # Low byte of compressor2
+        ab_servo >> 8 & 0xFF,  # High byte of compressor2
+        ab_servo & 0xFF,  # Low byte of compressor2
         0x00,  # Placeholder for checksum (to be calculated)
         0x7D  # FRAME_TAIL
     ]

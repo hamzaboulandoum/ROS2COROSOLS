@@ -17,6 +17,8 @@ module custom_interfaces {
       double steppery;
 
       int32 airbrush;
+
+      int32 ab_servo;
     };
     struct Commands_Response {
       string outcome;

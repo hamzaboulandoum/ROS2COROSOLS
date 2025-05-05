@@ -22,6 +22,7 @@ custom_interfaces__srv__Commands_Request__init(custom_interfaces__srv__Commands_
   // stepperx
   // steppery
   // airbrush
+  // ab_servo
   return true;
 }
 
@@ -37,6 +38,7 @@ custom_interfaces__srv__Commands_Request__fini(custom_interfaces__srv__Commands_
   // stepperx
   // steppery
   // airbrush
+  // ab_servo
 }
 
 bool
@@ -69,6 +71,10 @@ custom_interfaces__srv__Commands_Request__are_equal(const custom_interfaces__srv
   if (lhs->airbrush != rhs->airbrush) {
     return false;
   }
+  // ab_servo
+  if (lhs->ab_servo != rhs->ab_servo) {
+    return false;
+  }
   return true;
 }
 
@@ -92,6 +98,8 @@ custom_interfaces__srv__Commands_Request__copy(
   output->steppery = input->steppery;
   // airbrush
   output->airbrush = input->airbrush;
+  // ab_servo
+  output->ab_servo = input->ab_servo;
   return true;
 }
 

@@ -100,14 +100,16 @@ class tf2_broadcaster(Node):
             response  = self.getposition()
             self.station_freq = 1/(time.time()-self.t)
             
-            if response != [0.0,0.0,0.0]:
+            if response:
+                if len(response)!=3:
+                    return
                 x, y, z = response
 
                 self.x = x
                 self.y = y
                 self.z = z
                 self.timestamp = self.get_clock().now().to_msg()
-                self.get_logger().info(f'freq: {self.station_freq:.2f}Hz x: {self.x} y: {self.y} z: {self.z}')
+                #self.get_logger().info(f'freq: {self.station_freq:.2f}Hz x: {self.x} y: {self.y} z: {self.z}')
                 self.Odom.header = Header()
                 self.Odom.header.stamp = self.get_clock().now().to_msg()
                 self.Odom.header.frame_id = 'odom'
@@ -229,7 +231,7 @@ class tf2_broadcaster(Node):
                 distance = float(distance_result[5])
                 return alpha, omega, distance
             except:
-                return 0.0, 0.0, 0.0
+                pass
         else :
             self.parameters_publisher.publish(String(data='Station_error;E1'))
     # Function to send a command and receive a response

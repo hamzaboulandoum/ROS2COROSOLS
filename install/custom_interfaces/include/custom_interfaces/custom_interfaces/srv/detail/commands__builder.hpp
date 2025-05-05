@@ -21,16 +21,32 @@ namespace srv
 namespace builder
 {
 
+class Init_Commands_Request_ab_servo
+{
+public:
+  explicit Init_Commands_Request_ab_servo(::custom_interfaces::srv::Commands_Request & msg)
+  : msg_(msg)
+  {}
+  ::custom_interfaces::srv::Commands_Request ab_servo(::custom_interfaces::srv::Commands_Request::_ab_servo_type arg)
+  {
+    msg_.ab_servo = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::custom_interfaces::srv::Commands_Request msg_;
+};
+
 class Init_Commands_Request_airbrush
 {
 public:
   explicit Init_Commands_Request_airbrush(::custom_interfaces::srv::Commands_Request & msg)
   : msg_(msg)
   {}
-  ::custom_interfaces::srv::Commands_Request airbrush(::custom_interfaces::srv::Commands_Request::_airbrush_type arg)
+  Init_Commands_Request_ab_servo airbrush(::custom_interfaces::srv::Commands_Request::_airbrush_type arg)
   {
     msg_.airbrush = std::move(arg);
-    return std::move(msg_);
+    return Init_Commands_Request_ab_servo(msg_);
   }
 
 private:

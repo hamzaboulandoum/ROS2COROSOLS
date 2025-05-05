@@ -26,6 +26,7 @@ typedef struct custom_interfaces__srv__Commands_Request
   double stepperx;
   double steppery;
   int32_t airbrush;
+  int32_t ab_servo;
 } custom_interfaces__srv__Commands_Request;
 
 // Struct for a sequence of custom_interfaces__srv__Commands_Request.

@@ -44,6 +44,7 @@ struct Commands_Request_
       this->stepperx = 0.0;
       this->steppery = 0.0;
       this->airbrush = 0l;
+      this->ab_servo = 0l;
     }
   }
 
@@ -59,6 +60,7 @@ struct Commands_Request_
       this->stepperx = 0.0;
       this->steppery = 0.0;
       this->airbrush = 0l;
+      this->ab_servo = 0l;
     }
   }
 
@@ -81,6 +83,9 @@ struct Commands_Request_
   using _airbrush_type =
     int32_t;
   _airbrush_type airbrush;
+  using _ab_servo_type =
+    int32_t;
+  _ab_servo_type ab_servo;
 
   // setters for named parameter idiom
   Type & set__vx(
@@ -117,6 +122,12 @@ struct Commands_Request_
     const int32_t & _arg)
   {
     this->airbrush = _arg;
+    return *this;
+  }
+  Type & set__ab_servo(
+    const int32_t & _arg)
+  {
+    this->ab_servo = _arg;
     return *this;
   }
 
@@ -178,6 +189,9 @@ struct Commands_Request_
       return false;
     }
     if (this->airbrush != other.airbrush) {
+      return false;
+    }
+    if (this->ab_servo != other.ab_servo) {
       return false;
     }
     return true;

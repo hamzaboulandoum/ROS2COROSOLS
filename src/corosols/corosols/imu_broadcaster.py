@@ -32,7 +32,7 @@ class SerialDataPublisher(Node):
         PORT = '/dev/ttyACM1'
         BAUDRATE = 921600
         
-        try:
+        '''try:
             self.ser = serial.Serial(
                 port=PORT,
                 baudrate=BAUDRATE,
@@ -53,7 +53,7 @@ class SerialDataPublisher(Node):
         self.running = True
         self.thread = threading.Thread(target=self.read_serial_data)
         self.thread.daemon = True
-        self.thread.start()
+        self.thread.start()'''
 
     def synchronize(self):
         """Find the next frame header in the serial stream"""

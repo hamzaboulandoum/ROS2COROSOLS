@@ -37,7 +37,7 @@ void Commands_Request_fini_function(void * message_memory)
   typed_message->~Commands_Request();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember Commands_Request_message_member_array[6] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember Commands_Request_message_member_array[7] = {
   {
     "vx",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_DOUBLE,  // type
@@ -139,13 +139,30 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember Commands_Requ
     nullptr,  // fetch(index, &value) function pointer
     nullptr,  // assign(index, value) function pointer
     nullptr  // resize(index) function pointer
+  },
+  {
+    "ab_servo",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT32,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(custom_interfaces::srv::Commands_Request, ab_servo),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr,  // fetch(index, &value) function pointer
+    nullptr,  // assign(index, value) function pointer
+    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers Commands_Request_message_members = {
   "custom_interfaces::srv",  // message namespace
   "Commands_Request",  // message name
-  6,  // number of fields
+  7,  // number of fields
   sizeof(custom_interfaces::srv::Commands_Request),
   Commands_Request_message_member_array,  // message members
   Commands_Request_init_function,  // function to initialize message memory (memory has to be allocated)

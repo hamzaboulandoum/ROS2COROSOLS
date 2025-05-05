@@ -1,0 +1,202 @@
+[0.066s] Invoking command in '/home/youssef/COROSOLS_WS/build/custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/youssef/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/custom_interfaces -- -j8 -l8
+[0.267s] [  2%] Built target custom_interfaces__cpp
+[0.277s] [ 12%] Built target custom_interfaces__rosidl_generator_c
+[0.424s] [ 23%] Built target custom_interfaces__rosidl_typesupport_cpp
+[0.448s] [ 34%] Built target custom_interfaces__rosidl_typesupport_introspection_c
+[0.481s] [ 44%] Built target custom_interfaces__rosidl_typesupport_fastrtps_cpp
+[0.493s] [ 44%] Built target ament_cmake_python_copy_custom_interfaces
+[0.498s] [ 55%] Built target custom_interfaces__rosidl_typesupport_introspection_cpp
+[0.499s] [ 65%] Built target custom_interfaces__rosidl_typesupport_c
+[0.545s] [ 76%] Built target custom_interfaces__rosidl_typesupport_fastrtps_c
+[0.687s] [ 76%] Built target custom_interfaces
+[0.775s] [ 78%] Built target custom_interfaces__py
+[0.852s] [ 87%] Built target custom_interfaces__rosidl_generator_py
+[0.967s] [ 91%] Built target custom_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[0.978s] [ 95%] Built target custom_interfaces__rosidl_typesupport_introspection_c__pyext
+[1.004s] [100%] Built target custom_interfaces__rosidl_typesupport_c__pyext
+[1.447s] running egg_info
+[1.450s] writing custom_interfaces.egg-info/PKG-INFO
+[1.450s] writing dependency_links to custom_interfaces.egg-info/dependency_links.txt
+[1.451s] writing top-level names to custom_interfaces.egg-info/top_level.txt
+[1.458s] reading manifest file 'custom_interfaces.egg-info/SOURCES.txt'
+[1.460s] writing manifest file 'custom_interfaces.egg-info/SOURCES.txt'
+[1.526s] [100%] Built target ament_cmake_python_build_custom_interfaces_egg
+[1.579s] Invoked command in '/home/youssef/COROSOLS_WS/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/youssef/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --build /home/youssef/COROSOLS_WS/build/custom_interfaces -- -j8 -l8
+[1.582s] Invoking command in '/home/youssef/COROSOLS_WS/build/custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/youssef/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/custom_interfaces
+[1.608s] -- Install configuration: ""
+[1.608s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/ament_index/resource_index/rosidl_interfaces/custom_interfaces
+[1.609s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[1.609s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[1.611s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/serial_data.h
+[1.611s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_generator_c__visibility_control.h
+[1.612s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[1.613s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__functions.h
+[1.613s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__type_support.h
+[1.613s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__functions.c
+[1.613s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__type_support.h
+[1.614s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__struct.h
+[1.614s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__functions.c
+[1.615s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__struct.h
+[1.615s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__functions.h
+[1.615s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/imu_data.h
+[1.615s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv
+[1.616s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail
+[1.617s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__functions.h
+[1.617s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__type_support.h
+[1.617s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__struct.h
+[1.618s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__functions.c
+[1.618s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/commands.h
+[1.618s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/environment/library_path.sh
+[1.618s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/environment/library_path.dsv
+[1.625s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_c.so
+[1.631s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[1.632s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[1.634s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[1.634s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__rosidl_typesupport_fastrtps_c.h
+[1.634s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__rosidl_typesupport_fastrtps_c.h
+[1.634s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.635s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv
+[1.636s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail
+[1.636s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__rosidl_typesupport_fastrtps_c.h
+[1.645s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_c.so
+[1.649s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[1.649s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[1.649s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.649s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[1.649s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__rosidl_typesupport_introspection_c.h
+[1.649s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__type_support.c
+[1.650s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__rosidl_typesupport_introspection_c.h
+[1.650s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__type_support.c
+[1.650s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv
+[1.650s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail
+[1.650s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__rosidl_typesupport_introspection_c.h
+[1.650s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__type_support.c
+[1.652s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_c.so
+[1.654s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_c.so
+[1.655s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[1.656s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[1.658s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[1.658s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/serial_data.hpp
+[1.658s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/imu_data.hpp
+[1.659s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[1.660s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__traits.hpp
+[1.660s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__struct.hpp
+[1.660s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__struct.hpp
+[1.661s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__type_support.hpp
+[1.662s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__type_support.hpp
+[1.662s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__traits.hpp
+[1.663s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__builder.hpp
+[1.663s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__builder.hpp
+[1.663s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv
+[1.663s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/commands.hpp
+[1.664s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail
+[1.664s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__struct.hpp
+[1.664s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__traits.hpp
+[1.665s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__type_support.hpp
+[1.665s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__builder.hpp
+[1.665s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[1.665s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[1.665s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.666s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[1.666s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__rosidl_typesupport_fastrtps_cpp.hpp
+[1.666s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/dds_fastrtps
+[1.666s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__rosidl_typesupport_fastrtps_cpp.hpp
+[1.666s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv
+[1.667s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail
+[1.667s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/dds_fastrtps
+[1.667s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__rosidl_typesupport_fastrtps_cpp.hpp
+[1.667s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[1.678s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[1.679s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[1.679s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[1.679s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__type_support.cpp
+[1.680s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__rosidl_typesupport_introspection_cpp.hpp
+[1.681s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/serial_data__rosidl_typesupport_introspection_cpp.hpp
+[1.681s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/imu_data__type_support.cpp
+[1.681s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv
+[1.682s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail
+[1.683s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__type_support.cpp
+[1.683s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/include/custom_interfaces/custom_interfaces/srv/detail/commands__rosidl_typesupport_introspection_cpp.hpp
+[1.684s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_cpp.so
+[1.688s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_cpp.so
+[1.688s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/environment/pythonpath.sh
+[1.689s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/environment/pythonpath.dsv
+[1.689s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info
+[1.689s] -- Installing: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[1.689s] -- Installing: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[1.689s] -- Installing: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[1.692s] -- Installing: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[1.696s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces
+[1.698s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg
+[1.698s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_serial_data_s.c
+[1.699s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_serial_data.py
+[1.699s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_imu_data_s.c
+[1.700s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_imu_data.py
+[1.700s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/__init__.py
+[1.700s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/libcustom_interfaces__rosidl_generator_py.so
+[1.701s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.701s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_c.c
+[1.701s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.702s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.702s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/srv
+[1.702s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/srv/_commands_s.c
+[1.703s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/srv/_commands.py
+[1.703s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/srv/__init__.py
+[1.704s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.704s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/__init__.py
+[1.704s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[1.762s] Listing '/home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces'...
+[1.763s] Listing '/home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg'...
+[1.763s] Listing '/home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/srv'...
+[1.765s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.766s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.766s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.766s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_py.so
+[1.767s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/msg/SerialData.idl
+[1.767s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/msg/ImuData.idl
+[1.767s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/srv/Commands.idl
+[1.767s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/msg/SerialData.msg
+[1.767s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/msg/ImuData.msg
+[1.768s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/srv/Commands.srv
+[1.768s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/srv/Commands_Request.msg
+[1.768s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/srv/Commands_Response.msg
+[1.769s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/ament_index/resource_index/package_run_dependencies/custom_interfaces
+[1.769s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/ament_index/resource_index/parent_prefix_path/custom_interfaces
+[1.769s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/environment/ament_prefix_path.sh
+[1.769s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/environment/ament_prefix_path.dsv
+[1.770s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/environment/path.sh
+[1.770s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/environment/path.dsv
+[1.770s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/local_setup.bash
+[1.770s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/local_setup.sh
+[1.771s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/local_setup.zsh
+[1.771s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/local_setup.dsv
+[1.771s] -- Installing: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.dsv
+[1.771s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/ament_index/resource_index/packages/custom_interfaces
+[1.772s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cExport.cmake
+[1.772s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cExport-noconfig.cmake
+[1.772s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[1.772s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[1.773s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[1.773s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[1.773s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cExport.cmake
+[1.773s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[1.774s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cppExport.cmake
+[1.774s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.775s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[1.775s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[1.775s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[1.776s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cppExport.cmake
+[1.776s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[1.776s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_pyExport.cmake
+[1.776s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[1.776s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake-extras.cmake
+[1.777s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.777s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[1.777s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[1.778s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.778s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.778s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.778s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfacesConfig.cmake
+[1.779s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfacesConfig-version.cmake
+[1.779s] -- Up-to-date: /home/youssef/COROSOLS_WS/install/custom_interfaces/share/custom_interfaces/package.xml
+[1.802s] Invoked command in '/home/youssef/COROSOLS_WS/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/youssef/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --install /home/youssef/COROSOLS_WS/build/custom_interfaces

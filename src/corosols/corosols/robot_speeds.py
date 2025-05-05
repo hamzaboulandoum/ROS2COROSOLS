@@ -68,6 +68,10 @@ class Simulator:
         self.average_error = 0
         self.N_error =0
         self.simulation_status = False
+        self.servo_min = 50
+        self.servo_max = 100
+        self.compressor_min = 50
+        self.compressor_max = 100
     def simulate(self): 
         while self.simulation_status and self.step():
             pass
@@ -76,7 +80,8 @@ class Simulator:
             self.robot_speed.command_req.vy = 0.0
             self.robot_speed.command_req.vx = 0.0
             self.robot_speed.command_req.vr = 0.0
-            self.robot_speed.command_req.airbrush = False
+            self.robot_speed.command_req.airbrush = 0
+            self.robot_speed.command_req.ab_servo = 0
             self.robot_speed.command_req.stepperx = -AXIS_X_LIMIT
             self.robot_speed.command_req.steppery = -AXIS_Y_LIMIT
             self.robot_speed.send_speed()
@@ -146,17 +151,12 @@ class Simulator:
             self.average_error = (self.average_error*self.N_error + self.error)/(self.N_error+1)
             self.N_error += 1
 
-        if reset_target:
-            ratio = np.clip(abs(self.robot_pos-current_target)/AXIS_Y_LIMIT/(self.max_speed/0.03),0,1)
-        else:
-            ratio = minn(np.clip(abs(self.robot_pos-current_target)/AXIS_Y_LIMIT/1.5,[0.05,0.05],[1,1]),np.clip(abs(current_target-prev_target)/AXIS_Y_LIMIT/1.5,[0.05,0.05],[1,1]))
-        
-        error = np.clip(np.linalg.norm(self.relative_airbrush_pos-np.array([self.robot_speed.robot_data.stepper_x,self.robot_speed.robot_data.stepper_y]))*20*(self.max_speed/0.15),1,100*(self.max_speed/0.15))
         self.robot_speed.command_req.vr = -np.clip(self.robot_speed.theta/5,-0.2,0.2)
-        vx, vy = rotate_vector(robot_velocity[0], robot_velocity[1], -self.robot_speed.theta)
+        airbrush_output = self.compressor_min + (self.compressor_max - self.compressor_min) * np.linalg.norm(robot_velocity)/0.3
         self.robot_speed.command_req.vy = -robot_velocity[0]#*ratio[0]/error)
         self.robot_speed.command_req.vx = robot_velocity[1]#*ratio[1]/error)
-        self.robot_speed.command_req.airbrush = is_printing
+        self.robot_speed.command_req.airbrush = int(is_printing*airbrush_output)
+        self.robot_speed.command_req.ab_servo = is_printing*100
         self.logger.log_step(self.robot_pos, robot_velocity,[self.robot_speed.command_req.vx,self.robot_speed.command_req.vy], [self.robot_speed.odoData.twist.twist.linear.x,self.robot_speed.odoData.twist.twist.linear.y], prev_target,self.error)
         self.robot_points.append(self.robot_pos.copy())
 
@@ -177,16 +177,19 @@ class Simulator:
             self.robot_speed.command_req.vy = 0.0
             self.robot_speed.command_req.vx = 0.0
             self.robot_speed.command_req.vr = 0.0
-            self.robot_speed.command_req.airbrush = False
+            self.robot_speed.command_req.airbrush = 0
+            self.robot_speed.command_req.ab_servo = 0
             self.robot_speed.send_speed()
             return False
             
         self.robot_speed.command_req.stepperx = float(self.relative_airbrush_pos[0])
         self.robot_speed.command_req.steppery = float(self.relative_airbrush_pos[1])
         if not self.airbrush_acivation:
-            self.robot_speed.command_req.airbrush = False
+            self.robot_speed.command_req.airbrush = 0
+            self.robot_speed.command_req.ab_servo = 0
         self.robot_speed.send_speed()
-        #self.robot_speed.get_logger().info(f"dt = {dt}  <=> freq = {1/dt}")      
+
+        self.robot_speed.get_logger().info(f"vx = {self.robot_speed.command_req.vx}  <> vy = {self.robot_speed.command_req.vy}")      
         return True
 def minn(a,b):
     l=[]
@@ -239,18 +242,22 @@ class RobotSpeed(Node):
                 self.prism_status = False
             elif params[1]=='E2':
                 tk.messagebox.showwarning(title = "Station error: Status E2",message = params[2])
-                self.prism_status = True
+                self.prism_status = False
             elif params[1]=='E3':
                 tk.messagebox.showwarning(title = "Station error: Status E3",message = params[2])
-                self.prism_status = True
+                self.prism_status = False
         
     def odom_listener(self,msg):
         try :
             self.u = np.array([msg.pose.pose.position.x-self.odoData.pose.pose.position.x,msg.pose.pose.position.y-self.odoData.pose.pose.position.y])
-            
+            self.odoData = msg
+            if self.prism_status == False:
+                self.prism_status =True
+            if self.station_status == False:
+                self.station_status =  True
         except:
             pass
-        self.odoData = msg
+        
         
     def robot_data_listener(self,msg):
         v = np.array([msg.y_speed,msg.x_speed])
@@ -280,6 +287,7 @@ def rclspin(node):
     try:
         rclpy.spin(node)
     except Exception:
+
         node.destroy_node()
         
 
@@ -296,7 +304,7 @@ class RobotControlUI(tk.Tk):
         self.init_pos = False
         self.station_status = tk.BooleanVar(value=False)
         self.station_status.trace_add('write', self.update_station_button)
-        self.station_ip = tk.StringVar(value="10.27.212.109")
+        self.station_ip = tk.StringVar(value="192.168.223.197")
         self.station_port = tk.StringVar(value="1212")
 
         self.arrows = []
@@ -386,6 +394,8 @@ class RobotControlUI(tk.Tk):
         self.config_menu.add_separator()
         self.config_menu.add_command(label="Reset Angles", command=self.reset_angles)
         self.config_menu.add_command(label="Default Angles", command=self.default_angles)
+        self.config_menu.add_separator()
+        self.config_menu.add_command(label="Airbrush limits", command=self.airbrush_limits)
 
         # Create main frame
         main_frame = ttk.Frame(self)
@@ -436,7 +446,51 @@ class RobotControlUI(tk.Tk):
 
         # Create labels for displaying values
         self.create_info_labels(control_frame)
+    def airbrush_limits(self):
+        dialog = self.AirbrushLimitsDialog(self, title="Airbrush Limits",servo_min_default=self.simulator.servo_min,servo_max_default=self.simulator.servo_max,compressor_min_default=self.simulator.compressor_min,compressor_max_default=self.simulator.compressor_max)
+        if dialog.result:
+            self.simulator.servo_min= dialog.result["servo_min"]
+            self.simulator.servo_max = dialog.result["servo_max"]
+            self.simulator.compressor_min = dialog.result["compressor_min"]
+            self.simulator.compressor_max = dialog.result["compressor_max"]
+    class AirbrushLimitsDialog(simpledialog.Dialog):
+        def __init__(self, parent, title=None, servo_min_default=0, servo_max_default=0, compressor_min_default=0, compressor_max_default=0):
+            self.servo_min_default = servo_min_default
+            self.servo_max_default = servo_max_default
+            self.compressor_min_default = compressor_min_default
+            self.compressor_max_default = compressor_max_default
+            super().__init__(parent, title)
+        def body(self, master):
+            tk.Label(master, text="Servo Min:").grid(row=0)
+            tk.Label(master, text="Servo Max:").grid(row=1)
+            tk.Label(master, text="Compressor Min:").grid(row=2)
+            tk.Label(master, text="Compressor Max:").grid(row=3)
 
+            self.servo_min = tk.Entry(master)
+            self.servo_max = tk.Entry(master)
+            self.compressor_min = tk.Entry(master)
+            self.compressor_max = tk.Entry(master)
+
+            self.servo_min.insert(0, str(self.servo_min_default))
+            self.servo_max.insert(0, str(self.servo_max_default))
+            self.compressor_min.insert(0, str(self.compressor_min_default))
+            self.compressor_max.insert(0, str(self.compressor_max_default))
+
+
+            self.servo_min.grid(row=0, column=1)
+            self.servo_max.grid(row=1, column=1)
+            self.compressor_min.grid(row=2, column=1)
+            self.compressor_max.grid(row=3, column=1)
+
+            return self.servo_min  # initial focus
+
+        def apply(self):
+            self.result = {
+                "servo_min": int(self.servo_min.get()),
+                "servo_max": int(self.servo_max.get()),
+                "compressor_min": int(self.compressor_min.get()),
+                "compressor_max": int(self.compressor_max.get())
+            }
     def set_station_ip(self):
         ip = simpledialog.askstring("Station IP", "Enter Station IP:", initialvalue=self.station_ip.get())
         if ip:
@@ -508,10 +562,14 @@ class RobotControlUI(tk.Tk):
     def start_stop_airbrush(self):
         if self.airbrush_start_stop:
             self.airbrush_button.config(text="Stop Airbrush")
-            self.robot_speed.command_req.airbrush = True
+            self.robot_speed.command_req.airbrush = 100
+            self.robot_speed.command_req.ab_servo = 100
+            self.robot_speed.command_req.stepperx = 0.0
+            self.robot_speed.command_req.steppery = 0.0
         else:
             self.airbrush_button.config(text="Start Airbrush")
-            self.robot_speed.command_req.airbrush = False
+            self.robot_speed.command_req.airbrush = 0
+            self.robot_speed.command_req.ab_servo = 0
         self.robot_speed.send_speed()
         self.airbrush_start_stop = not self.airbrush_start_stop
 
@@ -608,7 +666,8 @@ class RobotControlUI(tk.Tk):
         self.robot_speed.command_req.vx = 0.0
         self.robot_speed.command_req.vy = 0.0
         self.robot_speed.command_req.vr = 0.0
-        self.robot_speed.command_req.airbrush = False
+        self.robot_speed.command_req.airbrush = 0
+        self.robot_speed.command_req.ab_servo = 0
         self.simulator.simulation_status = False
         self.robot_speed.send_speed()
 
@@ -625,7 +684,8 @@ class RobotControlUI(tk.Tk):
             self.robot_speed.command_req.vx = 0.0
             self.robot_speed.command_req.vy = 0.0
             self.robot_speed.command_req.vr = 0.0
-            self.robot_speed.command_req.airbrush = False
+            self.robot_speed.command_req.airbrush = 0
+            self.robot_speed.command_req.ab_servo = 0
             self.robot_speed.send_speed()
             self.simulator.current_target_index = 0
 
@@ -790,7 +850,7 @@ class RobotControlUI(tk.Tk):
 
         # Update other labels
         if self.station_status.get() != self.robot_speed.station_status:
-            self.station_status.set(self.robot_speed.station_status)
+            self.station_status.set(self.robot_speed.station_status)  
 
         if (not self.robot_speed.prism_status or not self.robot_speed.station_status )and self.is_paused == False:
             self.pause_simulation()
@@ -899,7 +959,6 @@ class ManualControlWindow(tk.Toplevel):
         self.robot_speed.command_req.vx = vx
         self.robot_speed.command_req.vy = vy
         self.robot_speed.command_req.vr = vr
-        self.robot_speed.command_req.airbrush = False
         self.robot_speed.send_speed()
     
     def stop_robot(self):
@@ -908,7 +967,6 @@ class ManualControlWindow(tk.Toplevel):
         self.robot_speed.command_req.vy = 0.0
         self.robot_speed.command_req.vr = 0.0
         self.robot_speed.get_logger().info(f"Moving robot: vx={0}, vy={0}, vr={0}")
-        self.robot_speed.command_req.airbrush = False
         self.robot_speed.send_speed()
 def main():
     rclpy.init()
@@ -1074,13 +1132,15 @@ def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_s
     target_pos = np.array(target_pos, dtype=float)
     
     # Calculate path vector and normalize it
-    path_vector = target_pos - prev_target_pos
+    path_vector = (target_pos - prev_target_pos)
     path_length = np.linalg.norm(path_vector)
     
     if path_length < 1e-6:
         return np.zeros(2)
     
     path_direction = path_vector / path_length
+
+
     
     # Calculate vector from current position to target
     to_target = target_pos - current_pos
@@ -1142,7 +1202,7 @@ def calculate_robot_speed_vector(current_pos, prev_target_pos, target_pos, max_s
                         max_speed * error_damping * distance_factor))
     
     # Forward component: along the path
-    forward_component = base_speed * path_direction
+    forward_component = base_speed * to_target/to_target_length
     
     # Corrective component: perpendicular to path
     correction_speed = -correction * base_speed # Reduced correction intensity
