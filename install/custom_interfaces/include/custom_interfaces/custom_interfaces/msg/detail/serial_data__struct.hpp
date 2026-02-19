@@ -44,9 +44,9 @@ struct SerialData_
       this->x_accel = 0.0;
       this->y_accel = 0.0;
       this->z_accel = 0.0;
-      this->x_gyro = 0.0;
-      this->y_gyro = 0.0;
-      this->z_gyro = 0.0;
+      this->heading = 0.0;
+      this->pitch = 0.0;
+      this->roll = 0.0;
       this->power_voltage = 0.0;
       this->stepper_x = 0.0;
       this->stepper_y = 0.0;
@@ -65,9 +65,9 @@ struct SerialData_
       this->x_accel = 0.0;
       this->y_accel = 0.0;
       this->z_accel = 0.0;
-      this->x_gyro = 0.0;
-      this->y_gyro = 0.0;
-      this->z_gyro = 0.0;
+      this->heading = 0.0;
+      this->pitch = 0.0;
+      this->roll = 0.0;
       this->power_voltage = 0.0;
       this->stepper_x = 0.0;
       this->stepper_y = 0.0;
@@ -93,15 +93,15 @@ struct SerialData_
   using _z_accel_type =
     double;
   _z_accel_type z_accel;
-  using _x_gyro_type =
+  using _heading_type =
     double;
-  _x_gyro_type x_gyro;
-  using _y_gyro_type =
+  _heading_type heading;
+  using _pitch_type =
     double;
-  _y_gyro_type y_gyro;
-  using _z_gyro_type =
+  _pitch_type pitch;
+  using _roll_type =
     double;
-  _z_gyro_type z_gyro;
+  _roll_type roll;
   using _power_voltage_type =
     double;
   _power_voltage_type power_voltage;
@@ -149,22 +149,22 @@ struct SerialData_
     this->z_accel = _arg;
     return *this;
   }
-  Type & set__x_gyro(
+  Type & set__heading(
     const double & _arg)
   {
-    this->x_gyro = _arg;
+    this->heading = _arg;
     return *this;
   }
-  Type & set__y_gyro(
+  Type & set__pitch(
     const double & _arg)
   {
-    this->y_gyro = _arg;
+    this->pitch = _arg;
     return *this;
   }
-  Type & set__z_gyro(
+  Type & set__roll(
     const double & _arg)
   {
-    this->z_gyro = _arg;
+    this->roll = _arg;
     return *this;
   }
   Type & set__power_voltage(
@@ -246,13 +246,13 @@ struct SerialData_
     if (this->z_accel != other.z_accel) {
       return false;
     }
-    if (this->x_gyro != other.x_gyro) {
+    if (this->heading != other.heading) {
       return false;
     }
-    if (this->y_gyro != other.y_gyro) {
+    if (this->pitch != other.pitch) {
       return false;
     }
-    if (this->z_gyro != other.z_gyro) {
+    if (this->roll != other.roll) {
       return false;
     }
     if (this->power_voltage != other.power_voltage) {

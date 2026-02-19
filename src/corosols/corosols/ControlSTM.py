@@ -24,54 +24,49 @@ def Check_Sum(data, count_number, mode):
 
 def receive_serial_data(ser, text_widget):
     while True:
+        try:
+            # 1. Send 'M' to request position
+            ser.write(b'M\n')
+            # 2. Try to read a line (ASCII)
+            line = ser.readline().decode(errors='ignore').strip()
+            if line.startswith("POS:"):
+                try:
+                    pos_str = line[4:]
+                    pos_a, pos_b = map(int, pos_str.split(","))
+                    text_widget.insert('end', f"StepperA: {pos_a}, StepperB: {pos_b}\n")
+                    text_widget.see('end')
+                except Exception as e:
+                    print("Parse error:", e)
+            elif line:  # If we got a line but it's not POS, ignore or log it
+                print("Unknown line from Arduino:", line)
+            time.sleep(0.5)
             received_data = ser.read(24)
-            Frame_Header = received_data[0]  # Frame header (byte)
-            Flag_Stop = received_data[1]  # Stop flag (byte)
+            if len(received_data) == 24:
+                    Frame_Header = received_data[0]
+                    Flag_Stop = received_data[1]
+                    X_speed = (received_data[2] << 8) | received_data[3]
+                    if X_speed & 0x8000:
+                        X_speed = X_speed - 0x10000
+                        Y_speed = (received_data[4] << 8) | received_data[5]
+                        Z_speed = (received_data[6] << 8) | received_data[7]
+                        X_accel = (received_data[8] << 8) | received_data[9]
+                        Y_accel = (received_data[10] << 8) | received_data[11]
+                        Z_accel = (received_data[12] << 8) | received_data[13]
+                        X_gyro = (received_data[14] << 8) | received_data[15]
+                        Y_gyro = (received_data[16] << 8) | received_data[17]
+                        Z_gyro = (received_data[18] << 8) | received_data[19]
+                        Power_Voltage = (received_data[20] << 8) | received_data[21]
+                        Checksum = received_data[22]
+                        Frame_Tail = received_data[23]
+                    # Display or use reconstructed data
+                    data_to_display = f"""\nX_speed: {X_speed/1000}\nY_speed: {Y_speed/1000}\nZ_speed: {Z_speed/1000}\nX_acceleration: {X_accel/1000}\nY_acceleration: {Y_accel/1000}\nZ_acceleration: {Z_accel/1000}\nX_gyroscope: {X_gyro/1000}\nY_gyroscope: {Y_gyro/1000}\nBattery Voltage: {Power_Voltage/1000}\n"""
+                    text_widget.insert(tk.END, data_to_display)
+                    text_widget.see(tk.END)            
+        except Exception as e:
+            print("Serial communication error:", e)
+            time.sleep(1)
 
-            X_speed = (received_data[2] << 8) | received_data[3] 
-            if X_speed & 0x8000:
-                X_speed = X_speed - 0x10000# X-axis speed (16-bit integer)
-            Y_speed = (received_data[4] << 8) | received_data[5]  # Y-axis speed (16-bit integer)
-            Z_speed = (received_data[6] << 8) | received_data[7]  # Z-axis speed (16-bit integer)
 
-            X_accel = (received_data[8] << 8) | received_data[9]   # X-axis acceleration (16-bit integer)
-            Y_accel = (received_data[10] << 8) | received_data[11]  # Y-axis acceleration (16-bit integer)
-            Z_accel = (received_data[12] << 8) | received_data[13]  # Z-axis acceleration (16-bit integer)
-
-            X_gyro = (received_data[14] << 8) | received_data[15]  # X-axis gyroscope (16-bit integer)
-            Y_gyro = (received_data[16] << 8) | received_data[17]  # Y-axis gyroscope (16-bit integer)
-            Z_gyro = (received_data[18] << 8) | received_data[19]  # Z-axis gyroscope (16-bit integer)
-
-            Power_Voltage = (received_data[20] << 8) | received_data[21]  # Battery voltage (16-bit integer)
-
-            Checksum = received_data[22]  # Checksum (byte)
-            Frame_Tail = received_data[23]  # Frame tail (byte)
-
-            # Calculate expected checksum based on received data
-            expected_checksum = Check_Sum(received_data,22, 1)  # Assuming Check_Sum is a function defined elsewhere
-
-            # Verify checksum
-            """if Checksum == expected_checksum:
-                print("Checksum is valid!")
-            else:
-                print("Checksum mismatch!")"""
-            
-             # Display or use reconstructed data
-            data_to_display = f"""
-            X_speed: {X_speed/1000}
-            Y_speed: {Y_speed/1000}
-            Z_speed: {Z_speed/1000}
-            X_acceleration: {X_accel/1000}
-            Y_acceleration: {Y_accel/1000}
-            Z_acceleration: {Z_accel/1000}
-            X_gyroscope: {X_gyro/1000}
-            Y_gyroscope: {Y_gyro/1000}
-            Battery Voltage: {Power_Voltage/1000}
-            """
-            text_widget.insert(tk.END, data_to_display)
-            text_widget.see(tk.END)  # Scroll the text widget to the end
-            
-      
 def generate_command_bytes(x, y, z, a):
     # Scale the velocity values by 1000 to match the expected format in the C++ code
     velocity_x = int(float(x) * 1000)

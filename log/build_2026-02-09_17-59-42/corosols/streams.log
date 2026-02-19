@@ -1,0 +1,29 @@
+[0.441s] Invoking command in '/home/robot001/Desktop/Application/COROSOLS_WS/src/corosols': CMAKE_PREFIX_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs LD_LIBRARY_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces/lib:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces/lib:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/build install --record /home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/install.log --single-version-externally-managed install_data
+[0.593s] running egg_info
+[0.593s] writing ../../build/corosols/corosols.egg-info/PKG-INFO
+[0.594s] writing dependency_links to ../../build/corosols/corosols.egg-info/dependency_links.txt
+[0.594s] writing entry points to ../../build/corosols/corosols.egg-info/entry_points.txt
+[0.594s] writing requirements to ../../build/corosols/corosols.egg-info/requires.txt
+[0.594s] writing top-level names to ../../build/corosols/corosols.egg-info/top_level.txt
+[0.595s] reading manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'
+[0.596s] writing manifest file '../../build/corosols/corosols.egg-info/SOURCES.txt'
+[0.596s] running build
+[0.596s] running build_py
+[0.597s] copying corosols/serial_read.py -> /home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/build/lib/corosols
+[0.597s] running install
+[0.597s] running install_lib
+[0.598s] copying /home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/build/lib/corosols/serial_read.py -> /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols
+[0.599s] byte-compiling /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols/serial_read.py to serial_read.cpython-310.pyc
+[0.601s] running install_data
+[0.601s] running install_egg_info
+[0.603s] removing '/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols-0.0.0-py3.10.egg-info' (and everything under it)
+[0.604s] Copying ../../build/corosols/corosols.egg-info to /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/python3.10/site-packages/corosols-0.0.0-py3.10.egg-info
+[0.604s] running install_scripts
+[0.617s] Installing imu_broadcaster script to /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/corosols
+[0.617s] Installing input_client script to /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/corosols
+[0.617s] Installing pose_broadcaster script to /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/corosols
+[0.618s] Installing robot_speeds script to /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/corosols
+[0.618s] Installing serial script to /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/corosols
+[0.618s] Installing station_connector script to /home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/corosols
+[0.618s] writing list of installed files to '/home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/install.log'
+[0.641s] Invoked command in '/home/robot001/Desktop/Application/COROSOLS_WS/src/corosols' returned '0': CMAKE_PREFIX_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs LD_LIBRARY_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces/lib:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces/lib:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/corosols build --build-base /home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/build install --record /home/robot001/Desktop/Application/COROSOLS_WS/build/corosols/install.log --single-version-externally-managed install_data

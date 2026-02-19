@@ -26,9 +26,9 @@ typedef struct custom_interfaces__msg__SerialData
   double x_accel;
   double y_accel;
   double z_accel;
-  double x_gyro;
-  double y_gyro;
-  double z_gyro;
+  double heading;
+  double pitch;
+  double roll;
   double power_voltage;
   double stepper_x;
   double stepper_y;

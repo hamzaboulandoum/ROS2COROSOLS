@@ -1,0 +1,564 @@
+[0.010s] Invoking command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake /home/robot001/Desktop/Application/COROSOLS_WS/src/marvelmind_ros2_msgs_upstream-main -DCMAKE_INSTALL_PREFIX=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs
+[0.065s] -- The C compiler identification is GNU 11.4.0
+[0.121s] -- The CXX compiler identification is GNU 11.4.0
+[0.129s] -- Detecting C compiler ABI info
+[0.179s] -- Detecting C compiler ABI info - done
+[0.183s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.183s] -- Detecting C compile features
+[0.183s] -- Detecting C compile features - done
+[0.185s] -- Detecting CXX compiler ABI info
+[0.245s] -- Detecting CXX compiler ABI info - done
+[0.250s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.250s] -- Detecting CXX compile features
+[0.250s] -- Detecting CXX compile features - done
+[0.252s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.351s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.416s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.419s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.422s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.449s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.471s] -- Found std_msgs: 4.8.0 (/opt/ros/humble/share/std_msgs/cmake)
+[0.491s] -- Found geometry_msgs: 4.8.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.735s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[0.898s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.121s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.135s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[1.136s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.154s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[1.154s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.154s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.154s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[1.168s] -- Found PythonExtra: .so  
+[1.218s] -- Configuring done
+[1.252s] -- Generating done
+[1.261s] -- Build files have been written to: /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs
+[1.267s] Invoked command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake /home/robot001/Desktop/Application/COROSOLS_WS/src/marvelmind_ros2_msgs_upstream-main -DCMAKE_INSTALL_PREFIX=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs
+[1.269s] Invoking command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --build /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs -- -j16 -l16
+[1.304s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.314s] [  1%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.321s] [  1%] Built target ament_cmake_python_copy_marvelmind_ros2_msgs
+[1.524s] running egg_info
+[1.525s] creating marvelmind_ros2_msgs.egg-info
+[1.525s] writing marvelmind_ros2_msgs.egg-info/PKG-INFO
+[1.525s] writing dependency_links to marvelmind_ros2_msgs.egg-info/dependency_links.txt
+[1.526s] writing top-level names to marvelmind_ros2_msgs.egg-info/top_level.txt
+[1.526s] writing manifest file 'marvelmind_ros2_msgs.egg-info/SOURCES.txt'
+[1.527s] reading manifest file 'marvelmind_ros2_msgs.egg-info/SOURCES.txt'
+[1.528s] writing manifest file 'marvelmind_ros2_msgs.egg-info/SOURCES.txt'
+[1.578s] [  1%] Built target ament_cmake_python_build_marvelmind_ros2_msgs_egg
+[2.341s] [  1%] Built target marvelmind_ros2_msgs__cpp
+[2.349s] [  2%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.353s] [  2%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.357s] [  3%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.384s] [  5%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/beacon_distance__functions.c.o[0m
+[2.385s] [  5%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__functions.c.o[0m
+[2.390s] [  6%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__functions.c.o[0m
+[2.393s] [  6%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__functions.c.o[0m
+[2.393s] [  7%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__functions.c.o[0m
+[2.393s] [  8%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__functions.c.o[0m
+[2.397s] [  9%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/hedge_position__functions.c.o[0m
+[2.397s] [ 10%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/hedge_quality__functions.c.o[0m
+[2.399s] [ 11%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__functions.c.o[0m
+[2.411s] [ 11%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__functions.c.o[0m
+[2.411s] [ 12%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__functions.c.o[0m
+[2.430s] [ 13%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_c.dir/rosidl_generator_c/marvelmind_ros2_msgs/srv/detail/marvelmind_api__functions.c.o[0m
+[2.534s] [ 14%] [32m[1mLinking C shared library libmarvelmind_ros2_msgs__rosidl_generator_c.so[0m
+[2.597s] [ 14%] Built target marvelmind_ros2_msgs__rosidl_generator_c
+[2.617s] [ 15%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[2.625s] [ 16%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[2.625s] [ 17%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[2.902s] [ 18%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/beacon_distance__type_support.cpp.o[0m
+[2.902s] [ 19%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/beacon_position_addressed__type_support.cpp.o[0m
+[2.908s] [ 20%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/hedge_imu_raw__type_support.cpp.o[0m
+[2.910s] [ 21%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/hedge_imu_fusion__type_support.cpp.o[0m
+[2.911s] [ 21%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/hedge_position_addressed__type_support.cpp.o[0m
+[2.913s] [ 22%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/hedge_position_angle__type_support.cpp.o[0m
+[2.922s] [ 23%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/hedge_position__type_support.cpp.o[0m
+[2.928s] [ 24%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/hedge_telemetry__type_support.cpp.o[0m
+[2.928s] [ 25%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/hedge_quality__type_support.cpp.o[0m
+[2.965s] [ 26%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/marvelmind_waypoint__type_support.cpp.o[0m
+[2.965s] [ 27%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__type_support.cpp.o[0m
+[2.965s] [ 27%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/beacon_distance__type_support.cpp.o[0m
+[3.235s] [ 28%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__type_support.cpp.o[0m
+[3.242s] [ 29%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__type_support.cpp.o[0m
+[3.264s] [ 30%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__type_support.cpp.o[0m
+[3.266s] [ 30%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/msg/marvelmind_user_data__type_support.cpp.o[0m
+[3.282s] [ 31%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__type_support.cpp.o[0m
+[3.286s] [ 31%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/hedge_position__type_support.cpp.o[0m
+[3.287s] [ 32%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/marvelmind_ros2_msgs/srv/marvelmind_api__type_support.cpp.o[0m
+[3.291s] [ 33%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/beacon_distance__type_support.cpp.o[0m
+[3.294s] [ 34%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__type_support.cpp.o[0m
+[3.296s] [ 35%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/hedge_quality__type_support.cpp.o[0m
+[3.356s] [ 35%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/beacon_position_addressed__type_support.cpp.o[0m
+[3.387s] [ 36%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/hedge_imu_fusion__type_support.cpp.o[0m
+[3.429s] [ 37%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/hedge_imu_raw__type_support.cpp.o[0m
+[3.456s] [ 38%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__type_support.cpp.o[0m
+[3.456s] [ 39%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/hedge_position_addressed__type_support.cpp.o[0m
+[3.484s] [ 40%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/hedge_position_angle__type_support.cpp.o[0m
+[3.491s] [ 41%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/beacon_distance__type_support.cpp.o[0m
+[3.500s] [ 42%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/hedge_position__type_support.cpp.o[0m
+[3.522s] [ 43%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/beacon_position_addressed__type_support.cpp.o[0m
+[3.523s] [ 44%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/beacon_distance__type_support.c.o[0m
+[3.528s] [ 45%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__type_support.c.o[0m
+[3.531s] [ 46%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__type_support.cpp.o[0m
+[3.555s] [ 47%] [32m[1mLinking CXX shared library libmarvelmind_ros2_msgs__rosidl_typesupport_cpp.so[0m
+[3.561s] [ 47%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/hedge_quality__type_support.cpp.o[0m
+[3.578s] [ 48%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/marvelmind_ros2_msgs/srv/detail/marvelmind_api__type_support.cpp.o[0m
+[3.605s] [ 49%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__type_support.c.o[0m
+[3.615s] [ 50%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/hedge_telemetry__type_support.cpp.o[0m
+[3.654s] [ 50%] Built target marvelmind_ros2_msgs__rosidl_typesupport_cpp
+[3.662s] [ 50%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__type_support.c.o[0m
+[3.664s] [ 52%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/marvelmind_waypoint__type_support.cpp.o[0m
+[3.664s] [ 52%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__type_support.c.o[0m
+[3.665s] [ 53%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/hedge_imu_fusion__type_support.cpp.o[0m
+[3.669s] [ 54%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/beacon_distance__type_support_c.cpp.o[0m
+[3.671s] [ 55%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/msg/marvelmind_user_data__type_support.cpp.o[0m
+[3.671s] [ 56%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/marvelmind_ros2_msgs/srv/marvelmind_api__type_support.cpp.o[0m
+[3.682s] [ 57%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/hedge_imu_raw__type_support.cpp.o[0m
+[3.684s] [ 58%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/hedge_position_addressed__type_support.cpp.o[0m
+[3.693s] [ 59%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__type_support.c.o[0m
+[3.700s] [ 60%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/hedge_position__type_support.c.o[0m
+[3.703s] [ 60%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/hedge_position_angle__type_support.cpp.o[0m
+[3.710s] [ 61%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/hedge_position__type_support.cpp.o[0m
+[3.711s] [ 63%] [32m[1mLinking CXX shared library libmarvelmind_ros2_msgs__rosidl_typesupport_c.so[0m
+[3.711s] [ 62%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__type_support_c.cpp.o[0m
+[3.718s] [ 64%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/hedge_quality__type_support.cpp.o[0m
+[3.744s] [ 65%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/hedge_telemetry__type_support.cpp.o[0m
+[3.753s] [ 66%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/hedge_quality__type_support.c.o[0m
+[3.789s] [ 67%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__type_support.c.o[0m
+[3.828s] [ 67%] Built target marvelmind_ros2_msgs__rosidl_typesupport_c
+[3.843s] [ 68%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__type_support.c.o[0m
+[3.852s] [ 69%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/marvelmind_waypoint__type_support.cpp.o[0m
+[3.880s] [ 69%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__type_support.c.o[0m
+[3.898s] [ 70%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/msg/detail/dds_fastrtps/marvelmind_user_data__type_support.cpp.o[0m
+[3.924s] [ 71%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/marvelmind_ros2_msgs/srv/detail/marvelmind_api__type_support.c.o[0m
+[3.955s] [ 71%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/marvelmind_ros2_msgs/srv/detail/dds_fastrtps/marvelmind_api__type_support.cpp.o[0m
+[3.991s] [ 71%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__type_support_c.cpp.o[0m
+[4.007s] [ 72%] [32m[1mLinking C shared library libmarvelmind_ros2_msgs__rosidl_typesupport_introspection_c.so[0m
+[4.009s] [ 73%] [32m[1mLinking CXX shared library libmarvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[4.014s] [ 74%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__type_support_c.cpp.o[0m
+[4.040s] [ 75%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__type_support_c.cpp.o[0m
+[4.078s] [ 76%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__type_support_c.cpp.o[0m
+[4.083s] [ 76%] Built target marvelmind_ros2_msgs__rosidl_typesupport_introspection_c
+[4.099s] [ 77%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/hedge_position__type_support_c.cpp.o[0m
+[4.118s] [ 78%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/hedge_quality__type_support_c.cpp.o[0m
+[4.148s] [ 78%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__type_support_c.cpp.o[0m
+[4.148s] [ 79%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__type_support_c.cpp.o[0m
+[4.150s] [ 79%] Built target marvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp
+[4.161s] [ 80%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__type_support_c.cpp.o[0m
+[4.192s] [ 81%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/marvelmind_ros2_msgs/srv/detail/marvelmind_api__type_support_c.cpp.o[0m
+[4.417s] [ 82%] [32m[1mLinking CXX shared library libmarvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[4.478s] [ 82%] Built target marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp
+[4.496s] [ 83%] [32m[1mLinking CXX shared library libmarvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[4.557s] [ 83%] Built target marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c
+[4.571s] [ 83%] Built target marvelmind_ros2_msgs
+[4.588s] [ 84%] [34m[1mGenerating Python code for ROS interfaces[0m
+[5.354s] [ 84%] Built target marvelmind_ros2_msgs__py
+[5.374s] [ 86%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_beacon_position_addressed_s.c.o[0m
+[5.374s] [ 86%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_hedge_position_angle_s.c.o[0m
+[5.375s] [ 87%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_hedge_imu_fusion_s.c.o[0m
+[5.375s] [ 90%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_hedge_position_s.c.o[0m
+[5.375s] [ 87%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_marvelmind_waypoint_s.c.o[0m
+[5.375s] [ 92%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_hedge_imu_raw_s.c.o[0m
+[5.375s] [ 92%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_beacon_distance_s.c.o[0m
+[5.375s] [ 92%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_hedge_quality_s.c.o[0m
+[5.375s] [ 92%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_hedge_position_addressed_s.c.o[0m
+[5.375s] [ 92%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_hedge_telemetry_s.c.o[0m
+[5.375s] [ 93%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/msg/_marvelmind_user_data_s.c.o[0m
+[5.375s] [ 94%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_generator_py.dir/rosidl_generator_py/marvelmind_ros2_msgs/srv/_marvelmind_api_s.c.o[0m
+[5.479s] [ 95%] [32m[1mLinking C shared library rosidl_generator_py/marvelmind_ros2_msgs/libmarvelmind_ros2_msgs__rosidl_generator_py.so[0m
+[5.516s] [ 95%] Built target marvelmind_ros2_msgs__rosidl_generator_py
+[5.533s] [ 96%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/marvelmind_ros2_msgs/_marvelmind_ros2_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[5.534s] [ 96%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/marvelmind_ros2_msgs/_marvelmind_ros2_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[5.534s] [ 97%] [32mBuilding C object CMakeFiles/marvelmind_ros2_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/marvelmind_ros2_msgs/_marvelmind_ros2_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[5.614s] [ 99%] [32m[1mLinking C shared library rosidl_generator_py/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.614s] [ 99%] [32m[1mLinking C shared library rosidl_generator_py/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.615s] [100%] [32m[1mLinking C shared library rosidl_generator_py/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.646s] [100%] Built target marvelmind_ros2_msgs__rosidl_typesupport_c__pyext
+[5.647s] [100%] Built target marvelmind_ros2_msgs__rosidl_typesupport_introspection_c__pyext
+[5.647s] [100%] Built target marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c__pyext
+[5.659s] Invoked command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --build /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs -- -j16 -l16
+[5.661s] Invoking command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --install /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs
+[5.667s] -- Install configuration: ""
+[5.667s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/ament_index/resource_index/rosidl_interfaces/marvelmind_ros2_msgs
+[5.667s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs
+[5.668s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv
+[5.668s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/marvelmind_api.h
+[5.668s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail
+[5.668s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__functions.c
+[5.668s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__struct.h
+[5.668s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__functions.h
+[5.668s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__type_support.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_quality.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/marvelmind_waypoint.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_position_addressed.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_imu_fusion.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/rosidl_generator_c__visibility_control.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/beacon_position_addressed.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/beacon_distance.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/marvelmind_user_data.h
+[5.669s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__type_support.h
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__type_support.h
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__functions.c
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__struct.h
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__struct.h
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__functions.h
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__type_support.h
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__type_support.h
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__functions.c
+[5.670s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__struct.h
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__struct.h
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__type_support.h
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__functions.c
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__type_support.h
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__functions.h
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__functions.h
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__functions.c
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__type_support.h
+[5.671s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__functions.h
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__functions.c
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__type_support.h
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__struct.h
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__functions.c
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__functions.c
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__functions.h
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__struct.h
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__functions.h
+[5.672s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__struct.h
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__functions.c
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__type_support.h
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__functions.h
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__functions.c
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__struct.h
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__struct.h
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__functions.c
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__functions.h
+[5.673s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__functions.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__type_support.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__struct.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__functions.c
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__type_support.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__functions.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__struct.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__functions.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_position_angle.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_imu_raw.h
+[5.674s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_position.h
+[5.675s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_telemetry.h
+[5.675s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/environment/library_path.sh
+[5.675s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/environment/library_path.dsv
+[5.675s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_generator_c.so
+[5.675s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_generator_c.so" to ""
+[5.675s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs
+[5.676s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv
+[5.676s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail
+[5.676s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__rosidl_typesupport_fastrtps_c.h
+[5.676s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg
+[5.676s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[5.676s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail
+[5.676s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__rosidl_typesupport_fastrtps_c.h
+[5.676s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__rosidl_typesupport_fastrtps_c.h
+[5.676s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__rosidl_typesupport_fastrtps_c.h
+[5.676s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__rosidl_typesupport_fastrtps_c.h
+[5.676s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__rosidl_typesupport_fastrtps_c.h
+[5.676s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__rosidl_typesupport_fastrtps_c.h
+[5.677s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__rosidl_typesupport_fastrtps_c.h
+[5.677s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__rosidl_typesupport_fastrtps_c.h
+[5.677s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__rosidl_typesupport_fastrtps_c.h
+[5.677s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__rosidl_typesupport_fastrtps_c.h
+[5.677s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__rosidl_typesupport_fastrtps_c.h
+[5.677s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.so
+[5.677s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[5.677s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs
+[5.678s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv
+[5.678s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail
+[5.678s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__type_support.c
+[5.678s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__rosidl_typesupport_introspection_c.h
+[5.678s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg
+[5.678s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail
+[5.678s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__rosidl_typesupport_introspection_c.h
+[5.678s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__type_support.c
+[5.678s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__type_support.c
+[5.678s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__type_support.c
+[5.678s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__rosidl_typesupport_introspection_c.h
+[5.678s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__type_support.c
+[5.679s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__rosidl_typesupport_introspection_c.h
+[5.679s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__rosidl_typesupport_introspection_c.h
+[5.679s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__rosidl_typesupport_introspection_c.h
+[5.679s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__rosidl_typesupport_introspection_c.h
+[5.679s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__type_support.c
+[5.679s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__rosidl_typesupport_introspection_c.h
+[5.679s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__type_support.c
+[5.679s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__rosidl_typesupport_introspection_c.h
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__type_support.c
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__rosidl_typesupport_introspection_c.h
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__type_support.c
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__rosidl_typesupport_introspection_c.h
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__type_support.c
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__type_support.c
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__rosidl_typesupport_introspection_c.h
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__type_support.c
+[5.680s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[5.681s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_introspection_c.so
+[5.681s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_introspection_c.so" to ""
+[5.681s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_c.so
+[5.681s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_c.so" to ""
+[5.681s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs
+[5.681s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv
+[5.681s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail
+[5.681s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__builder.hpp
+[5.682s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__traits.hpp
+[5.682s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__type_support.hpp
+[5.682s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__struct.hpp
+[5.682s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/marvelmind_api.hpp
+[5.682s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg
+[5.682s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/beacon_distance.hpp
+[5.682s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/marvelmind_user_data.hpp
+[5.682s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_position.hpp
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_telemetry.hpp
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_imu_raw.hpp
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/beacon_position_addressed.hpp
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[5.683s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__struct.hpp
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__builder.hpp
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__struct.hpp
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__type_support.hpp
+[5.683s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__struct.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__struct.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__traits.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__type_support.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__builder.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__traits.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__type_support.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__builder.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__builder.hpp
+[5.684s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__type_support.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__builder.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__traits.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__traits.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__type_support.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__builder.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__struct.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__builder.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__type_support.hpp
+[5.685s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__traits.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__struct.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__builder.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__struct.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__struct.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__struct.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__type_support.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__struct.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__traits.hpp
+[5.686s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__type_support.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__traits.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__traits.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__traits.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__type_support.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__traits.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__traits.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__builder.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__builder.hpp
+[5.687s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__builder.hpp
+[5.688s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__type_support.hpp
+[5.688s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__type_support.hpp
+[5.688s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__struct.hpp
+[5.688s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_position_addressed.hpp
+[5.688s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_imu_fusion.hpp
+[5.688s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_position_angle.hpp
+[5.688s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/marvelmind_waypoint.hpp
+[5.688s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/hedge_quality.hpp
+[5.688s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs
+[5.689s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv
+[5.689s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail
+[5.689s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__rosidl_typesupport_fastrtps_cpp.hpp
+[5.689s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/dds_fastrtps
+[5.690s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg
+[5.690s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail
+[5.690s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__rosidl_typesupport_fastrtps_cpp.hpp
+[5.690s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__rosidl_typesupport_fastrtps_cpp.hpp
+[5.690s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__rosidl_typesupport_fastrtps_cpp.hpp
+[5.690s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__rosidl_typesupport_fastrtps_cpp.hpp
+[5.690s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__rosidl_typesupport_fastrtps_cpp.hpp
+[5.690s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__rosidl_typesupport_fastrtps_cpp.hpp
+[5.691s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__rosidl_typesupport_fastrtps_cpp.hpp
+[5.691s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__rosidl_typesupport_fastrtps_cpp.hpp
+[5.691s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__rosidl_typesupport_fastrtps_cpp.hpp
+[5.691s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__rosidl_typesupport_fastrtps_cpp.hpp
+[5.691s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__rosidl_typesupport_fastrtps_cpp.hpp
+[5.691s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/dds_fastrtps
+[5.691s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[5.691s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.so
+[5.692s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[5.692s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs
+[5.692s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv
+[5.692s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail
+[5.692s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__rosidl_typesupport_introspection_cpp.hpp
+[5.692s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/srv/detail/marvelmind_api__type_support.cpp
+[5.692s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg
+[5.692s] -- Up-to-date: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail
+[5.692s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__rosidl_typesupport_introspection_cpp.hpp
+[5.692s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__type_support.cpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__rosidl_typesupport_introspection_cpp.hpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_distance__rosidl_typesupport_introspection_cpp.hpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__rosidl_typesupport_introspection_cpp.hpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__type_support.cpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__rosidl_typesupport_introspection_cpp.hpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__type_support.cpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__type_support.cpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_telemetry__type_support.cpp
+[5.693s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__rosidl_typesupport_introspection_cpp.hpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__rosidl_typesupport_introspection_cpp.hpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_quality__type_support.cpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__rosidl_typesupport_introspection_cpp.hpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_waypoint__type_support.cpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/beacon_position_addressed__rosidl_typesupport_introspection_cpp.hpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_addressed__type_support.cpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position__type_support.cpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/marvelmind_user_data__rosidl_typesupport_introspection_cpp.hpp
+[5.694s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_position_angle__rosidl_typesupport_introspection_cpp.hpp
+[5.695s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_fusion__type_support.cpp
+[5.695s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/include/marvelmind_ros2_msgs/marvelmind_ros2_msgs/msg/detail/hedge_imu_raw__type_support.cpp
+[5.695s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.so
+[5.695s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[5.695s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_cpp.so
+[5.696s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_typesupport_cpp.so" to ""
+[5.696s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/environment/pythonpath.sh
+[5.696s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/environment/pythonpath.dsv
+[5.696s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs-1.0.2-py3.10.egg-info
+[5.696s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs-1.0.2-py3.10.egg-info/SOURCES.txt
+[5.696s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs-1.0.2-py3.10.egg-info/PKG-INFO
+[5.696s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs-1.0.2-py3.10.egg-info/top_level.txt
+[5.696s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs-1.0.2-py3.10.egg-info/dependency_links.txt
+[5.696s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/_marvelmind_ros2_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/srv
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/srv/__init__.py
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/srv/_marvelmind_api.py
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/srv/_marvelmind_api_s.c
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/__init__.py
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/libmarvelmind_ros2_msgs__rosidl_generator_py.so
+[5.697s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[5.698s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/_marvelmind_ros2_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[5.698s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[5.698s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg
+[5.698s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_imu_fusion_s.c
+[5.698s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_beacon_position_addressed_s.c
+[5.698s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position_addressed_s.c
+[5.698s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_beacon_distance.py
+[5.698s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_marvelmind_waypoint.py
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position_angle.py
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_quality.py
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_telemetry.py
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position_addressed.py
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/__init__.py
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_beacon_distance_s.c
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_marvelmind_user_data.py
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_imu_fusion.py
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_quality_s.c
+[5.699s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position.py
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_beacon_position_addressed.py
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position_s.c
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_marvelmind_user_data_s.c
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_imu_raw.py
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_imu_raw_s.c
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_telemetry_s.c
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_marvelmind_waypoint_s.c
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position_angle_s.c
+[5.700s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/_marvelmind_ros2_msgs_s.ep.rosidl_typesupport_c.c
+[5.735s] Listing '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/__init__.py'...
+[5.735s] Listing '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/__init__.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_beacon_distance.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_beacon_position_addressed.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_imu_fusion.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_imu_raw.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position_addressed.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_position_angle.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_quality.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_hedge_telemetry.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_marvelmind_user_data.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/msg/_marvelmind_waypoint.py'...
+[5.735s] Listing '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/srv'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/srv/__init__.py'...
+[5.735s] Compiling '/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/srv/_marvelmind_api.py'...
+[5.738s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[5.738s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.738s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[5.739s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.739s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[5.739s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/local/lib/python3.10/dist-packages/marvelmind_ros2_msgs/marvelmind_ros2_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.739s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_generator_py.so
+[5.739s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/lib/libmarvelmind_ros2_msgs__rosidl_generator_py.so" to ""
+[5.739s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/BeaconDistance.idl
+[5.740s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/BeaconPositionAddressed.idl
+[5.740s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgeImuFusion.idl
+[5.740s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgeImuRaw.idl
+[5.740s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgePositionAddressed.idl
+[5.740s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgePositionAngle.idl
+[5.740s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgePosition.idl
+[5.740s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgeQuality.idl
+[5.740s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgeTelemetry.idl
+[5.741s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/MarvelmindWaypoint.idl
+[5.741s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/MarvelmindUserData.idl
+[5.741s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/srv/MarvelmindAPI.idl
+[5.741s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/BeaconDistance.msg
+[5.741s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/BeaconPositionAddressed.msg
+[5.741s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgeImuFusion.msg
+[5.741s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgeImuRaw.msg
+[5.741s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgePositionAddressed.msg
+[5.742s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgePositionAngle.msg
+[5.742s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgePosition.msg
+[5.742s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgeQuality.msg
+[5.742s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/HedgeTelemetry.msg
+[5.742s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/MarvelmindWaypoint.msg
+[5.742s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/msg/MarvelmindUserData.msg
+[5.742s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/srv/MarvelmindAPI.srv
+[5.743s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/srv/MarvelmindAPI_Request.msg
+[5.743s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/srv/MarvelmindAPI_Response.msg
+[5.743s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/ament_index/resource_index/package_run_dependencies/marvelmind_ros2_msgs
+[5.743s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/ament_index/resource_index/parent_prefix_path/marvelmind_ros2_msgs
+[5.743s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/environment/ament_prefix_path.sh
+[5.743s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/environment/ament_prefix_path.dsv
+[5.743s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/environment/path.sh
+[5.744s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/environment/path.dsv
+[5.744s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/local_setup.bash
+[5.744s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/local_setup.sh
+[5.744s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/local_setup.zsh
+[5.744s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/local_setup.dsv
+[5.744s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.dsv
+[5.744s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/ament_index/resource_index/packages/marvelmind_ros2_msgs
+[5.745s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_generator_cExport.cmake
+[5.745s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_generator_cExport-noconfig.cmake
+[5.745s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[5.745s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[5.745s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cExport.cmake
+[5.745s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[5.745s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgs__rosidl_typesupport_cExport.cmake
+[5.746s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[5.746s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_generator_cppExport.cmake
+[5.746s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[5.746s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[5.746s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[5.746s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[5.747s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgs__rosidl_typesupport_cppExport.cmake
+[5.747s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[5.747s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_generator_pyExport.cmake
+[5.747s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/export_marvelmind_ros2_msgs__rosidl_generator_pyExport-noconfig.cmake
+[5.747s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/rosidl_cmake-extras.cmake
+[5.747s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[5.747s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[5.748s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[5.748s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[5.748s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[5.748s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[5.748s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgsConfig.cmake
+[5.748s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake/marvelmind_ros2_msgsConfig-version.cmake
+[5.748s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/package.xml
+[5.751s] Invoked command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --install /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2_msgs

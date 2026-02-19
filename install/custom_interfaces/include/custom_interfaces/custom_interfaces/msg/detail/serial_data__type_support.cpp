@@ -141,14 +141,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember SerialData_me
     nullptr  // resize(index) function pointer
   },
   {
-    "x_gyro",  // name
+    "heading",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_DOUBLE,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(custom_interfaces::msg::SerialData, x_gyro),  // bytes offset in struct
+    offsetof(custom_interfaces::msg::SerialData, heading),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -158,14 +158,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember SerialData_me
     nullptr  // resize(index) function pointer
   },
   {
-    "y_gyro",  // name
+    "pitch",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_DOUBLE,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(custom_interfaces::msg::SerialData, y_gyro),  // bytes offset in struct
+    offsetof(custom_interfaces::msg::SerialData, pitch),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -175,14 +175,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember SerialData_me
     nullptr  // resize(index) function pointer
   },
   {
-    "z_gyro",  // name
+    "roll",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_DOUBLE,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(custom_interfaces::msg::SerialData, z_gyro),  // bytes offset in struct
+    offsetof(custom_interfaces::msg::SerialData, roll),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer

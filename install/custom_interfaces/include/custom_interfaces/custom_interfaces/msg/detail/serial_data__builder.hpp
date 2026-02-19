@@ -69,15 +69,15 @@ private:
   ::custom_interfaces::msg::SerialData msg_;
 };
 
-class Init_SerialData_z_gyro
+class Init_SerialData_roll
 {
 public:
-  explicit Init_SerialData_z_gyro(::custom_interfaces::msg::SerialData & msg)
+  explicit Init_SerialData_roll(::custom_interfaces::msg::SerialData & msg)
   : msg_(msg)
   {}
-  Init_SerialData_power_voltage z_gyro(::custom_interfaces::msg::SerialData::_z_gyro_type arg)
+  Init_SerialData_power_voltage roll(::custom_interfaces::msg::SerialData::_roll_type arg)
   {
-    msg_.z_gyro = std::move(arg);
+    msg_.roll = std::move(arg);
     return Init_SerialData_power_voltage(msg_);
   }
 
@@ -85,32 +85,32 @@ private:
   ::custom_interfaces::msg::SerialData msg_;
 };
 
-class Init_SerialData_y_gyro
+class Init_SerialData_pitch
 {
 public:
-  explicit Init_SerialData_y_gyro(::custom_interfaces::msg::SerialData & msg)
+  explicit Init_SerialData_pitch(::custom_interfaces::msg::SerialData & msg)
   : msg_(msg)
   {}
-  Init_SerialData_z_gyro y_gyro(::custom_interfaces::msg::SerialData::_y_gyro_type arg)
+  Init_SerialData_roll pitch(::custom_interfaces::msg::SerialData::_pitch_type arg)
   {
-    msg_.y_gyro = std::move(arg);
-    return Init_SerialData_z_gyro(msg_);
+    msg_.pitch = std::move(arg);
+    return Init_SerialData_roll(msg_);
   }
 
 private:
   ::custom_interfaces::msg::SerialData msg_;
 };
 
-class Init_SerialData_x_gyro
+class Init_SerialData_heading
 {
 public:
-  explicit Init_SerialData_x_gyro(::custom_interfaces::msg::SerialData & msg)
+  explicit Init_SerialData_heading(::custom_interfaces::msg::SerialData & msg)
   : msg_(msg)
   {}
-  Init_SerialData_y_gyro x_gyro(::custom_interfaces::msg::SerialData::_x_gyro_type arg)
+  Init_SerialData_pitch heading(::custom_interfaces::msg::SerialData::_heading_type arg)
   {
-    msg_.x_gyro = std::move(arg);
-    return Init_SerialData_y_gyro(msg_);
+    msg_.heading = std::move(arg);
+    return Init_SerialData_pitch(msg_);
   }
 
 private:
@@ -123,10 +123,10 @@ public:
   explicit Init_SerialData_z_accel(::custom_interfaces::msg::SerialData & msg)
   : msg_(msg)
   {}
-  Init_SerialData_x_gyro z_accel(::custom_interfaces::msg::SerialData::_z_accel_type arg)
+  Init_SerialData_heading z_accel(::custom_interfaces::msg::SerialData::_z_accel_type arg)
   {
     msg_.z_accel = std::move(arg);
-    return Init_SerialData_x_gyro(msg_);
+    return Init_SerialData_heading(msg_);
   }
 
 private:

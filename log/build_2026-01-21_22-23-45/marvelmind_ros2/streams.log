@@ -1,0 +1,91 @@
+[0.009s] Invoking command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2': CMAKE_PREFIX_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2:/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake /home/robot001/Desktop/Application/COROSOLS_WS/src/marvelmind_ros2_upstream-main -DCMAKE_INSTALL_PREFIX=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2
+[0.052s] -- The C compiler identification is GNU 11.4.0
+[0.095s] -- The CXX compiler identification is GNU 11.4.0
+[0.100s] -- Detecting C compiler ABI info
+[0.155s] -- Detecting C compiler ABI info - done
+[0.160s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.160s] -- Detecting C compile features
+[0.160s] -- Detecting C compile features - done
+[0.162s] -- Detecting CXX compiler ABI info
+[0.224s] -- Detecting CXX compiler ABI info - done
+[0.228s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.228s] -- Detecting CXX compile features
+[0.228s] -- Detecting CXX compile features - done
+[0.230s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.328s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.393s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.423s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.426s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.431s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.438s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.448s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.487s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.489s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.567s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.591s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.623s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.631s] -- Looking for pthread.h
+[0.696s] -- Looking for pthread.h - found
+[0.697s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.755s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.755s] -- Found Threads: TRUE  
+[0.798s] -- Found geometry_msgs: 4.8.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.806s] -- Found marvelmind_ros2_msgs: 1.0.2 (/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs/share/marvelmind_ros2_msgs/cmake)
+[0.815s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.823s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.877s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.877s] -- Configured cppcheck include dirs: /home/robot001/Desktop/Application/COROSOLS_WS/src/marvelmind_ros2_upstream-main/include
+[0.877s] -- Configured cppcheck exclude dirs and/or files: 
+[0.879s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.879s] -- Configured cpplint exclude dirs and/or files: 
+[0.880s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.880s] -- Added test 'lint_cmake' to check CMake code style
+[0.881s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.882s] -- Added test 'uncrustify' to check C / C++ code style
+[0.882s] -- Configured uncrustify additional arguments: 
+[0.883s] -- Added test 'xmllint' to check XML markup files
+[0.884s] -- Configuring done
+[0.893s] -- Generating done
+[0.897s] -- Build files have been written to: /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2
+[0.904s] Invoked command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2' returned '0': CMAKE_PREFIX_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2:/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake /home/robot001/Desktop/Application/COROSOLS_WS/src/marvelmind_ros2_upstream-main -DCMAKE_INSTALL_PREFIX=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2
+[0.905s] Invoking command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2': CMAKE_PREFIX_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2:/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --build /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2 -- -j16 -l16
+[0.948s] [ 12%] [32mBuilding C object CMakeFiles/marvelmind_api_lib.dir/src/marvelmind_api.c.o[0m
+[0.949s] [ 25%] [32mBuilding C object CMakeFiles/marvelmind_hedge_lib.dir/src/marvelmind_hedge.c.o[0m
+[1.009s] [ 37%] [32m[1mLinking C static library libmarvelmind_hedge_lib.a[0m
+[1.023s] [ 50%] [32m[1mLinking C static library libmarvelmind_api_lib.a[0m
+[1.033s] [ 50%] Built target marvelmind_hedge_lib
+[1.046s] [ 50%] Built target marvelmind_api_lib
+[1.049s] [ 62%] [32mBuilding CXX object CMakeFiles/marvelmind_ros2.dir/src/marvelmind_ros2.cpp.o[0m
+[1.064s] [ 75%] [32mBuilding CXX object CMakeFiles/marvelmind_api_ros2.dir/src/marvelmind_api_ros2.cpp.o[0m
+[3.351s] [ 87%] [32m[1mLinking CXX executable marvelmind_api_ros2[0m
+[3.462s] [ 87%] Built target marvelmind_api_ros2
+[6.064s] [100%] [32m[1mLinking CXX executable marvelmind_ros2[0m
+[6.277s] [100%] Built target marvelmind_ros2
+[6.288s] Invoked command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2' returned '0': CMAKE_PREFIX_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2:/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --build /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2 -- -j16 -l16
+[6.290s] Invoking command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2': CMAKE_PREFIX_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2:/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --install /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2
+[6.296s] -- Install configuration: ""
+[6.296s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/lib/marvelmind_ros2/marvelmind_ros2
+[6.298s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/lib/marvelmind_ros2/marvelmind_ros2" to ""
+[6.298s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/lib/marvelmind_ros2/marvelmind_api_ros2
+[6.299s] -- Set runtime path of "/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/lib/marvelmind_ros2/marvelmind_api_ros2" to ""
+[6.299s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/config
+[6.299s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/config/marvelmind_ros2_config.yaml
+[6.299s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/launch
+[6.299s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/launch/marvelmind_api_ros2.launch.py
+[6.299s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/launch/marvelmind_ros2.launch.py
+[6.299s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/ament_index/resource_index/package_run_dependencies/marvelmind_ros2
+[6.299s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/ament_index/resource_index/parent_prefix_path/marvelmind_ros2
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/environment/ament_prefix_path.sh
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/environment/ament_prefix_path.dsv
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/environment/path.sh
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/environment/path.dsv
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/local_setup.bash
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/local_setup.sh
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/local_setup.zsh
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/local_setup.dsv
+[6.300s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.dsv
+[6.301s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/ament_index/resource_index/packages/marvelmind_ros2
+[6.301s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/cmake/marvelmind_ros2Config.cmake
+[6.301s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/cmake/marvelmind_ros2Config-version.cmake
+[6.301s] -- Installing: /home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2/share/marvelmind_ros2/package.xml
+[6.302s] Invoked command in '/home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2' returned '0': CMAKE_PREFIX_PATH=/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2_msgs:/home/robot001/Desktop/Application/COROSOLS_WS/install/marvelmind_ros2:/home/robot001/Desktop/Application/COROSOLS_WS/install/custom_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/action_tutorials_interfaces:/home/robot001/Desktop/Application/COROSOLS_WS/install/corosols:/opt/ros/humble /usr/bin/cmake --install /home/robot001/Desktop/Application/COROSOLS_WS/build/marvelmind_ros2

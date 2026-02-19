@@ -18,11 +18,11 @@ module custom_interfaces {
 
       double z_accel;
 
-      double x_gyro;
+      double heading;
 
-      double y_gyro;
+      double pitch;
 
-      double z_gyro;
+      double roll;
 
       double power_voltage;
 

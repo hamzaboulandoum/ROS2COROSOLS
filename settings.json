@@ -1,0 +1,12 @@
+{
+    "station_ip": "10.109.22.197",
+    "station_port": "1212",
+    "point_factor": 10000.0,
+    "max_speed": 0.1,
+    "min_speed": 0.06,
+    "servo_min": 30,
+    "servo_max": 30,
+    "compressor_min": 80,
+    "compressor_max": 80,
+    "filename_var": "/home/robot001/Desktop/Application/COROSOLS_WS/src/corosols/corosols/gcode/mesures3.txt"
+}

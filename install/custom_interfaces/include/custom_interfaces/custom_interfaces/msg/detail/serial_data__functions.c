@@ -23,9 +23,9 @@ custom_interfaces__msg__SerialData__init(custom_interfaces__msg__SerialData * ms
   // x_accel
   // y_accel
   // z_accel
-  // x_gyro
-  // y_gyro
-  // z_gyro
+  // heading
+  // pitch
+  // roll
   // power_voltage
   // stepper_x
   // stepper_y
@@ -44,9 +44,9 @@ custom_interfaces__msg__SerialData__fini(custom_interfaces__msg__SerialData * ms
   // x_accel
   // y_accel
   // z_accel
-  // x_gyro
-  // y_gyro
-  // z_gyro
+  // heading
+  // pitch
+  // roll
   // power_voltage
   // stepper_x
   // stepper_y
@@ -82,16 +82,16 @@ custom_interfaces__msg__SerialData__are_equal(const custom_interfaces__msg__Seri
   if (lhs->z_accel != rhs->z_accel) {
     return false;
   }
-  // x_gyro
-  if (lhs->x_gyro != rhs->x_gyro) {
+  // heading
+  if (lhs->heading != rhs->heading) {
     return false;
   }
-  // y_gyro
-  if (lhs->y_gyro != rhs->y_gyro) {
+  // pitch
+  if (lhs->pitch != rhs->pitch) {
     return false;
   }
-  // z_gyro
-  if (lhs->z_gyro != rhs->z_gyro) {
+  // roll
+  if (lhs->roll != rhs->roll) {
     return false;
   }
   // power_voltage
@@ -129,12 +129,12 @@ custom_interfaces__msg__SerialData__copy(
   output->y_accel = input->y_accel;
   // z_accel
   output->z_accel = input->z_accel;
-  // x_gyro
-  output->x_gyro = input->x_gyro;
-  // y_gyro
-  output->y_gyro = input->y_gyro;
-  // z_gyro
-  output->z_gyro = input->z_gyro;
+  // heading
+  output->heading = input->heading;
+  // pitch
+  output->pitch = input->pitch;
+  // roll
+  output->roll = input->roll;
   // power_voltage
   output->power_voltage = input->power_voltage;
   // stepper_x

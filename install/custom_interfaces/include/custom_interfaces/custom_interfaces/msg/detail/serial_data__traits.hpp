@@ -67,24 +67,24 @@ inline void to_flow_style_yaml(
     out << ", ";
   }
 
-  // member: x_gyro
+  // member: heading
   {
-    out << "x_gyro: ";
-    rosidl_generator_traits::value_to_yaml(msg.x_gyro, out);
+    out << "heading: ";
+    rosidl_generator_traits::value_to_yaml(msg.heading, out);
     out << ", ";
   }
 
-  // member: y_gyro
+  // member: pitch
   {
-    out << "y_gyro: ";
-    rosidl_generator_traits::value_to_yaml(msg.y_gyro, out);
+    out << "pitch: ";
+    rosidl_generator_traits::value_to_yaml(msg.pitch, out);
     out << ", ";
   }
 
-  // member: z_gyro
+  // member: roll
   {
-    out << "z_gyro: ";
-    rosidl_generator_traits::value_to_yaml(msg.z_gyro, out);
+    out << "roll: ";
+    rosidl_generator_traits::value_to_yaml(msg.roll, out);
     out << ", ";
   }
 
@@ -174,33 +174,33 @@ inline void to_block_style_yaml(
     out << "\n";
   }
 
-  // member: x_gyro
+  // member: heading
   {
     if (indentation > 0) {
       out << std::string(indentation, ' ');
     }
-    out << "x_gyro: ";
-    rosidl_generator_traits::value_to_yaml(msg.x_gyro, out);
+    out << "heading: ";
+    rosidl_generator_traits::value_to_yaml(msg.heading, out);
     out << "\n";
   }
 
-  // member: y_gyro
+  // member: pitch
   {
     if (indentation > 0) {
       out << std::string(indentation, ' ');
     }
-    out << "y_gyro: ";
-    rosidl_generator_traits::value_to_yaml(msg.y_gyro, out);
+    out << "pitch: ";
+    rosidl_generator_traits::value_to_yaml(msg.pitch, out);
     out << "\n";
   }
 
-  // member: z_gyro
+  // member: roll
   {
     if (indentation > 0) {
       out << std::string(indentation, ' ');
     }
-    out << "z_gyro: ";
-    rosidl_generator_traits::value_to_yaml(msg.z_gyro, out);
+    out << "roll: ";
+    rosidl_generator_traits::value_to_yaml(msg.roll, out);
     out << "\n";
   }
 

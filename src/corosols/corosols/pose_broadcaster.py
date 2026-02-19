@@ -1,3 +1,4 @@
+import threading
 import time
 import rclpy
 from rclpy.node import Node
@@ -5,12 +6,13 @@ from nav_msgs.msg import Odometry
 from custom_interfaces.msg import SerialData 
 
 from geometry_msgs.msg import Pose, PoseWithCovariance, Twist, TwistWithCovariance
-from std_msgs.msg import Header,String
+from std_msgs.msg import Header, String
 from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster
 from geometry_msgs.msg import TransformStamped
 import math
 import numpy as np
 from custom_interfaces.msg import ImuData
+from custom_interfaces.msg import SerialData 
 import socket
 
 # Global transaction ID for GeoCOM requests
@@ -39,6 +41,45 @@ def quaternion_from_euler(ai, aj, ak):
 
     return q
 
+def spherical_to_cartesian(r, theta, phi):
+    """
+    Convert spherical coordinates to Cartesian coordinates.
+    
+    Parameters:
+    r (float): Radius
+    theta (float): Azimuthal angle in radians
+    phi (float): Polar angle in radians
+    
+    Returns:
+    tuple: (x, y, z) Cartesian coordinates
+    """
+    x = r * math.sin(phi) * math.cos(theta)
+    y = r * math.sin(phi) * math.sin(theta)
+    z = r * math.cos(phi)
+    return x, y, z
+
+# Function to create GeoCOM request
+def CreateRequest(cmd, args=None):
+    """
+    Create an ASCII request based on a command code and corresponding arguments.
+
+    Parameters:
+        cmd (int): Function code to send to the station.
+        args (list, optional): List of arguments for the command.
+
+    Returns:
+        str: Formatted GeoCOM request string.
+    """
+    global GTrId
+    request = '\n%R1Q,' + str(cmd) + ',' + str(GTrId) + ':'
+    GTrId += 1
+    if GTrId == 8:
+        GTrId = 0
+
+    if args:
+        request += ','.join(map(str, args))
+    return request + '\r\n'
+
 
 class tf2_broadcaster(Node):
 
@@ -50,16 +91,25 @@ class tf2_broadcaster(Node):
         self.tf_static_broadcaster = StaticTransformBroadcaster(self)
         
         self.odom_publisher = self.create_publisher(Odometry, 'odom', 10)
-        self.subscription = self.create_subscription(ImuData,'imu_data',self.imu_callback,10)
-        timer_period = 0.01  # seconds        
-        self.timer = self.create_timer(timer_period, self.station_callback)
+        self.subscription = self.create_subscription(ImuData, 'imu_data', self.imu_callback, 10)
+        #timer_period = 0.01  # seconds        
+        #self.timer = self.create_timer(timer_period, self.station_callback)
+        self.subscription2 = self.create_subscription(SerialData, 'robot_data', self.position_callback, 10)
 
-        self.params = self.create_subscription(String,'robot_params',self.params_listener,10)
+        self.params = self.create_subscription(String, 'robot_params', self.params_listener, 10)
         self.parameters_publisher = self.create_publisher(String, 'robot_params', 10)
         self.Odom = Odometry()
-        self.x=0
-        self.y=0
-        self.z=0
+        self.x = 0.0
+        self.y = 0.0
+        self.z = 0.0
+        
+        # Lock for thread-safe access to position data
+        self.position_lock = threading.Lock()
+        # Lock for thread-safe access to socket
+        self.socket_lock = threading.Lock()
+        
+        # Flag to track if new station data is available
+        self.new_station_data = False
         
         self.roll_offset = 0
         self.pitch_offset = 0
@@ -69,14 +119,23 @@ class tf2_broadcaster(Node):
         self.y_accel = 0
         self.z_accel = 0
 
+        # Initialisation des variables de calibration manquantes
+        self.is_accel_calibrated = False
+        self.accel_calibration_samples = []
+        self.calibration_count = 50
+        self.accel_offset = np.array([0.0, 0.0, 0.0])
+        self.accel_linear = np.array([0.0, 0.0, 0.0])
 
         self.timestamp = self.get_clock().now().to_msg()
         self.imu_timestamp = None
         self.t = time.time()
         self.error_is_sent = False
         self.station_freq = 0
+        self.station_thread = threading.Thread(target=self.station_callback)
+        self.station_thread.start()
+        
 
-    def params_listener(self,msg):
+    def params_listener(self, msg):
         data = msg.data
         params = data.split(';')
         if params[0] == 'ip':
@@ -86,64 +145,147 @@ class tf2_broadcaster(Node):
         elif params[0] == 'Connect_to_station':
             self.connect_to_station()
         elif params[0] == 'angles_offset':
-            if params[1] =='1':
+            if params[1] == '1':
                 self.roll_offset = self.Odom.pose.pose.orientation.x 
                 self.pitch_offset = self.Odom.pose.pose.orientation.y
                 self.heading_offset = self.Odom.pose.pose.orientation.z
-            else :
+            else:
                 self.roll_offset = 0
                 self.pitch_offset = 0
                 self.heading_offset = 0
-    def station_callback(self):
+
+    '''def station_callback(self):
         if self.station_socket:
             self.t = time.time()
-            response  = self.getposition()
+            response = self.getposition()
             self.station_freq = 1/(time.time()-self.t)
             
             if response:
-                if len(response)!=3:
+                if len(response) != 3:
                     return
                 x, y, z = response
 
-                self.x = x
-                self.y = y
-                self.z = z
+                # self.x = x
+                # self.y = y
+                # self.z = z
                 self.timestamp = self.get_clock().now().to_msg()
                 #self.get_logger().info(f'freq: {self.station_freq:.2f}Hz x: {self.x} y: {self.y} z: {self.z}')
                 self.Odom.header = Header()
                 self.Odom.header.stamp = self.get_clock().now().to_msg()
                 self.Odom.header.frame_id = 'odom'
                 
-                
                 # we can change the postion with the postion from the marvel mind device 
-                self.Odom.pose.pose.position.x = self.x 
-                self.Odom.pose.pose.position.y = self.y
-                self.Odom.pose.pose.position.z = self.z
-
-                self.odom_publisher.publish(self.Odom)
-            
-        else :
+                self.Odom.pose.pose.position.x = x 
+                self.Odom.pose.pose.position.y = y
+                self.Odom.pose.pose.position.z = z 
+        else:
             self.parameters_publisher.publish(String(data='Station_status;0'))
-    
+        self.odom_publisher.publish(self.Odom)'''
+    def station_callback(self):
+        last_status_publish_time = 0
+        status_publish_interval = 1.0  # Only publish status every 1 second
+        
+        while True:
+            # Thread-safe check and use of socket
+            with self.socket_lock:
+                socket_available = self.station_socket is not None
+            
+            if socket_available:
+                self.t = time.time()
+                response = self.getposition()
+                if time.time() - self.t > 0:
+                    self.station_freq = 1/(time.time()-self.t)
+                
+                if response:
+                    if len(response) != 3:
+                        continue
+                    x, y, z = response
+
+                    # Thread-safe update of position
+                    with self.position_lock:
+                        self.x = x
+                        self.y = y
+                        self.z = z
+                        self.timestamp = self.get_clock().now().to_msg()
+                        self.new_station_data = True  # Mark that new data is available
+                else:
+                    # Rate-limit status publishing
+                    current_time = time.time()
+                    if current_time - last_status_publish_time > status_publish_interval:
+                        self.parameters_publisher.publish(String(data='Station_status;0'))
+                        last_status_publish_time = current_time
+            else:
+                # Rate-limit status publishing when no socket
+                current_time = time.time()
+                if current_time - last_status_publish_time > status_publish_interval:
+                    self.parameters_publisher.publish(String(data='Station_status;0'))
+                    last_status_publish_time = current_time
+                # Add a small sleep to avoid busy-waiting when no socket
+                time.sleep(0.1)
+            #self.get_logger().info(f'freq: {self.station_freq:.2f}Hz x: {self.x} y: {self.y} z: {self.z}')
+        
+        
+    def position_callback(self, msg):
+        # Only publish if there's new station data
+        
+        #self.get_logger().info(f'freq: {self.station_freq:.2f}Hz x: {x} y: {y} z: {z}')
+        self.Odom.header = Header()
+        self.Odom.header.stamp = self.get_clock().now().to_msg()
+        self.Odom.header.frame_id = 'odom'
+        #self.x += msg.x_speed
+        #self.y += msg.y_speed
+        #self.z += msg.z_speed
+        # Update position from station data
+        self.Odom.pose.pose.position.x = self.x
+        self.Odom.pose.pose.position.y = self.y 
+        self.Odom.pose.pose.position.z = self.z
+        
+        self.odom_publisher.publish(self.Odom)
     def imu_callback(self, msg):
         
-        if not self.imu_timestamp :
+        if not self.imu_timestamp:
             self.imu_timestamp = msg.timestamp
 
         delta_time = float(msg.timestamp - self.imu_timestamp)*10**-6
         
         self.imu_timestamp = msg.timestamp
 
-
-        self.x_accel, self.y_accel, self.z_accel = self.transform_acceleration(msg.accelerometer_x, msg.accelerometer_y, msg.accelerometer_z, msg.roll, msg.pitch, msg.heading)
-        
-        self.Odom.twist.twist.linear.x = self.x_accel*(delta_time) #speed X
-        self.Odom.twist.twist.linear.y = self.y_accel*(delta_time) #speed Y
-        self.Odom.twist.twist.linear.z = self.z_accel*(delta_time)
+        accel_result = self.transform_acceleration(msg.accelerometer_x, msg.accelerometer_y, msg.accelerometer_z, msg.roll, msg.pitch, msg.heading)
+        self.x += self.Odom.twist.twist.linear.x * delta_time + 0.5 * self.x_accel * delta_time**2
+        self.y += self.Odom.twist.twist.linear.y * delta_time + 0.5 * self.y_accel * delta_time**2
+        self.z += self.Odom.twist.twist.linear.z * delta_time + 0.5 * self.z_accel * delta_time**2
+        #self.get_logger().info(f"IMU Data: x={self.x:.2f}, y={self.y:.2f}, z={self.z:.2f}, ")
+        # V�rifier si transform_acceleration a retourn� des valeurs
+        if accel_result is not None:
+            self.x_accel, self.y_accel, self.z_accel = accel_result
+            
+            self.Odom.twist.twist.linear.x = self.x_accel*(delta_time)  # speed X
+            self.Odom.twist.twist.linear.y = self.y_accel*(delta_time)  # speed Y
+            self.Odom.twist.twist.linear.z = self.z_accel*(delta_time)
         
         self.Odom.pose.pose.orientation.x = msg.roll - self.roll_offset
         self.Odom.pose.pose.orientation.y = msg.pitch - self.pitch_offset
         self.Odom.pose.pose.orientation.z = msg.heading - self.heading_offset
+
+    def calibrate_accel(self, accel_raw):
+        """Calibre l'acc�l�rom�tre avec les premi�res mesures"""
+        if not self.is_accel_calibrated:
+            self.accel_calibration_samples.append(np.array(accel_raw))
+            
+            if len(self.accel_calibration_samples) >= self.calibration_count:
+                self.accel_offset = np.mean(self.accel_calibration_samples, axis=0)
+                self.is_accel_calibrated = True
+                self.accel_offset[2] += 9.63  # Ajustement pour la gravit�
+                print(f"Calibration Accel termin�e. Offset: X={self.accel_offset[0]:.3f}, "
+                      f"Y={self.accel_offset[1]:.3f}, Z={self.accel_offset[2]:.3f} m/s�")
+                self.accel_calibration_samples.clear()
+                return True
+            else:
+                remaining = self.calibration_count - len(self.accel_calibration_samples)
+                if len(self.accel_calibration_samples) % 5 == 0:
+                    print(f"Calibration Accel en cours... {remaining} �chantillons restants")
+                return False
+        return True
 
     def transform_acceleration(self, raw_x, raw_y, raw_z, roll, pitch, heading):
         """
@@ -160,35 +302,22 @@ class tf2_broadcaster(Node):
         Returns:
             (tuple): Transformed acceleration values in the global frame (x, y, z).
         """
-        # Rotation matrices
-        R_roll = np.array([
-            [1, 0, 0],
-            [0, math.cos(roll), -math.sin(roll)],
-            [0, math.sin(roll), math.cos(roll)]
-        ])
+        accel = np.array([raw_x, raw_y, raw_z])
+        cos_roll = math.cos(roll)
+        sin_roll = math.sin(roll)
+        cos_pitch = math.cos(pitch)
+        sin_pitch = math.sin(pitch)
+        gravity_vector = np.array([9.73 * sin_pitch, -9.78 * cos_pitch * sin_roll, -9.63 * cos_pitch * cos_roll])
+        
+        if not self.calibrate_accel(accel):  # Appel de la fonction renomm�e
+            return None  # Retourner None au lieu de return sans valeur
+    
+        accel = accel - gravity_vector - self.accel_offset
+        self.accel_linear = np.where(np.abs(accel) > 0.01, 
+                                     accel, 0)
 
-        R_pitch = np.array([
-            [math.cos(pitch), 0, math.sin(pitch)],
-            [0, 1, 0],
-            [-math.sin(pitch), 0, math.cos(pitch)]
-        ])
+        return accel[0], accel[1], accel[2]
 
-        R_heading = np.array([
-            [math.cos(heading), -math.sin(heading), 0],
-            [math.sin(heading), math.cos(heading), 0],
-            [0, 0, 1]
-        ])
-
-        # Combined rotation matrix (Z * Y * X order)
-        R = R_heading @ R_pitch @ R_roll
-
-        # Raw acceleration vector in the body frame
-        raw_accel = np.array([raw_x, raw_y, raw_z])
-
-        # Transform to global frame
-        global_accel = R @ raw_accel
-
-        return global_accel[0], global_accel[1], global_accel[2]
     def connect_to_station(self, timeout=5):
         """
         Establish a TCP/IP connection to the Leica TS13 station.
@@ -201,16 +330,21 @@ class tf2_broadcaster(Node):
         Returns:
             socket.socket: Socket connection object.
         """
-        try :
-            self.station_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.station_socket.settimeout(timeout)
-            self.station_socket.connect((self.ip, self.port))
-            if self.station_socket:
-                self.parameters_publisher.publish(String(data='Station_status;1'))
+        try:
+            new_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            new_socket.settimeout(timeout)
+            new_socket.connect((self.ip, self.port))
+            
+            # Thread-safe assignment of socket
+            with self.socket_lock:
+                self.station_socket = new_socket
+            
+            self.parameters_publisher.publish(String(data='Station_status;1'))
         except Exception as e:
             self.parameters_publisher.publish(String(data=f'Station_error;E2;{e}'))
             self.parameters_publisher.publish(String(data='Station_status;0'))
-            self.station_socket = None
+            with self.socket_lock:
+                self.station_socket = None
 
     def TMC_QuickDist(self):
         """
@@ -223,17 +357,20 @@ class tf2_broadcaster(Node):
             str: Measurement result or error message.
         """
         response = self.send_command_to_station(2117)
-        if response :
+        if response:
             try:
                 distance_result = response.split(",")
                 alpha = float(distance_result[3])
                 omega = float(distance_result[4])
                 distance = float(distance_result[5])
                 return alpha, omega, distance
-            except:
-                pass
-        else :
+            except (IndexError, ValueError) as e:
+                self.get_logger().error(f"Error parsing TMC_QuickDist response: {e}")
+                return None
+        else:
             self.parameters_publisher.publish(String(data='Station_error;E1'))
+            return None
+
     # Function to send a command and receive a response
     def send_command_to_station(self, command, args=None):
         """
@@ -249,20 +386,21 @@ class tf2_broadcaster(Node):
         """
         try:
             request = CreateRequest(command, args)
-            self.station_socket.sendall(request.encode('utf-8'))
-
-            # Wait and receive response
-            response = self.station_socket.recv(1024).decode('utf-8').strip()
+            
+            # Thread-safe socket operation
+            with self.socket_lock:
+                if self.station_socket is None:
+                    return None
+                self.station_socket.sendall(request.encode('utf-8'))
+                # Wait and receive response
+                response = self.station_socket.recv(1024).decode('utf-8').strip()
             
             return response
         except Exception as e:
             if not self.error_is_sent:
                 self.error_is_sent = True
                 self.parameters_publisher.publish(String(data=f'Station_error;E3;{e}'))
-
-
-    # Example GeoCOM functions
-
+            return None
 
     def BAP_SearchTarget(self):
         """
@@ -311,14 +449,14 @@ class tf2_broadcaster(Node):
     def getposition(self):
         response = self.TMC_QuickDist()
         if response:
-            theta, phi , distance = response
-            if self.error_is_sent and distance !=0.0:
+            theta, phi, distance = response
+            if self.error_is_sent and distance != 0.0:
                 self.error_is_sent = False
             return spherical_to_cartesian(distance, theta, phi)
-        else :
+        else:
             self.parameters_publisher.publish(String(data='Station_error;E1'))
             return None
-    
+
 
 def main(args=None):
     rclpy.init(args=args)
@@ -331,45 +469,6 @@ def main(args=None):
         tf2_broadcaster_corosols.destroy_node()
 
 
+
 if __name__ == '__main__':
     main()
-
-def spherical_to_cartesian(r, theta, phi):
-        """
-        Convert spherical coordinates to Cartesian coordinates.
-        
-        Parameters:
-        r (float): Radius
-        theta (float): Azimuthal angle in radians
-        phi (float): Polar angle in radians
-        
-        Returns:
-        tuple: (x, y, z) Cartesian coordinates
-        """
-        x = r * math.sin(phi) * math.cos(theta)
-        y = r * math.sin(phi) * math.sin(theta)
-        z = r * math.cos(phi)
-        return x, y, z
-
-# Function to create GeoCOM request
-def CreateRequest(cmd, args=None):
-    """
-    Create an ASCII request based on a command code and corresponding arguments.
-
-    Parameters:
-        cmd (int): Function code to send to the station.
-        args (list, optional): List of arguments for the command.
-
-    Returns:
-        str: Formatted GeoCOM request string.
-    """
-    global GTrId
-    request = '\n%R1Q,' + str(cmd) + ',' + str(GTrId) + ':'
-    GTrId += 1
-    if GTrId == 8:
-        GTrId = 0
-
-    if args:
-        request += ','.join(map(str, args))
-    return request + '\r\n'
-

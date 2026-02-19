@@ -8,3 +8,5 @@ unset GTK_PATH
 ros2 launch sllidar_ros2 view_sllidar_s2_launch.py
 sudo chmod 777 /dev/ttyACM0
 sudo chmod 777 /dev/ttyACM1
+
+udevadm info --query=all --name=/dev/ttyACM0

@@ -29,10 +29,10 @@ class SerialDataPublisher(Node):
         }
         
         # Serial port configuration
-        PORT = '/dev/ttyACM1'
+        PORT = '/dev/ttyACM0'
         BAUDRATE = 921600
         
-        '''try:
+        try:
             self.ser = serial.Serial(
                 port=PORT,
                 baudrate=BAUDRATE,
@@ -53,7 +53,7 @@ class SerialDataPublisher(Node):
         self.running = True
         self.thread = threading.Thread(target=self.read_serial_data)
         self.thread.daemon = True
-        self.thread.start()'''
+        self.thread.start()
 
     def synchronize(self):
         """Find the next frame header in the serial stream"""
@@ -143,6 +143,9 @@ class SerialDataPublisher(Node):
             self.imu_data.roll = struct.unpack('f', data[12:16])[0]
             self.imu_data.pitch = struct.unpack('f', data[16:20])[0]
             self.imu_data.heading = struct.unpack('f', data[20:24])[0]
+            '''self.get_logger().info(
+                f"{self.imu_data.heading*180/3.14}\n"
+            )'''
             '''self.imu_data.q1 = struct.unpack('f', data[24:28])[0]
             self.imu_data.q2 = struct.unpack('f', data[28:32])[0]
             self.imu_data.q3 = struct.unpack('f', data[32:36])[0]
@@ -182,11 +185,12 @@ class SerialDataPublisher(Node):
                     self.read_frame()
             except Exception as e:
                 self.get_logger().error(f"Error in read loop: {e}")
+                self.ser.close()
                 continue
 
     def destroy_node(self):
         self.running = False
-        if hasattr(self, 'ser') and self.ser.is_open:
+        if self.ser.is_open:
             self.ser.close()
         if hasattr(self, 'thread'):
             self.thread.join(timeout=1.0)
