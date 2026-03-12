@@ -1,6 +1,8 @@
 import math
 import threading
 import time
+import csv
+import os
 import rclpy
 from rclpy.node import Node
 import numpy as np
@@ -10,23 +12,24 @@ import serial
 
 Stepper_X_LIMIT = 2930
 Stepper_Y_LIMIT = 220
-AXIS_X_LIMIT = 0.150
-AXIS_Y_LIMIT = 0.06
-serial_port = "/dev/ttyACM0"
-serial_port_stepper = "/dev/ttyACM1"
+AXIS_X_LIMIT = 0.21
+AXIS_Y_LIMIT_NEGATIVE = 0.100 #was 0.06
+AXIS_Y_LIMIT_POSITIVE = 0.160
+serial_port = "/dev/ttyACM1"
+serial_port_stepper = "/dev/ttyACM0"
 baud_rate = 115200
 
-MOTOR_X_OFFSET = 285.0
+MOTOR_X_OFFSET = 319.5#285.0
 MOTOR_Y_POS = 0.0
 
-ROD1_init_L = 352
-ROD2_init_L = 370
+ROD1_init_L = 374#352
+ROD2_init_L = 359#370
 
-M1_POS = (-MOTOR_X_OFFSET, MOTOR_Y_POS)
-M2_POS = (MOTOR_X_OFFSET, MOTOR_Y_POS)
-AIRBRUSH_OFFSET = 35.0
+M1_POS = (MOTOR_X_OFFSET, MOTOR_Y_POS)
+M2_POS = (-MOTOR_X_OFFSET, MOTOR_Y_POS)
+AIRBRUSH_OFFSET = 33.5#35.0
 AIRBRUSH_TO_ROBOT_CENTER_OFFSET_Y = 197.5  # 175mm
-AIRBRUSH_TO_ROBOT_CENTER_OFFSET_X = -6.84
+AIRBRUSH_TO_ROBOT_CENTER_OFFSET_X = 0#-6.84
 FRAME_HEADER = 0x7B
 FRAME_TAIL = 0x7D
 
@@ -34,6 +37,17 @@ FRAME_TAIL = 0x7D
 class SerialReader(Node):
     def __init__(self):
         super().__init__('serial_reader')
+
+        # --- CSV logging for transmitted stepper commands ---
+        log_dir = os.path.expanduser('~/Desktop/Application/COROSOLS_WS')
+        self.stepper_log_path = os.path.join(log_dir, 'stepper_commands_log.csv')
+        self.stepper_log_file = open(self.stepper_log_path, 'w', newline='')
+        self.stepper_log_writer = csv.writer(self.stepper_log_file)
+        self.stepper_log_writer.writerow([
+            'timestamp', 'stepperx', 'steppery', 'l1_mm', 'l2_mm', 'l1_tx', 'l2_tx',
+            'feedback_l1_mm', 'feedback_l2_mm', 'predicted_l1_mm', 'predicted_l2_mm'
+        ])
+        self.stepper_log_start_time = time.time()
 
         self.ser = serial.Serial(
             port=serial_port,
@@ -62,6 +76,10 @@ class SerialReader(Node):
             rtscts=False,
             dsrdtr=False,
         )
+
+        self.ser_stepper.dtr = False
+        self.ser_stepper.rts = False
+
         time.sleep(0.1)
         self.ser.reset_input_buffer()
         self.ser.reset_output_buffer()
@@ -87,10 +105,39 @@ class SerialReader(Node):
         self.Stepper_X = 0.0
         self.Stepper_Y = 0.0
         self.msg = SerialData()
+        
+        # Compute the true home position (FK at l1=ROD1_init_L, l2=ROD2_init_L)
+        # When STM32 reports feedback delta = 0, rods are at init lengths.
+        # FK of those lengths is NOT (0,0) in airbrush coordinates.
+        home_result = self.forward_kinematics(ROD1_init_L, ROD2_init_L)
+        if home_result:
+            home_x, home_y = home_result
+            self.msg.stepper_x = home_x
+            self.msg.stepper_y = home_y
+            self.get_logger().info(f'Stepper home position: x={home_x*1000:.2f}mm, y={home_y*1000:.2f}mm')
         self.time = time.time()
         self.last_stm_command = None
         self.last_stm_command2 = None
         self.stepper_buffer = bytearray()  # Buffer for stepper data
+
+        # --- Stepper prediction model ---
+        # Predicted rod lengths (delta from init, same units as commands: hundredths of mm)
+        self.predicted_l1 = 0.0  # delta from ROD1_init_L, in mm
+        self.predicted_l2 = 0.0  # delta from ROD2_init_L, in mm
+        # Last commanded rod lengths (delta from init, in mm)
+        self.commanded_l1 = 0.0
+        self.commanded_l2 = 0.0
+        # Stepper rod speed in mm per second (0.8 m/s = 800 mm/s)
+        self.stepper_speed = 800.0
+        # Feedback correction: blend factor (0 = pure prediction, 1 = pure feedback)
+        self.feedback_blend = 0.15
+        self.prediction_time = time.time()
+        # Track printing state for full-sync on transitions
+        self.is_printing = False
+        # Last raw feedback from STM32 (for full-sync on print→no-print)
+        self.last_feedback_l1 = 0.0
+        self.last_feedback_l2 = 0.0
+        self.has_feedback = False  # True once we've received at least one feedback packet
 
     def publish_robot_data(self):
         """Publish robot data periodically"""
@@ -118,13 +165,18 @@ class SerialReader(Node):
                     self.get_logger().error(f'STM write error: {e}')
 
             # Always send stepper commands
-            x = -np.clip(request.stepperx * 1000-AIRBRUSH_TO_ROBOT_CENTER_OFFSET_X, -150, 150)
+            x = np.clip(request.stepperx * 1000-AIRBRUSH_TO_ROBOT_CENTER_OFFSET_X, -AXIS_X_LIMIT*1000, AXIS_X_LIMIT*1000)
             y = np.clip(
-                request.steppery * 1000 +AIRBRUSH_TO_ROBOT_CENTER_OFFSET_Y , 40, 260
+                request.steppery * 1000 + AIRBRUSH_TO_ROBOT_CENTER_OFFSET_Y,
+                -AXIS_Y_LIMIT_NEGATIVE*1000 + AIRBRUSH_TO_ROBOT_CENTER_OFFSET_Y,
+                AXIS_Y_LIMIT_POSITIVE*1000 + AIRBRUSH_TO_ROBOT_CENTER_OFFSET_Y
             )
             l1, l2 = self.inverse_kinematics(x, y)
             l1 -= ROD1_init_L
             l2 -= ROD2_init_L
+            # Store commanded rod lengths for prediction model (in mm)
+            self.commanded_l1 = l1
+            self.commanded_l2 = l2
             try:
                 #self.get_logger().info(f'command s1: {request.stepperx} s2: {request.steppery}')
                 stm2_command_bytes = generate_command_bytes_stm2(
@@ -133,81 +185,55 @@ class SerialReader(Node):
                     request.airbrush,
                     request.ab_servo,
                     )
-                command_tuple = tuple(stm2_command_bytes)
-                if command_tuple != self.last_stm_command2:
-                    self.ser_stepper.write(stm2_command_bytes)
-                    self.last_stm_command2=command_tuple
+                # Always send stepper commands - no dedup filtering.
+                # The STM32 interprets each command as a target position.
+                # Filtering caused jitter: the STM32 would start moving,
+                # then get no command (filtered as "same"), lose its motion,
+                # then get a new slightly-different command and restart.
+                self.ser_stepper.write(stm2_command_bytes)
+
+                # Log transmitted stepper values to CSV
+                elapsed = time.time() - self.stepper_log_start_time
+                self.stepper_log_writer.writerow([
+                    f'{elapsed:.4f}',
+                    f'{request.stepperx:.6f}', f'{request.steppery:.6f}',
+                    f'{l1:.3f}', f'{l2:.3f}',
+                    f'{l1*100:.1f}', f'{l2*100:.1f}',
+                    f'{self.last_feedback_l1:.3f}', f'{self.last_feedback_l2:.3f}',
+                    f'{self.predicted_l1:.3f}', f'{self.predicted_l2:.3f}',
+                ])
+                self.stepper_log_file.flush()
             except Exception as e:
                 self.get_logger().info(f'Stepper write error: {e}')
 
     def stepper_callback(self):
-        """Read stepper feedback - binary packet format: {l1_hi, l1_lo, l2_hi, l2_lo, checksum, }"""
+        """Read stepper feedback from STM32 and publish position via FK."""
         try:
             if self.ser_stepper.is_open:
                 received_char = self.ser_stepper.read(1)
                 if received_char == b'{':
-                    received_data = self.ser_stepper.read(7)
+                    received_data = self.ser_stepper.read(11)
                     received_data = received_char + received_data
-                    if len(received_data) < 8:
-                        return
-                        
-                    Frame_Header = received_data[0]
-                    Flag_Stop = received_data[1]
-                    l1_int = (received_data[2] << 8) | received_data[3]
-                    l2_int = (received_data[4] << 8) | received_data[5]
-                    
-                    # Convert to signed
-                    l1_int = self.convert_to_signed(l1_int)
-                    l2_int = self.convert_to_signed(l2_int)
-                    # Convert back to float (divide by 100)
-                    l1 = l1_int / 100.0
-                    l2 = l2_int / 100.0
-                    
-                    # Forward kinematics calculation (add init lengths back)
-                    result = self.forward_kinematics(l1 + ROD1_init_L, l2 + ROD2_init_L)
-                    Checksum = received_data[6]
-                    Frame_Tail = received_data[7]
+                    if len(received_data) >= 12:
+                        l1_int = (received_data[2] << 24) | (received_data[3] << 16) | (received_data[4] << 8) | received_data[5]
+                        l2_int = (received_data[6] << 24) | (received_data[7] << 16) | (received_data[8] << 8) | received_data[9]
+                        l1_int = self.convert_to_signed_32(l1_int)
+                        l2_int = self.convert_to_signed_32(l2_int)
+                        feedback_l1 = l1_int / 100.0  # delta from init, in mm
+                        feedback_l2 = l2_int / 100.0
 
-                    if True:#Check_Sum(received_data, 6) == Checksum:
+                        self.last_feedback_l1 = feedback_l1
+                        self.last_feedback_l2 = feedback_l2
+
+                        result = self.forward_kinematics(
+                            feedback_l1 + ROD1_init_L,
+                            feedback_l2 + ROD2_init_L
+                        )
                         if result:
                             stepper_x, stepper_y = result
-                            self.msg.stepper_x = -stepper_x
+                            self.msg.stepper_x = stepper_x
                             self.msg.stepper_y = stepper_y
-                            #self.get_logger().info(f'Stepper 1: {self.msg.stepper_x}, stepper 2: {self.msg.stepper_y}')
-            '''# Read all available bytes
-            while self.ser_stepper.in_waiting > 0:
-                byte = self.ser_stepper.read(1)
-                if byte:
-                    self.stepper_buffer.extend(byte)
-                    
-                    # Look for complete packet: { (header) + 4 data bytes + checksum + } (tail) = 7 bytes
-                    while len(self.stepper_buffer) >= 7:
-                        # Find header byte '{'
-                        if self.stepper_buffer[0] != 0x7B:  # '{'
-                            self.stepper_buffer.pop(0)
-                            continue
-                        
-                        # Check if we have tail byte '}' at position 6
-                        if self.stepper_buffer[6] != 0x7D:  # '}'
-                            self.stepper_buffer.pop(0)
-                            continue
-                        
-                        # Extract packet
-                        packet = self.stepper_buffer[:7]
-                        self.stepper_buffer = self.stepper_buffer[7:]
-                        
-                        # Verify checksum (XOR of bytes 1-4)
-                        checksum = 0
-                        for i in range(1, 5):
-                            checksum ^= packet[i]
-                        
-                        if checksum != packet[5]:
-                            self.get_logger().warn(f'Stepper checksum error: got {packet[5]}, expected {checksum}')
-                            continue'''
-                        
-                        # Parse l1 and l2 (signed 16-bit, scaled by 100)
-                        
-                        
+
         except serial.SerialException as e:
             self.get_logger().error(f'Stepper serial error: {e}')
         except Exception as e:
@@ -230,12 +256,12 @@ class SerialReader(Node):
         y_mid = y1 + a * (y2 - y1) / d
 
         P_x = x_mid + h * (y2 - y1) / d
-        P_y = y_mid + h * (x2 - x1) / d
+        P_y = y_mid - h * (x2 - x1) / d
 
         angle_rod2 = math.atan2(P_y - y2, P_x - x2)
 
-        airbrush_x = P_x + 35 * math.cos(angle_rod2 + math.pi / 2)
-        airbrush_y = P_y + 35 * math.sin(angle_rod2 + math.pi / 2)
+        airbrush_x = P_x + AIRBRUSH_OFFSET * math.cos(angle_rod2 + math.pi / 2)
+        airbrush_y = P_y + AIRBRUSH_OFFSET * math.sin(angle_rod2 + math.pi / 2)
 
         return (airbrush_x-AIRBRUSH_TO_ROBOT_CENTER_OFFSET_X)/ 1000.0, (airbrush_y - AIRBRUSH_TO_ROBOT_CENTER_OFFSET_Y) / 1000.0
 
@@ -334,6 +360,11 @@ class SerialReader(Node):
             return value - 0x10000
         return value
 
+    def convert_to_signed_32(self, value):
+        if value & 0x80000000:
+            return value - 0x100000000
+        return value
+
 
 def Check_Sum(data, count_number):
     check_sum = 0
@@ -343,7 +374,7 @@ def Check_Sum(data, count_number):
 
 
 def generate_command_bytes(
-    velocity_x, velocity_y, angular_z, stepperx, steppery, compressor1, ab_servo
+    velocity_x, velocity_y, angular_z, stepperx, steppery, compressor1, linear_actuator
 ):
     velocity_x = int(float(velocity_x) * 1000)
     velocity_y = int(float(velocity_y) * 1000)
@@ -355,7 +386,7 @@ def generate_command_bytes(
     steppery = 0
 
     compressor1 = int(compressor1 * 15000 / 100)
-    ab_servo = int(2150 + ab_servo * 450 / 100)
+    linear_actuator = int(2150 + linear_actuator * 450 / 100)
 
     if velocity_x < 0:
         velocity_x = velocity_x & 0xFFFF
@@ -367,7 +398,7 @@ def generate_command_bytes(
     stepperx = int(stepperx) & 0xFFFF
     steppery = int(steppery) & 0xFFFF
     compressor1 = int(compressor1) & 0xFFFF
-    ab_servo = int(ab_servo) & 0xFFFF
+    linear_actuator = int(linear_actuator) & 0xFFFF
 
     command = [
         FRAME_HEADER,
@@ -385,8 +416,8 @@ def generate_command_bytes(
         stepperx & 0xFF,
         compressor1 >> 8 & 0xFF,
         compressor1 & 0xFF,
-        ab_servo >> 8 & 0xFF,
-        ab_servo & 0xFF,
+        linear_actuator >> 8 & 0xFF,
+        linear_actuator & 0xFF,
         0x00,
         FRAME_TAIL,
     ]
@@ -401,17 +432,21 @@ def generate_command_bytes_stm2(stepperx, steppery, compressor1, ab_servo):
     ab_servo = int(2150 + ab_servo * 450 / 100)
 
 
-    stepperx = int(stepperx) & 0xFFFF
-    steppery = int(steppery) & 0xFFFF
+    stepperx = int(stepperx) & 0xFFFFFFFF
+    steppery = int(steppery) & 0xFFFFFFFF
     compressor1 = int(compressor1) & 0xFFFF
     ab_servo = int(ab_servo) & 0xFFFF
 
     command = [
         FRAME_HEADER,
         0x00,
-        stepperx >> 8 & 0xFF,
+        (stepperx >> 24) & 0xFF,
+        (stepperx >> 16) & 0xFF,
+        (stepperx >> 8) & 0xFF,
         stepperx & 0xFF,
-        steppery >> 8 & 0xFF,
+        (steppery >> 24) & 0xFF,
+        (steppery >> 16) & 0xFF,
+        (steppery >> 8) & 0xFF,
         steppery & 0xFF,
         compressor1 >> 8 & 0xFF,
         compressor1 & 0xFF,
@@ -421,8 +456,8 @@ def generate_command_bytes_stm2(stepperx, steppery, compressor1, ab_servo):
         FRAME_TAIL,
     ]
 
-    checksum = Check_Sum(command, 10)
-    command[10] = checksum
+    checksum = Check_Sum(command, 14)
+    command[14] = checksum
     return command
 
 def main(args=None):

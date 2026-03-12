@@ -23,8 +23,7 @@ import csv
 import matplotlib
 import json
 
-RUN_WITH_STATION = False
-TEST_2D_PLAN = True
+RUN_WITH_STATION = True
 SETTINGS_FILE = "settings.json"
 
 cmap = matplotlib.cm.get_cmap('Spectral')
@@ -70,7 +69,10 @@ class Simulator:
         self.current_print_segment = []
         self.robot_velocities = []
         self.axis_velocities = []
-        self.relative_airbrush_pos = np.array([0.0,0.0])
+        self.relative_airbrush_pos = np.array([
+            robot_speed.robot_data.stepper_x,
+            robot_speed.robot_data.stepper_y
+        ])
         self.robot_speed = robot_speed
         self.robot_pid_controllerX = PIDController(kp=15, ki=0.5, kd=0.0)
         self.robot_pid_controller_theta = PIDController(kp=0.04, ki=0.0005, kd=0.005)
@@ -95,10 +97,10 @@ class Simulator:
         self.compressor_max = 100
         self.counter = 0
         # Speed control mode: 0 = direct target seeking (simple), 1 = PID path following
-        self.speed_control_mode = 0
-        # Axis stop threshold: stop robot when target is within this fraction of axis limits
+        self.speed_control_mode = 0        # Axis stop threshold: stop robot when target is within this fraction of axis limits
         self.axis_stop_threshold = 0.7
         self.prev_printing_state = False
+        self.robot_was_moving = False  # Track if robot was driving in previous step
     def simulate(self): 
         while self.simulation_status and self.step():
             time.sleep(0.005)  # 5ms delay to prevent CPU overload and allow other threads
@@ -118,12 +120,15 @@ class Simulator:
         dt = current_time - self.prev_time
         self.prev_time = current_time
         theta_error = self.robot_speed.theta
-        theta_error = 0.0
-        current_target, _, _ = self.target_points[self.current_target_index]
+        current_target, _, _, g04_robot_target = self.target_points[self.current_target_index]
         self.station_speeds = (self.robot_speed.getOdoData()-self.robot_pos)/dt
-        self.robot_pos = self.robot_speed.getOdoData() -np.array([0,0.300])+ rotate_vector(0,0.300,(theta_error)*np.pi/180)
+        self.robot_pos = self.robot_speed.getOdoData() -np.array([0,0.3335])+ rotate_vector(0,0.3335,(theta_error)*np.pi/180)
         current_target = np.array(current_target)
-        is_printing = self.printing[self.current_target_index]        ############################
+        is_printing = self.printing[self.current_target_index]
+        is_g04 = g04_robot_target is not None
+        if is_g04:
+            g04_robot_target = np.array(g04_robot_target)
+        ############################
         if self.current_target_index < len(self.target_points) - 1:
             self.next_target = np.array(self.target_points[self.current_target_index + 1][0])
         else:
@@ -154,45 +159,98 @@ class Simulator:
         
         
         # Debug logging
-        #self.robot_speed.get_logger().info(f"prev={prev_target}, curr={current_target}, airbrush={self.airbrush_pos}, stepper_target={self.relative_airbrush_pos}")
-        
-        # Check if target is within axis reach (based on axis_stop_threshold)
-        target_relative_to_robot = current_target - self.robot_pos
-        target_within_axis_x = abs(target_relative_to_robot[0]) < AXIS_X_LIMIT * self.axis_stop_threshold
-        target_within_axis_y = abs(target_relative_to_robot[1]) < AXIS_Y_LIMIT * self.axis_stop_threshold
-        target_within_axis_range = target_within_axis_x and target_within_axis_y
-        
-        # Calculate robot velocity based on mode and axis range check
-        if target_within_axis_range:
-            # Target is within axis reach - stop robot, let steppers do the work
-            robot_velocity = np.array([0.0, 0.0])
-            #self.robot_speed.get_logger().info(f"Target within axis range - robot stopped, steppers working")
-        elif self.speed_control_mode == 0:
-            # Mode 0: Direct target seeking at max speed (simple, original logic)
+        #self.robot_speed.get_logger().info(f"prev={prev_target}, curr={current_target}, airbrush={self.airbrush_pos}, stepper_target={self.relative_airbrush_pos}")        # --- G04 handling: robot-only movement to specified position ---
+        if is_g04:
+            # G04 overrides all axis threshold logic:
+            # Robot drives to g04_robot_target, steppers don't move, 8mm precision
+            target_within_axis_range = False
             robot_velocity = calculate_robot_speed_vector_direct(
                 np.array(self.robot_speed.getOdoData()),
-                current_target,
+                g04_robot_target,
                 self.max_speed,
                 self.min_speed,
                 logger=self.robot_speed.get_logger()
             )
+            # Keep steppers at current position (no 2D axis movement)
+            self.relative_airbrush_pos = np.array([
+                self.robot_speed.robot_data.stepper_x,
+                self.robot_speed.robot_data.stepper_y
+            ])
+            self.error = 0
         else:
-            # Mode 1: PID-based path following (existing complex logic)
-            robot_velocity = calculate_robot_speed_vector(
-                    self.robot_pos , 
-                    prev_target,
-                    current_target, 
-                    self.max_speed,
-                    self.min_speed,
-                    dt,
-                    self.robot_pid_controllerX,
-                    logger = self.robot_speed.get_logger(),
-                    mode = 1,
-                    next_target = self.next_target,
-                    before_previous=before_previous_target,
-                    is_printing = is_printing
-                )
-        self.relative_airbrush_pos,self.error = calculate_projection_point(prev_target,
+          # --- Axis threshold logic ---
+          # Safety margin: 5mm from physical axis limits
+          SAFETY_MARGIN = 0.000
+          SAFE_X_LIMIT = AXIS_X_LIMIT - SAFETY_MARGIN
+          SAFE_Y_LIMIT_NEG = AXIS_Y_LIMIT_NEGATIVE - SAFETY_MARGIN
+          SAFE_Y_LIMIT_POS = AXIS_Y_LIMIT_POSITIVE - SAFETY_MARGIN
+          # Centered threshold: 40% of axis limits (keep steppers near center)
+          CENTERED_RATIO = 0.4
+          CENTERED_X = AXIS_X_LIMIT * CENTERED_RATIO
+          CENTERED_Y_NEG = AXIS_Y_LIMIT_NEGATIVE * CENTERED_RATIO
+          CENTERED_Y_POS = AXIS_Y_LIMIT_POSITIVE * CENTERED_RATIO
+
+          target_relative_to_robot = current_target - self.robot_pos
+
+          # Check if next segment will be printing
+          will_print_next = False
+          if self.current_target_index + 1 < len(self.printing):
+              will_print_next = self.printing[self.current_target_index + 1]
+
+          # Helper: check if target is within a given asymmetric box
+          def within_box(rel, x_lim, y_neg, y_pos):
+              return abs(rel[0]) <= x_lim and -y_neg <= rel[1] <= y_pos
+
+          # Determine which threshold to use:
+          if is_printing and self.robot_was_moving:
+              # Case A: Printing + robot was driving → 40% (center the steppers)
+              use_centered = True
+          elif is_printing and not self.robot_was_moving:
+              # Case B: Printing + robot stopped → full range with safety
+              use_centered = False
+          elif not is_printing and self.robot_was_moving and will_print_next:
+              # Case C: Not printing, robot driving, will print next → 40% (center before print starts)
+              use_centered = True
+          else:
+              # Case D/E: Not printing + (robot stopped OR won't print next) → full range with safety
+              use_centered = False
+
+          if use_centered:
+              target_within_axis_range = within_box(target_relative_to_robot, CENTERED_X, CENTERED_Y_NEG, CENTERED_Y_POS)
+          else:
+              target_within_axis_range = within_box(target_relative_to_robot, SAFE_X_LIMIT, SAFE_Y_LIMIT_NEG, SAFE_Y_LIMIT_POS)
+        
+          # Calculate robot velocity based on mode and axis range check
+          if target_within_axis_range:
+              # Target is within axis reach - stop robot, let steppers do the work
+              robot_velocity = np.array([0.0, 0.0])
+              #self.robot_speed.get_logger().info(f"Target within axis range - robot stopped, steppers working")
+          elif self.speed_control_mode == 0:
+              # Mode 0: Direct target seeking at max speed (simple, original logic)
+              robot_velocity = calculate_robot_speed_vector_direct(
+                  np.array(self.robot_speed.getOdoData()),
+                  current_target,
+                  self.max_speed,
+                  self.min_speed,
+                  logger=self.robot_speed.get_logger()
+              )
+          else:
+              # Mode 1: PID-based path following (existing complex logic)
+              robot_velocity = calculate_robot_speed_vector(
+                      self.robot_pos , 
+                      prev_target,
+                      current_target, 
+                      self.max_speed,
+                      self.min_speed,
+                      dt,
+                      self.robot_pid_controllerX,
+                      logger = self.robot_speed.get_logger(),
+                      mode = 1,
+                      next_target = self.next_target,
+                      before_previous=before_previous_target,
+                      is_printing = is_printing
+                  )
+          self.relative_airbrush_pos,self.error = calculate_projection_point(prev_target,
                                                                 current_target, 
                                                                 self.airbrush_pos, 
                                                                 self.robot_pos, 
@@ -263,10 +321,12 @@ class Simulator:
         self.robot_speed.send_speed()
         
         # Debug log with current target index
-        #self.robot_speed.get_logger().info(f"dt={dt}")
+        #self.robot_speed.get_logger().info(f"dt={dt}")        
         if is_printing != self.prev_printing_state:
             time.sleep(0.1)
         self.prev_printing_state = is_printing
+        # Track whether robot was moving for next step's threshold decision
+        self.robot_was_moving = not target_within_axis_range
         return True
     def check_multi_targets(self,target_index):
         N=0
@@ -312,19 +372,7 @@ class RobotSpeed(Node):
         self.imu_heading = None  # Raw IMU heading (degrees) - None until first reading
         self.imu_heading_offset = 0.0  # Offset to correct IMU drift
         self.corrected_heading = 0.0  # Final corrected heading
-        
-        # Station-based heading calculation
-        self.last_station_pos = None
-        self.last_station_time = None
-        self.commanded_velocity_sum = np.array([0.0, 0.0])  # Sum of commanded velocities (vx, vy)
-        self.commanded_velocity_count = 0  # Number of velocity samples
-        self.last_robot_data_time = time.time()
-        
-        # Minimum displacement for heading correction (50mm)
-        self.min_displacement_for_heading = 0.05
-        
-        # Heading correction filter (low-pass)
-        self.heading_correction_alpha = 0.1  # How fast to apply corrections
+
     def params_listener(self, msg):
         data = msg.data
         params = data.split(';')
@@ -347,78 +395,16 @@ class RobotSpeed(Node):
     def odom_listener(self, msg):
         try:
             self.odoData = msg
-            # Don't automatically set station_status here - let it be controlled by params_listener
-            
-            # Station-based heading correction
-            current_pos = np.array([
-                self.x_reverse * (msg.pose.pose.position.x - self.x_offset),
-                self.y_reverse * (msg.pose.pose.position.y - self.y_offset)
-            ])
-            current_time = time.time()
-            
-            if self.last_station_pos is not None and self.last_station_time is not None:
-                # Calculate actual displacement from station
-                station_displacement = current_pos - self.last_station_pos
-                station_displacement_magnitude = np.linalg.norm(station_displacement)
-                
-                # Only use for heading correction if displacement is significant AND we have velocity data
-                if station_displacement_magnitude > self.min_displacement_for_heading and self.commanded_velocity_count > 0:
-                    # Calculate actual movement direction from station (degrees)
-                    station_direction = np.degrees(np.arctan2(station_displacement[1], station_displacement[0]))
-                    
-                    # Calculate average commanded velocity direction
-                    avg_commanded_velocity = self.commanded_velocity_sum / self.commanded_velocity_count
-                    commanded_magnitude = np.linalg.norm(avg_commanded_velocity)
-                    
-                    if commanded_magnitude > 0.01:  # Only if we commanded significant movement
-                        # Direction of commanded velocity (what we told the robot to do)
-                        commanded_direction = np.degrees(np.arctan2(avg_commanded_velocity[1], avg_commanded_velocity[0]))
-                        
-                        # Heading error = actual direction - commanded direction
-                        # If robot is facing correctly, these should match
-                        heading_error = station_direction - commanded_direction
-                        
-                        # Normalize to [-180, 180]
-                        while heading_error > 180:
-                            heading_error -= 360
-                        while heading_error < -180:
-                            heading_error += 360
-                        
-                        # Apply correction to IMU offset (low-pass filtered)
-                        self.imu_heading_offset += self.heading_correction_alpha * heading_error
-                        
-                        # Clamp offset to reasonable range [-180, 180]
-                        while self.imu_heading_offset > 180:
-                            self.imu_heading_offset -= 360
-                        while self.imu_heading_offset < -180:
-                            self.imu_heading_offset += 360
-                        
-                        # Log correction for debugging
-                        self.get_logger().debug(
-                            f"Heading correction: error={heading_error:.2f}°, "
-                            f"offset={self.imu_heading_offset:.2f}°, "
-                            f"station_disp={station_displacement_magnitude*1000:.1f}mm"
-                        )
-            
-            # Reset for next cycle
-            self.last_station_pos = current_pos.copy()
-            self.last_station_time = current_time
-            self.commanded_velocity_sum = np.array([0.0, 0.0])
-            self.commanded_velocity_count = 0
             
         except Exception as e:
             self.get_logger().error(f"Error in odom_listener: {e}")
     def robot_data_listener(self, msg):
         current_time = time.time()
-        dt = current_time - self.last_robot_data_time
+        #dt = current_time - self.last_robot_data_time
         self.last_robot_data_time = current_time
         
         self.robot_data = msg
-        
-        # Initialize heading offset on first IMU reading
-        if self.imu_heading is None:
-            self.imu_heading_offset = -self.robot_data.heading
-            
+  
         # Get IMU heading (in degrees)
         self.imu_heading = self.robot_data.heading
         
@@ -430,18 +416,6 @@ class RobotSpeed(Node):
             self.theta -= 360
         while self.theta < -180:
             self.theta += 360
-        
-        # Accumulate commanded velocities for heading correction
-        # These are the velocities we commanded to the robot (in world frame)
-        # We'll use command_req.vx and command_req.vy which are what we sent to STM
-        # Note: vx/vy mapping: command_req.vy = -robot_velocity[0], command_req.vx = robot_velocity[1]
-        # So robot_velocity[0] = -command_req.vy, robot_velocity[1] = command_req.vx
-        commanded_vx = -self.command_req.vy  # Undo the mapping
-        commanded_vy = self.command_req.vx   # Undo the mapping
-        
-        self.commanded_velocity_sum[0] += commanded_vx
-        self.commanded_velocity_sum[1] += commanded_vy
-        self.commanded_velocity_count += 1
         
     def send_speed(self):
         """Publish command using topic (non-blocking)"""
@@ -472,7 +446,6 @@ class RobotControlUI(tk.Tk):
                 except Exception:
                     return {}
         return {}
-
     def save_settings(self):
         settings = {
             "station_ip": self.station_ip.get(),
@@ -485,6 +458,8 @@ class RobotControlUI(tk.Tk):
             "compressor_min": getattr(self.simulator, "compressor_min", 50),
             "compressor_max": getattr(self.simulator, "compressor_max", 100),
             "filename_var": self.filename_var.get(),
+            "x_offset": self.x_offset_var.get(),
+            "y_offset": self.y_offset_var.get(),
         }
         with open(SETTINGS_FILE, "w") as f:
             json.dump(settings, f, indent=4)
@@ -510,6 +485,8 @@ class RobotControlUI(tk.Tk):
         self.theta_ki = tk.DoubleVar()
         self.theta_kd = tk.DoubleVar()
         self.filename_var = tk.StringVar()
+        self.x_offset_var = tk.DoubleVar(value=0.0)
+        self.y_offset_var = tk.DoubleVar(value=0.0)
 
         # Load settings before creating UI elements
         settings = self.load_settings()
@@ -519,11 +496,18 @@ class RobotControlUI(tk.Tk):
         self.max_speed.set(settings.get("max_speed", 0.1))
         self.min_speed.set(settings.get("min_speed", 0.02))
         self.filename_var.set(settings.get("filename_var", DEFAULT_FILENAME))
+        self.x_offset_var.set(settings.get("x_offset", 0.0))
+        self.y_offset_var.set(settings.get("y_offset", 0.0))
+        self.robot_speed.x_offset = self.x_offset_var.get()
+        self.robot_speed.y_offset = self.y_offset_var.get()
 
         self.arrows = []
         self.point_factor.trace_add('write', self.on_point_factor_change)
         self.max_speed.trace_add('write', self.on_speed_change)
         self.min_speed.trace_add('write', self.on_speed_change)
+        self._offset_updating = False  # guard against recursive trace calls
+        self.x_offset_var.trace_add('write', self.on_offset_change)
+        self.y_offset_var.trace_add('write', self.on_offset_change)
         self.configure(bg='#1e1e1e')
         self.geometry('1400x800')
         self.attributes('-fullscreen', True)
@@ -553,6 +537,18 @@ class RobotControlUI(tk.Tk):
             if self.max_speed.get() > 0:
                 self.simulator.max_speed = self.max_speed.get()
         
+    def on_offset_change(self, *args):
+        if self._offset_updating:
+            return
+        try:
+            self.robot_speed.x_offset = self.x_offset_var.get()
+            self.robot_speed.y_offset = self.y_offset_var.get()
+            self.save_settings()
+            if self.simulator:
+                self.init_simulation()
+        except tk.TclError:
+            pass  # ignore transient empty-field errors while typing
+
     def create_ui_elements(self):
         style = ttk.Style()
         style.theme_use('clam')
@@ -594,6 +590,21 @@ class RobotControlUI(tk.Tk):
         self.config_menu.add_command(label="Default Angles", command=self.default_angles)
         self.config_menu.add_separator()
         self.config_menu.add_command(label="Airbrush limits", command=self.airbrush_limits)
+
+        # --- Offset bar: full-width horizontal section at the top ---
+        offset_bar = tk.Frame(self, bg='#2d2d2d')
+        offset_bar.pack(fill=tk.X, padx=10, pady=(5, 0))
+
+        ttk.Label(offset_bar, text="X Offset:").pack(side=tk.LEFT, padx=(10, 2))
+        self.x_offset_entry = ttk.Entry(offset_bar, textvariable=self.x_offset_var, width=10)
+        self.x_offset_entry.pack(side=tk.LEFT, padx=(0, 10))
+
+        ttk.Label(offset_bar, text="Y Offset:").pack(side=tk.LEFT, padx=(10, 2))
+        self.y_offset_entry = ttk.Entry(offset_bar, textvariable=self.y_offset_var, width=10)
+        self.y_offset_entry.pack(side=tk.LEFT, padx=(0, 10))
+
+        ttk.Button(offset_bar, text="Reset Origin", command=self.reset_origin).pack(side=tk.LEFT, padx=5)
+        ttk.Button(offset_bar, text="Default Origin", command=self.default_origin).pack(side=tk.LEFT, padx=5)
 
         # Create main frame
         main_frame = ttk.Frame(self)
@@ -716,9 +727,23 @@ class RobotControlUI(tk.Tk):
     def reset_origin(self):
         self.robot_speed.x_offset = self.robot_speed.odoData.pose.pose.position.x
         self.robot_speed.y_offset = self.robot_speed.odoData.pose.pose.position.y
+        self._offset_updating = True
+        self.x_offset_var.set(round(self.robot_speed.x_offset, 6))
+        self.y_offset_var.set(round(self.robot_speed.y_offset, 6))
+        self._offset_updating = False
+        self.save_settings()
+        if self.simulator:
+            self.init_simulation()
     def default_origin(self):
         self.robot_speed.x_offset = 0
         self.robot_speed.y_offset = 0
+        self._offset_updating = True
+        self.x_offset_var.set(0.0)
+        self.y_offset_var.set(0.0)
+        self._offset_updating = False
+        self.save_settings()
+        if self.simulator:
+            self.init_simulation()
     def reverse_x(self):
         self.robot_speed.x_reverse = -self.robot_speed.x_reverse
         if self.robot_speed.x_reverse == -1:
@@ -918,9 +943,9 @@ class RobotControlUI(tk.Tk):
 
         # Initialize plot elements
         self.robot_circle = Circle(self.simulator.robot_pos, 0.005, fc='#ff0000', ec='#ff0000', label='Robot')
-        self.airbrush_circle = Circle(self.simulator.airbrush_pos, 0.01, fc='#00a8e8', ec='#00a8e8', label='Airbrush')
-        self.axis_rectangle = Rectangle(self.simulator.robot_pos - [AXIS_X_LIMIT, AXIS_Y_LIMIT], 
-                                        2*AXIS_X_LIMIT, 2*AXIS_Y_LIMIT, fill=False, edgecolor='#ff8c00', linestyle='--')
+        self.airbrush_circle = Circle(self.simulator.airbrush_pos, 0.01, fc='#00a8e8', ec='#00a8e8', label='Airbrush')        
+        self.axis_rectangle = Rectangle(self.simulator.robot_pos - [AXIS_X_LIMIT, AXIS_Y_LIMIT_NEGATIVE], 
+                                        2*AXIS_X_LIMIT, AXIS_Y_LIMIT_NEGATIVE + AXIS_Y_LIMIT_POSITIVE, fill=False, edgecolor='#ff8c00', linestyle='--')
         self.robot_path, = self.ax.plot([], [], color='#ff0000', linewidth=0.5, alpha=0.5, label='Robot Path')
         self.print_segments = LineCollection([], cmap="Reds", linewidths=2, label='Print Path')
 
@@ -974,7 +999,7 @@ class RobotControlUI(tk.Tk):
         
         self.robot_circle.center = self.simulator.robot_pos
         self.airbrush_circle.center = self.simulator.airbrush_pos
-        self.axis_rectangle.set_xy(self.simulator.robot_pos - [AXIS_X_LIMIT, AXIS_Y_LIMIT])
+        self.axis_rectangle.set_xy(self.simulator.robot_pos - [AXIS_X_LIMIT, AXIS_Y_LIMIT_NEGATIVE])
 
         # Update robot path
         robot_path = np.array(self.simulator.robot_points)
@@ -1210,8 +1235,10 @@ DEFAULT_FILENAME = os.path.abspath('src/corosols/corosols/gcode/Lines2.txt')
 # Fixed Parameters
 robot_size = 0.5  # Robot size in meters (50 cm)
 axis_precision = 0.001  # 2D axis precision in meters (2 mm)
-AXIS_X_LIMIT = 0.150
-AXIS_Y_LIMIT = 0.06
+G04_PRECISION = 0.008  # G04 robot positioning precision in meters (8 mm)
+AXIS_X_LIMIT = 0.21
+AXIS_Y_LIMIT_NEGATIVE = 0.100 #was 0.06
+AXIS_Y_LIMIT_POSITIVE = 0.160
 
 class PIDController:
     def __init__(self, kp, ki, kd):
@@ -1234,10 +1261,24 @@ def parse_gcode(filename,point_factor):
     current_pos = [0, 0]
     is_printing = False
     current_mode = 'G00'
+    pending_robot_target = None  # G04 robot target to attach to next point
 
     with open(filename, 'r') as file:
         for line in file:
             line = line.strip()
+
+            # Detect G04 line: parse robot target and store for next point
+            if line.startswith('G04'):
+                parts = line.split()
+                robot_target = [0.0, 0.0]
+                for part in parts:
+                    if part.startswith('X'):
+                        robot_target[0] = float(part[1:])
+                    elif part.startswith('Y'):
+                        robot_target[1] = float(part[1:])
+                pending_robot_target = robot_target
+                continue
+
             if line.startswith('G00'):
                 current_mode = 'G00'
                 is_printing = False
@@ -1273,10 +1314,12 @@ def parse_gcode(filename,point_factor):
                         center = [current_pos[0] + center_offset[0], current_pos[1] + center_offset[1]]
                         circle_points = generate_circle_points(current_pos, new_pos, center, current_mode,point_factor)
                         for point in circle_points:
-                            points.append((point, 'G01', None))
+                            points.append((point, 'G01', None, None))
                             printing.append(is_printing)
                     elif new_pos != current_pos or (current_mode in ['G02', 'G03'] and (center_offset[0] != 0 or center_offset[1] != 0)):
-                        points.append((new_pos.copy(), current_mode, center_offset))
+                        # Attach pending G04 robot_target to this point, then clear it
+                        points.append((new_pos.copy(), current_mode, center_offset, pending_robot_target))
+                        pending_robot_target = None
                         printing.append(is_printing)
                         current_pos = new_pos
                     
@@ -1314,7 +1357,7 @@ class UnreachableAxisMovementError(Exception):
 
 def is_axis_movement_reachable(current_pos, target_pos):
     movement = np.array(target_pos) - np.array(current_pos)
-    return abs(movement[0]) <= AXIS_X_LIMIT and abs(movement[1]) <= AXIS_Y_LIMIT
+    return abs(movement[0]) <= AXIS_X_LIMIT and -AXIS_Y_LIMIT_NEGATIVE <= movement[1] <= AXIS_Y_LIMIT_POSITIVE
 
 def calculate_robot_speed_vector_direct(current_pos, target_pos, max_speed, min_speed, logger=None):
     """
@@ -1577,10 +1620,9 @@ def calculate_projection_point(prev_target, current_target, airbrush_pos, robot_
     
     # 3. Erreur perpendiculaire (distance airbrush <-> ligne de trajectoire)
     perp_error = np.dot(airbrush_to_path_start, perpendicular_direction)
-    
+
     # 4. Check conditions
-    target_within_axis = (abs(current_target[0] - robot_pos[0]) < AXIS_X_LIMIT and 
-                          abs(current_target[1] - robot_pos[1]) < AXIS_Y_LIMIT)
+    target_within_axis = (abs(current_target[0] - robot_pos[0]) < AXIS_X_LIMIT and -AXIS_Y_LIMIT_NEGATIVE < (current_target[1] - robot_pos[1]) < AXIS_Y_LIMIT_POSITIVE)
       # Robot is considered "stopped" when speed is very low (less than 10mm/s)
     robot_is_stopped = current_speed < 0.01
 
@@ -1595,7 +1637,7 @@ def calculate_projection_point(prev_target, current_target, airbrush_pos, robot_
         distance_to_target = np.linalg.norm(to_target)
 
         # Maximum step size when stopped (2mm per cycle for smoother motion)
-        MAX_STEP_SIZE = 0.001  # 2mm
+        MAX_STEP_SIZE = 0.0015  # 2mm
 
         if distance_to_target > MAX_STEP_SIZE:
             step_direction = to_target / distance_to_target
@@ -1614,6 +1656,6 @@ def calculate_projection_point(prev_target, current_target, airbrush_pos, robot_
     
     # 6. Limitation physique des axes
     stepper_target[0] = np.clip(stepper_target[0], -AXIS_X_LIMIT, AXIS_X_LIMIT)
-    stepper_target[1] = np.clip(stepper_target[1], -AXIS_Y_LIMIT, AXIS_Y_LIMIT)
+    stepper_target[1] = np.clip(stepper_target[1], -AXIS_Y_LIMIT_NEGATIVE, AXIS_Y_LIMIT_POSITIVE)
     
     return stepper_target, abs(perp_error) * 1000

@@ -1,12 +1,14 @@
 {
-    "station_ip": "10.109.22.197",
+    "station_ip": "10.189.93.197",
     "station_port": "1212",
     "point_factor": 10000.0,
-    "max_speed": 0.1,
+    "max_speed": 0.16,
     "min_speed": 0.06,
-    "servo_min": 30,
-    "servo_max": 30,
-    "compressor_min": 80,
-    "compressor_max": 80,
-    "filename_var": "/home/robot001/Desktop/Application/COROSOLS_WS/src/corosols/corosols/gcode/mesures3.txt"
+    "servo_min": 50,
+    "servo_max": 100,
+    "compressor_min": 50,
+    "compressor_max": 100,
+    "filename_var": "/home/robot001/Desktop/Application/COROSOLS_WS/src/corosols/corosols/gcode/1.txt",
+    "x_offset": 12.192818,
+    "y_offset": 0.580485
 }
